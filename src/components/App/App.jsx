@@ -26,7 +26,7 @@ import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
-import LoginPage from '../Login/LoginPage';
+import LoginPage from '../Login/Login';
 import RegisterPage from '../RegisterPage/RegisterPage';
 
 import './App.css';
@@ -102,8 +102,9 @@ function App() {
           .join(','),
         fontWeight: 300,
       }
-    }
-  })
+    },
+
+  });
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
