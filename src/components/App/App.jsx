@@ -19,6 +19,8 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
+import { ThemeProvider, createTheme } from '@mui/material';
+
 
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
@@ -33,6 +35,53 @@ function App() {
   const dispatch = useDispatch();
 
   const user = useSelector(store => store.user);
+
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: '#DC4634',
+        light: '#FFAA45'
+      }, 
+      secondary: {
+        main: '#352558',
+        light: '#DACCFF'
+      }, 
+      info: {
+        main: '#546D1D'
+      },
+    typography: {
+      h1: {
+        fontFamily: ['DM Serif Display', 'serif']
+        .join(',')
+      },
+      h2: {
+        fontFamily: ['DM Serif Display', 'serif']
+        .join(',')
+      },
+      h3: {
+        fontFamily: ['DM Serif Display', 'serif']
+        .join(',')
+      },
+      h4: {
+        fontFamily: ['DM Serif Display', 'serif']
+        .join(',')
+      },
+      h5: {
+        fontFamily: ['DM Serif Display', 'serif']
+        .join(',')
+      },
+      h6: {
+        fontFamily: ['DM Serif Display', 'serif']
+        .join(',')
+      },
+      button: {
+        fontFamily: ['DM Serif Display', 'serif']
+        .join(',')
+      },
+      body1: 
+    }
+    }
+  })
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
