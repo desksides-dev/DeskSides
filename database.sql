@@ -12,10 +12,10 @@ CREATE TABLE "users" (
 	"calendar_link" varchar(500),
 	"payment_link" varchar(500),
 	"fileshare_link" varchar(50),
-	"time_of_day_pref" varchar(50) NOT NULL,
+	"time_of_day_pref" varchar(50),
 	"user_type" varchar(20),
 	"description" varchar(1000),
-	"pub_medium" varchar(20) NOT NULL,
+	"pub_medium" varchar(20),
 	"approved" BOOLEAN,
 	"years_of_exp" integer,
 	"stories_per_month" integer,
@@ -101,5 +101,5 @@ VALUES ('Vogue'), ('Architectural Digest'), ('Allure'), ('Bon Appetit'), ('Conde
 INSERT INTO "markets" ("market_name")
 VALUES ('Fashion'), ('Beauty'), ('Domestic Lifestyle'), ('Health and Wellness'), ('Travel'), ('Tech'), 
        ('Parenting'), ('Food and Beverage'), ('Interior Design and Architecture'), 
-       ('Entertainment and Culture'), ('Fitness'), ('Business'), ('Sustainability'), ('Sports'), 
+       ('Entertainment and Culture'), ('Fitness'), ('Business'), ('Sustainability'), ('Sports'),
        ('Consumer Goods');
