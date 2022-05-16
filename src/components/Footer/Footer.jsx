@@ -2,7 +2,6 @@ import React from "react";
 import "./Footer.css";
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
-import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 
 function Footer() {
@@ -15,7 +14,7 @@ function Footer() {
         sx={{ border: '1px solid' }}
       >
         <Box>
-          <Link href="/">COPYRIGHT © 2022</Link>
+          <h5>COPYRIGHT © 2022</h5>
         </Box>
         
         <Box>
