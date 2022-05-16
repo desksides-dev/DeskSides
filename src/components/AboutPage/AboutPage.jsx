@@ -3,9 +3,11 @@ import { Box, Button, Typography, Container } from '@mui/material'
 import ArrowDownwardRoundedIcon from '@mui/icons-material/ArrowDownwardRounded';
 
 function AboutPage() {
+
+  
   return (<>
 
-    <Box sx={{backgroundColor: "#F6F3E3"}}>
+    <Box height="100vh" sx={{backgroundColor: "#F6F3E3"}}>
       <br />
       <Typography 
       align="center" 
@@ -14,11 +16,16 @@ function AboutPage() {
 
       <img src="/images/DeskSides_Logotype.png"/>
 
-      <br />
+      <div align="center">
       <ArrowDownwardRoundedIcon align="center" color="info" fontSize="large" />
+      </div>
     </Box>
-    <Box>
-      <p>This about page is for anyone to read!</p>
+    <Box height="100vh"sx={{backgroundColor: "#232323"}}>
+
+      <Typography variant="body1" align="center" justifyContent="center" color="#F6F3E3">
+        Desksides are bribery schemes perpetuated by members of the publicity industry and their clients.
+      </Typography>
+
     </Box>
    </>
   );
