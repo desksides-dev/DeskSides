@@ -1,17 +1,16 @@
 import React from 'react';
-
-// This is one of our simplest components
-// It doesn't have local state,
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is'
+import { Box, Button, Typography } from '@mui/material'
 
 function AboutPage() {
-  return (
-    <div className="container">
-      <div>
-        <p>This about page is for anyone to read!</p>
-      </div>
-    </div>
+  return (<>
+    <Box>
+      <Typography variant="subtitle2" color="info">WHAT'S ARE TRADITIONAL</Typography>
+      <img src="/public/images/DeskSides_Logotype.png"/>
+    </Box>
+    <Box>
+      <p>This about page is for anyone to read!</p>
+    </Box>
+  </>
   );
 }
 
