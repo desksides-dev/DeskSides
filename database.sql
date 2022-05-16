@@ -101,5 +101,5 @@ VALUES ('Vogue'), ('Architectural Digest'), ('Allure'), ('Bon Appetit'), ('Conde
 INSERT INTO "markets" ("market_name")
 VALUES ('Fashion'), ('Beauty'), ('Domestic Lifestyle'), ('Health and Wellness'), ('Travel'), ('Tech'), 
        ('Parenting'), ('Food and Beverage'), ('Interior Design and Architecture'), 
-       ('Entertainment and Culture'), ('Fitness'), ('Business'), ('Sustainability'), ('Sports'), 
+       ('Entertainment and Culture'), ('Fitness'), ('Business'), ('Sustainability'), ('Sports'),
        ('Consumer Goods');
