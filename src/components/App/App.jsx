@@ -49,6 +49,7 @@ function App() {
       info: {
         main: '#546D1D'
       },
+    },
     typography: {
       h1: {
         fontFamily: ['DM Serif Display', 'serif']
@@ -78,8 +79,26 @@ function App() {
         fontFamily: ['DM Serif Display', 'serif']
         .join(',')
       },
-      body1: 
-    }
+      body1: {
+        fontFamily: ['Lato', 'sans-serif;']
+        .join(','), 
+        fontWeight: 400,
+      },
+      body2: {
+        fontFamily: ['Lato', 'sans-serif;']
+        .join(','), 
+        fontWeight: 400,
+      },
+      subtitle1: {
+        fontFamily: ['Lato', 'sans-serif;']
+        .join(','), 
+        fontWeight: 100,
+      },
+      subtitle2: {
+        fontFamily: ['Lato', 'sans-serif;']
+        .join(','), 
+        fontWeight: 300,
+      }
     }
   })
 
@@ -88,6 +107,7 @@ function App() {
   }, [dispatch]);
 
   return (
+    <ThemeProvider theme={theme}>
     <Router>
       <div>
         <Nav />
@@ -174,6 +194,7 @@ function App() {
         <Footer />
       </div>
     </Router>
+    </ThemeProvider>
   );
 }
 
