@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {useSelector} from 'react-redux';
+import { InputLabel, TextField, Container, Button } from '@mui/material';
 
 function LoginForm() {
   const [username, setUsername] = useState('');
@@ -25,41 +26,40 @@ function LoginForm() {
   }; // end login
 
   return (
-    <form className="formPanel" onSubmit={login}>
-      <h2>Login</h2>
+    <Container>
+    <form onSubmit={login}>
+      <h2>Sign in</h2>
       {errors.loginMessage && (
         <h3 className="alert" role="alert">
           {errors.loginMessage}
         </h3>
       )}
       <div>
-        <label htmlFor="username">
-          Username:
-          <input
+        <InputLabel htmlFor="email">Email</InputLabel>
+          <TextField
             type="text"
-            name="username"
+            name="email"
             required
             value={username}
             onChange={(event) => setUsername(event.target.value)}
           />
-        </label>
+        
       </div>
       <div>
-        <label htmlFor="password">
-          Password:
-          <input
+        <InputLabel htmlFor="password">Password</InputLabel>
+          <TextField
             type="password"
             name="password"
             required
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
-        </label>
       </div>
       <div>
-        <input className="btn" type="submit" name="submit" value="Log In" />
+        <Button type="submit" variant="contained">Sign in</Button>
       </div>
     </form>
+    </Container>
   );
 }
 
