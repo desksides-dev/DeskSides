@@ -56,7 +56,7 @@ function LoginForm() {
           />
       </div>
       <div>
-        <Button type="submit" variant="contained">Sign in</Button>
+        <Button type="submit" variant="contained" sx={{backgroundColor:'#546D1D', textTransform:'none'}}>Sign in</Button>
       </div>
     </form>
     </Container>
