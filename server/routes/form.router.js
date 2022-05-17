@@ -9,9 +9,9 @@ router.get('/pubs', (req, res) => {
   
     pool
     .query(queryText)
-    .then((response) => res.send(response.data))
+    .then((result) => res.send(result.rows))
     .catch((err) => {
-      console.log('User registration failed: ', err);
+      console.log('Error getting publications for reducer: ', err);
       res.sendStatus(500);
     });
 
@@ -24,9 +24,9 @@ router.get('/markets', (req, res) => {
   
     pool
     .query(queryText)
-    .then((response) => res.send(response.data))
+    .then((result) => res.send(result.rows))
     .catch((err) => {
-      console.log('Error getting markets for reducers ', err);
+      console.log('Error getting markets for reducer: ', err);
       res.sendStatus(500);
     });
 
