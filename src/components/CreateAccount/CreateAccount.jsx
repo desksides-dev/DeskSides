@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import RegisterForm from '../RegisterForm/RegisterForm';
-import { Container, Box, Typography, Link, InputLabel, TextField, Button } from '@mui/material';
+import BrandAccount from './BrandAccount';
+import JournalistAccount from './JournalistAccount';
+import {
+    Container, Box, Typography, Link, InputLabel, TextField, Button, FormControl,
+    FormControlLabel, Radio, RadioGroup, FormLabel
+} from '@mui/material';
 
 function CreateAccount() {
     const [username, setUsername] = useState('');
@@ -22,7 +27,7 @@ function CreateAccount() {
     }
 
     const [newUser, setNewUser] = useState(user);
-
+ 
     const registerUser = (event) => {
         event.preventDefault();
 
@@ -118,6 +123,22 @@ function CreateAccount() {
                         />
                     </Box>
                 </Box>
+                <FormControl>
+                    <FormLabel sx={{fontSize:'1.4em'}}>I am a...</FormLabel>
+                    <RadioGroup onChange={(event) => setNewUser({...newUser, user_type: event.target.value})}>
+                        <FormControlLabel value="journalist" control={<Radio />} label="Journalist" />
+                        <FormControlLabel value="brand" control={<Radio />} label="Brand owner/representative"/>
+                    </RadioGroup>
+                </FormControl>
+                {
+                    newUser.user_type === 'journalist' ? 
+                    <JournalistAccount/>
+                    : newUser.user_type === 'brand' ?
+                    <BrandAccount/>
+                    :
+                    <></>
+                }
+
                 <InputLabel htmlFor="password">Password</InputLabel>
                 <TextField
                     type="password"
