@@ -11,17 +11,21 @@ function Footer() {
         spacing={12}
         justifyContent="center"
         alignItems="center"
-        sx={{ border: '1px solid' }}
+        sx={{ border: '1px solid', }}
       >
         <Box>
           <h5>COPYRIGHT © 2022</h5>
         </Box>
         
+        
         <Box>
-          <Link href="/">TERMS & CONDITIONS</Link>
+          {/* this link may need to be removed and spacing modified. it is currently a placeholder  */}
+          <Link sx={{ textDecoration: 'none' }} href="/">TERMS & CONDITIONS</Link>
         </Box>
        
         <Box
+        //TO DO check href/link, may not be allowed on box 
+          href="/"
           component="img"
           sx={{
             height: 89,
@@ -32,15 +36,17 @@ function Footer() {
         />
         
         <Box>
-          <Link href="/">FACEBOOK</Link>
+          {/* this link needs official facebook address */}
+          <Link sx={{ textDecoration: 'none' }} href="/">FACEBOOK</Link>
         </Box>
         
         <Box>
-          <Link href="/">INSTAGRAM</Link>
+          <Link sx={{ textDecoration: 'none' }} href="https://www.instagram.com/desksides/" target="_blank">INSTAGRAM</Link>
         </Box>
         
         <Box>
-          <Link href="/">CONTACT US</Link>
+          {/* this link needs official email address */}
+          <Link sx={{ textDecoration: 'none' }} href="mailto:email@example.com">CONTACT US</Link>
         </Box>
 
       </Stack>
