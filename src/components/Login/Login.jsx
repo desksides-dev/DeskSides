@@ -27,7 +27,7 @@ function Login() {
   }; // end login
 
   return (
-    <Container maxWidth="xs">
+    <Container maxWidth="xs" sx={{mb:10}}>
       <form onSubmit={login}>
         <Typography variant="h3" sx={{ mt: 15 }}>Sign in</Typography>
         {errors.loginMessage && (
@@ -35,7 +35,7 @@ function Login() {
             {errors.loginMessage}
           </h3>
         )}
-        <InputLabel htmlFor="email" variant="standard" color="primary" sx={{ mt: 10 }}>Email</InputLabel>
+        <InputLabel htmlFor="email" variant="standard" sx={{ mt: 10 }}>Email</InputLabel>
         <TextField
           type="text"
           name="email"
