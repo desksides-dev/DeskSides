@@ -35,7 +35,7 @@ function Login() {
             {errors.loginMessage}
           </h3>
         )}
-        <InputLabel htmlFor="email" variant="standard" color="primary" sx={{ mt: 10 }}>Email</InputLabel>
+        <InputLabel htmlFor="email" variant="standard" sx={{ mt: 10 }}>Email</InputLabel>
         <TextField
           type="text"
           name="email"
