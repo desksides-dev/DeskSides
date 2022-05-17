@@ -12,7 +12,7 @@ function Footer() {
       spacing={12}
       justifyContent="center"
       alignItems="center"
-      sx={{ border: "1px #546D1D solid" }}
+      sx={{ border: "1px #546D1D solid", backgroundColor: "white" }}
       fontFamily="Lato, sans-serif"
     >
       <Box>
@@ -28,7 +28,7 @@ function Footer() {
         </Link>
       </Box>
 
-      <Link href="/" sx={{ paddingLeft: "5em" }}>
+      <Link href="/" sx={{ paddingLeft: "4em" }}>
         <Box
           component="img"
           sx={{
@@ -61,7 +61,7 @@ function Footer() {
         {/* need to update hover/click color of this button */}
         <Button
           variant="contained"
-          sx={{ backgroundColor: "#FFAA45", borderRadius: "2em" }}
+          sx={{ backgroundColor: "#FFAA45", borderRadius: "2em", fontFamily: "Lato, sans-serif", fontWeight: "bold" }}
           href="mailto:blish@desksides.com"
         >
           CONTACT US
