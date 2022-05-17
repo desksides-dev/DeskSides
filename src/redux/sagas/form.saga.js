@@ -4,19 +4,19 @@ import axios from 'axios';
 // worker Saga: will be fired on "REGISTER" actions
 function* getPubs() {
   try {
-    const response = axios.get('/api/form/pubs');
-    put({type: 'SET_PUBS', payload: response.data});
+    const response = yield axios.get('/api/form/pubs');
+    yield put({type: 'SET_PUBS', payload: response.data});
   } catch (error) {
-    console.log('error in *getPubs')
+    console.log('error in *getPubs: ', error)
   }
 }
 
 function* getMarkets() {
     try {
-      const response = axios.get('/api/form/markets');
-      put({type: 'SET_MARKETS', payload: response.data});
+      const response = yield axios.get('/api/form/markets');
+      yield put({type: 'SET_MARKETS', payload: response.data});
     } catch (error) {
-      console.log('error in *getPubs')
+      console.log('error in *getPubs: ', error)
     }
   }
 
