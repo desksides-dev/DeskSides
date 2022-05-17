@@ -13,6 +13,7 @@ function Footer() {
         justifyContent="center"
         alignItems="center"
         sx={{ border: '1px #546D1D solid', }}
+        fontFamily="Lato, sans-serif"
       >
         <Box>
           <Link sx={{ textDecoration: 'none', color: '#546D1D' }} >COPYRIGHT © 2022</Link>
@@ -24,17 +25,18 @@ function Footer() {
           <Link sx={{ textDecoration: 'none', color: '#546D1D' }} href="/">TERMS & CONDITIONS</Link>
         </Box>
        
-        <Box
-        //TO DO check href/link, may not be allowed on box 
-          href="/"
-          component="img"
-          sx={{
-            height: '5em',
-            width: '11em',
-          }}
-          alt="DeskSides Logo"
-          src="/images/desksides-logo.svg"
-        />
+        <Link href="/"
+          sx={{ paddingLeft: '5em'}}>
+          <Box
+            component="img"
+            sx={{
+              height: '5em',
+              width: '11em',
+            }}
+            alt="DeskSides Logo"
+            src="/images/desksides-logo.svg"
+          />
+        </Link>
         
         <Box>
           {/* this link needs official facebook address */}
