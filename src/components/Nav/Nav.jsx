@@ -1,6 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import LogOutButton from "../LogOutButton/LogOutButton";
+import { Link, useHistory } from "react-router-dom";
 import "./Nav.css";
 import { useSelector } from "react-redux";
 
@@ -10,74 +9,121 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import Stack from "@mui/material/Stack";
 
 function Nav() {
   const user = useSelector((store) => store.user);
+  const history = useHistory();
 
   return (
-    <Box sx={{ flexGrow: 1, border: "1px #546D1D solid" }}>
-      <AppBar position="static" sx={{ backgroundColor: "white" }}>
-        <Toolbar>
-          <Button sx={{ fontFamily: "Lato, sans-serif", color: "#546D1D", ml: "5em" }}>
-            About
-          </Button>
-          <Button sx={{ fontFamily: "Lato, sans-serif", color: "#546D1D", ml: "8em" }}>
-            How It Works
-          </Button>
-          <Link href="/">
-            <Box
-              component="img"
+    <Stack
+      direction="row"
+      spacing={12}
+      justifyContent="center"
+      alignItems="center"
+      sx={{ border: "1px #546D1D solid", backgroundColor: "white" }}
+      fontFamily="Lato, sans-serif"
+    >
+      <Toolbar>
+
+        {/* ABOUT button */}
+        <Button
+          onClick={() => history.push("/about")}
+          sx={{
+            fontFamily: "Lato, sans-serif",
+            color: "#546D1D",
+            fontSize: "1em",
+          }}
+        >
+          About
+        </Button>
+
+        {/* HOW IT WORKS button */}
+        <Button
+          onClick={() => history.push("/info")}
+          sx={{
+            fontFamily: "Lato, sans-serif",
+            color: "#546D1D",
+            ml: "8em",
+            fontSize: "1em"
+          }}
+        >
+          How It Works
+        </Button>
+
+        {/* LOGO / HOME LINK */}
+        <Link to="/">
+          <Box
+            component="img"
+            sx={{
+              height: "5em",
+              width: "11em",
+              ml: "10em"
+            }}
+            alt="DeskSides Logo"
+            src="/images/desksides-logo.svg"
+          />
+        </Link>
+
+
+        {/* DISPLAYS WHEN USER NOT LOGGED IN - REGISTRATION AND LOGIN BUTTONS */}
+        {!user.id && (
+          <>
+            <Button
+              onClick={() => history.push("/registration")}
               sx={{
-                height: "5em",
-                width: "11em",
-                ml: "14em"
+                fontFamily: "Lato, sans-serif",
+                color: "#546D1D",
+                ml: "12em",
+                fontSize: "1em",
               }}
-              alt="DeskSides Logo"
-              src="/images/desksides-logo.svg"
-            />
-          </Link>
-          <Button sx={{ fontFamily: "Lato, sans-serif", color: "#546D1D", ml: "23em" }}>
-            Sign Up / Sign In
-          </Button>
-        </Toolbar>
-      </AppBar>
-    </Box>
+            >
+              Get Started
+            </Button>
+            <Button
+              onClick={() => history.push("/login")}
+              sx={{
+                fontFamily: "Lato, sans-serif",
+                color: "#546D1D",
+                ml: "8em",
+                fontSize: "1em",
+              }}
+            >
+              Sign In
+            </Button>
+          </>
+        )}
 
-    // <div className="nav">
-    //   <Link to="/home">
-    //     <h2 className="nav-title">Prime Solo Project</h2>
-    //   </Link>
-    //   <div>
-    //     {/* If no user is logged in, show these links */}
-    //     {!user.id && (
-    //       // If there's no user, show login/registration links
-    //       <Link className="navLink" to="/login">
-    //         Login / Register
-    //       </Link>
-    //     )}
+        {/* DISPLAYS WHEN USER LOGGED IN - USERNAME AND USER PROFILE */}
+        {user.id && (
+          <>
+            <Button
+              onClick={() => history.push("/user")}
+              sx={{
+                fontFamily: "Lato, sans-serif",
+                color: "#546D1D",
+                ml: "24em",
+                fontSize: "1em"
+              }}
+            >
+              {user.username}
+            </Button>
 
-    //     {/* If a user is logged in, show these links */}
-    //     {user.id && (
-    //       <>
-    //         <Link className="navLink" to="/user">
-    //           Home
-    //         </Link>
-
-    //         <Link className="navLink" to="/info">
-    //           Info Page
-    //         </Link>
-
-    //         <LogOutButton className="navLink" />
-    //       </>
-    //     )}
-
-    //     <Link className="navLink" to="/about">
-    //       About
-    //     </Link>
-    //   </div>
-    // </div>
+            <Button
+              onClick={() => history.push("/user")}
+              sx={{
+                fontFamily: "Lato, sans-serif",
+                color: "#546D1D",
+                fontSize: "1em"
+              }}
+            >
+              <AccountCircleIcon />
+            </Button>
+          </>
+        )}
+      </Toolbar>
+    </Stack>
   );
 }
 

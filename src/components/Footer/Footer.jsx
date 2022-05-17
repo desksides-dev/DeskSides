@@ -16,14 +16,21 @@ function Footer() {
       fontFamily="Lato, sans-serif"
     >
       <Box>
-        <Link fontFamily="inherit" sx={{ textDecoration: "none", color: "#546D1D" }}>
+        <Link
+          fontFamily="inherit"
+          sx={{ textDecoration: "none", color: "#546D1D" }}
+        >
           COPYRIGHT © 2022
         </Link>
       </Box>
 
       <Box>
         {/* this link may need to be removed and spacing modified. it is currently a placeholder  */}
-        <Link fontFamily="inherit" sx={{ textDecoration: "none", color: "#546D1D" }} href="/">
+        <Link
+          fontFamily="inherit"
+          sx={{ textDecoration: "none", color: "#546D1D" }}
+          href="/"
+        >
           TERMS & CONDITIONS
         </Link>
       </Box>
@@ -42,7 +49,11 @@ function Footer() {
 
       <Box>
         {/* this link needs official facebook address */}
-        <Link fontFamily="inherit" sx={{ textDecoration: "none", color: "#546D1D" }} href="/">
+        <Link
+          fontFamily="inherit"
+          sx={{ textDecoration: "none", color: "#546D1D" }}
+          href="/"
+        >
           FACEBOOK
         </Link>
       </Box>
@@ -63,7 +74,12 @@ function Footer() {
         <Button
           fontFamily="inherit"
           variant="contained"
-          sx={{ backgroundColor: "#FFAA45", borderRadius: "2em", fontFamily: "Lato, sans-serif", fontWeight: "bold" }}
+          sx={{
+            backgroundColor: "#FFAA45",
+            borderRadius: "2em",
+            fontFamily: "Lato, sans-serif",
+            fontWeight: "bold",
+          }}
           href="mailto:blish@desksides.com"
         >
           CONTACT US
