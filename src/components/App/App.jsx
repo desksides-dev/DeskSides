@@ -48,7 +48,9 @@ function App() {
         light: '#DACCFF'
       },
       info: {
-        main: '#546D1D'
+        main: '#546D1D',
+        light: '#839b49',
+        dark: '#284200'
       },
       background: {
         default: '#F6F3E3',
