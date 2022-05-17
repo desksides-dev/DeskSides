@@ -21,13 +21,15 @@ function CreateAccount() {
         state: '',
         username: '',
         password: '',
-        user_type: ''
+        user_type: '',
+        approved: false
     }
 
     const [newUser, setNewUser] = useState(user);
 
     const registerUser = (event) => {
         event.preventDefault();
+        console.log('newUser:', newUser);
 
         dispatch({
             type: 'REGISTER',
@@ -133,6 +135,7 @@ function CreateAccount() {
                                 value={newUser.state}
                                 fullWidth={true}
                                 required
+                                inputProps={{ maxLength: 2 }}
                                 sx={{ width: 70 }}
                                 onChange={(event) => setNewUser({ ...newUser, state: event.target.value })}
                             />
@@ -147,36 +150,11 @@ function CreateAccount() {
                     </FormControl>
                     {newUser.user_type === 'journalist' ?
                         <>
-                            <InputLabel htmlFor="journalist credentials" variant="standard" color="primary">Journalist credentials</InputLabel>
-                            <TextField
-                                type="text"
-                                name="journalist credentials"
-                                multiline
-                                minRows={4}
-                                color="info"
-                                value={newUser.description}
-                                fullWidth={true}
-                                required
-                                onChange={(event) => setNewUser({ ...newUser, description: event.target.value })}
-                            />
-                            <Button
-                                type="submit"
-                                variant="text"
-                                disableElevation
-                                color="info"
-                                size="large"
-                                fullWidth={true}
-                                sx={{ textTransform: 'none', fontSize: '1.6em'}}
-                            >
-                                Submit for approval
-                            </Button>
-                        </>
-                        : newUser.user_type === 'brand' ?
-                            <>
-                                <InputLabel htmlFor="brand description" variant="standard" color="primary">Brand description</InputLabel>
+                            <Box>
+                                <InputLabel htmlFor="journalist credentials" variant="standard" color="primary">Journalist credentials</InputLabel>
                                 <TextField
                                     type="text"
-                                    name="brand description"
+                                    name="journalist credentials"
                                     multiline
                                     minRows={4}
                                     color="info"
@@ -185,6 +163,35 @@ function CreateAccount() {
                                     required
                                     onChange={(event) => setNewUser({ ...newUser, description: event.target.value })}
                                 />
+                            </Box>
+                            <Button
+                                type="submit"
+                                variant="text"
+                                disableElevation
+                                color="info"
+                                size="large"
+                                fullWidth={true}
+                                sx={{ textTransform: 'none', fontSize: '1.6em' }}
+                            >
+                                Submit for approval
+                            </Button>
+                        </>
+                        : newUser.user_type === 'brand' ?
+                            <>
+                                <Box>
+                                    <InputLabel htmlFor="brand description" variant="standard" color="primary">Brand description</InputLabel>
+                                    <TextField
+                                        type="text"
+                                        name="brand description"
+                                        multiline
+                                        minRows={4}
+                                        color="info"
+                                        value={newUser.description}
+                                        fullWidth={true}
+                                        required
+                                        onChange={(event) => setNewUser({ ...newUser, description: event.target.value })}
+                                    />
+                                </Box>
                                 <Button
                                     type="submit"
                                     variant="text"
@@ -192,7 +199,7 @@ function CreateAccount() {
                                     color="info"
                                     size="large"
                                     fullWidth={true}
-                                    sx={{ textTransform: 'none', fontSize: '1.6em'}}
+                                    sx={{ textTransform: 'none', fontSize: '1.6em' }}
                                 >
                                     Submit for approval
                                 </Button>
