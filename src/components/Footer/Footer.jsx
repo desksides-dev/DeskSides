@@ -16,14 +16,14 @@ function Footer() {
       fontFamily="Lato, sans-serif"
     >
       <Box>
-        <Link sx={{ textDecoration: "none", color: "#546D1D" }}>
+        <Link fontFamily="inherit" sx={{ textDecoration: "none", color: "#546D1D" }}>
           COPYRIGHT © 2022
         </Link>
       </Box>
 
       <Box>
         {/* this link may need to be removed and spacing modified. it is currently a placeholder  */}
-        <Link sx={{ textDecoration: "none", color: "#546D1D" }} href="/">
+        <Link fontFamily="inherit" sx={{ textDecoration: "none", color: "#546D1D" }} href="/">
           TERMS & CONDITIONS
         </Link>
       </Box>
@@ -42,7 +42,7 @@ function Footer() {
 
       <Box>
         {/* this link needs official facebook address */}
-        <Link sx={{ textDecoration: "none", color: "#546D1D" }} href="/">
+        <Link fontFamily="inherit" sx={{ textDecoration: "none", color: "#546D1D" }} href="/">
           FACEBOOK
         </Link>
       </Box>
@@ -50,6 +50,7 @@ function Footer() {
       <Box>
         <Link
           sx={{ textDecoration: "none", color: "#546D1D" }}
+          fontFamily="inherit"
           href="https://www.instagram.com/desksides/"
           target="_blank"
         >
@@ -60,6 +61,7 @@ function Footer() {
       <Box>
         {/* need to update hover/click color of this button */}
         <Button
+          fontFamily="inherit"
           variant="contained"
           sx={{ backgroundColor: "#FFAA45", borderRadius: "2em", fontFamily: "Lato, sans-serif", fontWeight: "bold" }}
           href="mailto:blish@desksides.com"
