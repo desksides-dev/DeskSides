@@ -12,23 +12,30 @@ function Footer() {
       spacing={12}
       justifyContent="center"
       alignItems="center"
-      sx={{ border: "1px #546D1D solid" }}
+      sx={{ border: "1px #546D1D solid", backgroundColor: "white" }}
       fontFamily="Lato, sans-serif"
     >
       <Box>
-        <Link sx={{ textDecoration: "none", color: "#546D1D" }}>
+        <Link
+          fontFamily="inherit"
+          sx={{ textDecoration: "none", color: "#546D1D" }}
+        >
           COPYRIGHT © 2022
         </Link>
       </Box>
 
       <Box>
         {/* this link may need to be removed and spacing modified. it is currently a placeholder  */}
-        <Link sx={{ textDecoration: "none", color: "#546D1D" }} href="/">
+        <Link
+          fontFamily="inherit"
+          sx={{ textDecoration: "none", color: "#546D1D" }}
+          href="/"
+        >
           TERMS & CONDITIONS
         </Link>
       </Box>
 
-      <Link href="/" sx={{ paddingLeft: "5em" }}>
+      <Link href="/" sx={{ paddingLeft: "4em" }}>
         <Box
           component="img"
           sx={{
@@ -42,7 +49,11 @@ function Footer() {
 
       <Box>
         {/* this link needs official facebook address */}
-        <Link sx={{ textDecoration: "none", color: "#546D1D" }} href="/">
+        <Link
+          fontFamily="inherit"
+          sx={{ textDecoration: "none", color: "#546D1D" }}
+          href="/"
+        >
           FACEBOOK
         </Link>
       </Box>
@@ -50,6 +61,7 @@ function Footer() {
       <Box>
         <Link
           sx={{ textDecoration: "none", color: "#546D1D" }}
+          fontFamily="inherit"
           href="https://www.instagram.com/desksides/"
           target="_blank"
         >
@@ -60,8 +72,14 @@ function Footer() {
       <Box>
         {/* need to update hover/click color of this button */}
         <Button
+          fontFamily="inherit"
           variant="contained"
-          sx={{ backgroundColor: "#FFAA45", borderRadius: "2em" }}
+          sx={{
+            backgroundColor: "#FFAA45",
+            borderRadius: "2em",
+            fontFamily: "Lato, sans-serif",
+            fontWeight: "bold",
+          }}
           href="mailto:blish@desksides.com"
         >
           CONTACT US
