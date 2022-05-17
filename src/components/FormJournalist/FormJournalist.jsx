@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { Box, Button, Typography, InputLabel, MenuItem, OutlinedInput, FormControl, Select, Chip } from '@mui/material'
+import { Box, Button, Typography, InputLabel, FormHelperText, InputLabelProps, TextField, FormControl, Select, Chip } from '@mui/material'
 
 
 
@@ -23,7 +23,7 @@ function JournalistAssessment() {
     }, [])
 
     const handlePubsChange = (event) => {
-        const {options} = event.target;
+        const { options } = event.target;
         const inputs = [];
         for (let i = 0, l = options.length; i < l; i += 1) {
             if (options[i].selected) {
@@ -34,7 +34,7 @@ function JournalistAssessment() {
     };
 
     const handleMarketChange = (event) => {
-        const {options} = event.target;
+        const { options } = event.target;
         const inputs = [];
         for (let i = 0, l = options.length; i < l; i += 1) {
             if (options[i].selected) {
@@ -79,7 +79,7 @@ function JournalistAssessment() {
             height: "auto",
             pl: "10vw",
             pr: "50vw",
-            py: "10vh"
+            py: "5vh"
         }} >
             <Box sx={{ my: "5vmax", justifyContent: "left", textAlign: "left", }}>
 
@@ -89,17 +89,13 @@ function JournalistAssessment() {
                 <InputLabel shrink htmlFor="select-multiple-markets">
                     Select all that apply
                 </InputLabel>
-                <InputLabel shrink htmlFor="select-multiple-pubs">
-                    Hold ctrl or command to select multiple
-                </InputLabel>
-                <br />
                 <Select
                     multiple
                     native
                     value={market}
                     // @ts-ignore Typings are not considering `native`
                     onChange={handleMarketChange}
-                    label="Markets"
+                    helperText="Hold ctrl or command to select multiple"
                     inputProps={{
                         id: 'select-multiple-markets',
                     }}
@@ -110,6 +106,7 @@ function JournalistAssessment() {
                         </option>
                     ))}
                 </Select>
+                <FormHelperText>Hold ctrl or command to select multiple options</FormHelperText>
             </Box>
 
             <Box sx={{ my: "5vmax", justifyContent: "left", textAlign: "left", }}>
@@ -120,17 +117,12 @@ function JournalistAssessment() {
                 <InputLabel shrink htmlFor="select-multiple-pubs">
                     Select all that apply
                 </InputLabel>
-                <InputLabel shrink htmlFor="select-multiple-pubs">
-                    Hold ctrl or command to select multiple
-                </InputLabel>
-                <br />
                 <Select
                     multiple
                     native
                     value={pub}
                     // @ts-ignore Typings are not considering `native`
                     onChange={handlePubsChange}
-                    label="Publications"
                     inputProps={{
                         id: 'select-multiple-pubs',
                     }}
@@ -141,10 +133,21 @@ function JournalistAssessment() {
                         </option>
                     ))}
                 </Select>
+                <FormHelperText>Hold ctrl or command to select multiple options</FormHelperText>
             </Box>
 
-
-            
+            <Box sx={{ my: "5vmax", justifyContent: "left", textAlign: "left", }}>
+               <InputLabel htmlFor='stories-per-month'>
+                   How many stories per month do you typically publish?
+               </InputLabel>
+                <TextField
+                    id="stories-per-month"
+                    type="number"
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                />
+            </Box>
 
             <Button
                 color="secondary"
