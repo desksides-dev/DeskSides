@@ -28,6 +28,9 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../Login/Login';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import JournalistAssessment from '../FormJournalist/FormJournalist';
+import BrandAssessment from '../FormBrand/FormBrand';
+
 
 import './App.css';
 
@@ -160,6 +163,20 @@ function App() {
                 :
                 // Otherwise, show the login page
                 <LoginPage />
+              }
+            </Route>
+
+            <Route
+              exact
+              path="/assessment"
+            >
+              { (user.user_type === "brand") ?
+                // If the user is selected "brand" when registering, 
+                // show the Brand Assessment: 
+                <BrandAssessment />
+                :
+                // Otherwise show the Journalist Assessment:
+                <JournalistAssessment />
               }
             </Route>
 
