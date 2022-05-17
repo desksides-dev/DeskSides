@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import RegisterForm from '../RegisterForm/RegisterForm';
 import {
     Container, Box, Typography, Link, InputLabel, TextField, Button, FormControl,
     FormControlLabel, Radio, RadioGroup, FormLabel, Stack

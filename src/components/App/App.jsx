@@ -28,7 +28,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import Login from '../Login/Login';
 import CreateAccount from '../CreateAccount/CreateAccount';
-import RegisterPage from '../RegisterPage/RegisterPage';
+import BrandForm from '../BrandForm/BrandForm';
 
 import './App.css';
 
@@ -142,6 +142,10 @@ function App() {
               path="/user"
             >
               <UserPage />
+            </ProtectedRoute>
+
+            <ProtectedRoute exact path ="/brand">
+              <BrandForm/>
             </ProtectedRoute>
 
             <ProtectedRoute
