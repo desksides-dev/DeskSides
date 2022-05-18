@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { Box, Button, Slider, Typography, InputLabel, FormHelperText, TextField, Select } from '@mui/material'
+import { Box, Button, MenuItem, Slider, Typography, InputLabel, FormHelperText, TextField, Select } from '@mui/material'
 
 
 function BrandAssessment() {
@@ -186,6 +186,7 @@ function BrandAssessment() {
                 </InputLabel>
                 <Slider
                 getAriaValueText={valuetext}
+                value={state.stories_per_month}
                 valueLabelDisplay="auto"
                 step={1}
                 marks
@@ -196,12 +197,12 @@ function BrandAssessment() {
 
             <Box sx={{ my: "5vmax", justifyContent: "left", textAlign: "left", }}>
                 <InputLabel htmlFor='stories-per-month'>
-                    How many stories per month do you typically publish?
+                    Are you currently on an affiliate platform? If so, what is your merchant link?
                 </InputLabel>
                 <TextField
                     id="stories-per-month"
                     name="stories_per_month"
-                    value={state.stories_per_month}
+                    value={state.affiliate_link}
                     onChange={handleChange}
                     InputLabelProps={{
                         shrink: true,
@@ -210,7 +211,7 @@ function BrandAssessment() {
             </Box>
 
             <Button
-                color="secondary"
+                color="primary"
                 variant="contained"
                 onClick={handleSubmit}
                 sx={{

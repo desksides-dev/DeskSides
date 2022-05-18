@@ -31,6 +31,9 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import JournalistAssessment from '../FormJournalist/FormJournalist';
 import BrandAssessment from '../FormBrand/FormBrand';
 import ThankYou from '../ThankYouPage/ThankYou';
+import Login from '../Login/Login';
+import CreateAccount from '../CreateAccount/CreateAccount';
+import BrandForm from '../BrandForm/BrandForm';
 
 import './App.css';
 
@@ -50,7 +53,9 @@ function App() {
         light: '#DACCFF'
       },
       info: {
-        main: '#546D1D'
+        main: '#546D1D',
+        light: '#839b49',
+        dark: '#284200'
       },
       background: {
         default: '#F6F3E3',
@@ -134,18 +139,22 @@ function App() {
 
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
-            If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
+            If the user is not logged in, the ProtectedRoute will show the Login (component).
             Even though it seems like they are different pages, the user is always on localhost:3000/user */}
             <ProtectedRoute
-              // logged in shows UserPage else shows LoginPage
+              // logged in shows UserPage else shows Login
               exact
               path="/user"
             >
               <UserPage />
             </ProtectedRoute>
 
+            <ProtectedRoute exact path ="/brand">
+              <BrandForm/>
+            </ProtectedRoute>
+
             <ProtectedRoute
-              // logged in shows InfoPage else shows LoginPage
+              // logged in shows InfoPage else shows Login
               exact
               path="/info"
             >
@@ -162,7 +171,7 @@ function App() {
                 <Redirect to="/user" />
                 :
                 // Otherwise, show the login page
-                <LoginPage />
+                <Login />
               }
             </Route>
 
@@ -190,7 +199,7 @@ function App() {
                 <Redirect to="/user" />
                 :
                 // Otherwise, show the registration page
-                <RegisterPage />
+                <CreateAccount />
               }
             </Route>
 

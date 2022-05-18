@@ -27,7 +27,7 @@ function Login() {
   }; // end login
 
   return (
-    <Container maxWidth="xs">
+    <Container maxWidth="xs" sx={{mb:10}}>
       <form onSubmit={login}>
         <Typography variant="h3" sx={{ mt: 15 }}>Sign in</Typography>
         {errors.loginMessage && (
@@ -35,7 +35,7 @@ function Login() {
             {errors.loginMessage}
           </h3>
         )}
-        <InputLabel htmlFor="email" variant="standard" color="primary" sx={{ mt: 10 }}>Email</InputLabel>
+        <InputLabel htmlFor="email" variant="standard" sx={{ mt: 10 }}>Email</InputLabel>
         <TextField
           type="text"
           name="email"
@@ -43,6 +43,7 @@ function Login() {
           color="info"
           required
           value={username}
+          sx={{backgroundColor:'#FFFFFF'}}
           onChange={(event) => setUsername(event.target.value)}
         />
         <InputLabel htmlFor="password" sx={{ mt: 3 }}>Password</InputLabel>
@@ -53,6 +54,7 @@ function Login() {
           color="info"
           required
           value={password}
+          sx={{backgroundColor:'#FFFFFF'}}
           onChange={(event) => setPassword(event.target.value)}
           
         />
