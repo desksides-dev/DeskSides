@@ -12,17 +12,17 @@ import Paper from '@mui/material/Paper';
 
 
 
-function createData(first_name, last_name, city, state, user_type, approved) {
-  return { first_name, last_name, city, state, user_type, approved };
-}
+// function createData(first_name, last_name, city, state, user_type, approved) {
+//   return { first_name, last_name, city, state, user_type, approved };
+// }
 
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
+// const rows = [
+//   createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
+//   createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
+//   createData('Eclair', 262, 16.0, 24, 6.0),
+//   createData('Cupcake', 305, 3.7, 67, 4.3),
+//   createData('Gingerbread', 356, 16.0, 49, 3.9),
+// ];
 
 function AdminList() {
 
@@ -34,7 +34,7 @@ function AdminList() {
         dispatch({ type: 'GET_ADMIN_USERS' });
       }, []);
 
-    console.log(adminUsers);
+    console.log('ADMIN - Get all users: ', adminUsers);
     
   return (
     <TableContainer component={Paper}>
@@ -50,19 +50,20 @@ function AdminList() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+            {/* short circuit to prevent race condition, only executes .map when array is not empty */}
+          {adminUsers.length > 0 && adminUsers?.map((row) => (
             <TableRow
-              key={row.name}
+              key={row.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                {row.name}
+                {row.first_name}
               </TableCell>
-              <TableCell>{row.calories}</TableCell>
-              <TableCell>{row.fat}</TableCell>
-              <TableCell>{row.carbs}</TableCell>
-              <TableCell>{row.protein}</TableCell>
-              <TableCell>{row.protein}</TableCell>
+              <TableCell>{row.last_name}</TableCell>
+              <TableCell>{row.city}</TableCell>
+              <TableCell>{row.state}</TableCell>
+              <TableCell>{row.user_type}</TableCell>
+              <TableCell>{row.approved}</TableCell>
             </TableRow>
           ))}
         </TableBody>
