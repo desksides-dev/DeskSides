@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 
 //MUI imports
@@ -26,8 +26,13 @@ const rows = [
 
 function AdminList() {
 
+    const dispatch = useDispatch();
     const store = useSelector((store) => store);
     const adminUsers = store.adminUsers;
+
+    useEffect(() => {
+        dispatch({ type: 'GET_ADMIN_USERS' });
+      }, []);
 
     console.log(adminUsers);
     
