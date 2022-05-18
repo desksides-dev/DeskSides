@@ -28,6 +28,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../Login/Login';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import AdminList from '../AdminList/AdminList';
 
 import './App.css';
 
@@ -191,10 +192,19 @@ function App() {
               }
             </Route>
 
+            {/* ADMIN view, require authentication and authorization */}
+            <ProtectedRoute
+              exact
+              path="/admin"
+            >
+              <AdminList />
+            </ProtectedRoute>
+
             {/* If none of the other routes matched, we will show a 404. */}
             <Route>
               <h1>404</h1>
             </Route>
+
           </Switch>
           <Footer />
         </div>
