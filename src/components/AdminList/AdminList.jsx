@@ -1,4 +1,7 @@
 import React from "react";
+import { useSelector, useDispatch } from 'react-redux';
+
+//MUI imports
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -7,8 +10,10 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
+
+
+function createData(first_name, last_name, city, state, user_type, approved) {
+  return { first_name, last_name, city, state, user_type, approved };
 }
 
 const rows = [
@@ -20,16 +25,23 @@ const rows = [
 ];
 
 function AdminList() {
+
+    const store = useSelector((store) => store);
+    const adminUsers = store.adminUsers;
+
+    console.log(adminUsers);
+    
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
+            <TableCell>First Name</TableCell>
+            <TableCell>Last Name</TableCell>
+            <TableCell>City</TableCell>
+            <TableCell>State</TableCell>
+            <TableCell>User Type</TableCell>
+            <TableCell>Approved</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -41,10 +53,11 @@ function AdminList() {
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
+              <TableCell>{row.calories}</TableCell>
+              <TableCell>{row.fat}</TableCell>
+              <TableCell>{row.carbs}</TableCell>
+              <TableCell>{row.protein}</TableCell>
+              <TableCell>{row.protein}</TableCell>
             </TableRow>
           ))}
         </TableBody>
