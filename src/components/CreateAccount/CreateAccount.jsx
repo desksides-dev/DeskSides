@@ -1,20 +1,17 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import RegisterForm from '../RegisterForm/RegisterForm';
 import {
     Container, Box, Typography, Link, InputLabel, TextField, Button, FormControl,
     FormControlLabel, Radio, RadioGroup, FormLabel, Stack
 } from '@mui/material';
 
 function CreateAccount() {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
     const dispatch = useDispatch();
     const history = useHistory();
     const errors = useSelector((store) => store.errors);
 
-    const user = {
+    const userObj = {
         first_name: '',
         last_name: '',
         city: '',
@@ -25,7 +22,7 @@ function CreateAccount() {
         approved: false
     }
 
-    const [newUser, setNewUser] = useState(user);
+    const [newUser, setNewUser] = useState(userObj);
 
     const registerUser = (event) => {
         event.preventDefault();
@@ -35,7 +32,7 @@ function CreateAccount() {
             type: 'REGISTER',
             payload: newUser
         });
-        setNewUser(user);
+        setNewUser(userObj);
     }; // end registerUser
 
     return (
@@ -69,6 +66,7 @@ function CreateAccount() {
                                 color="info"
                                 required
                                 fullWidth
+                                sx={{backgroundColor:'#FFFFFF'}}
                                 onChange={(event) => setNewUser({ ...newUser, username: event.target.value })}
                             />
                         </Box>
@@ -81,6 +79,7 @@ function CreateAccount() {
                                 color="info"
                                 fullWidth
                                 required
+                                sx={{backgroundColor:'#FFFFFF'}}
                                 onChange={(event) => setNewUser({ ...newUser, password: event.target.value })}
                             />
                         </Box>
@@ -95,6 +94,7 @@ function CreateAccount() {
                                 color="info"
                                 required
                                 fullWidth={true}
+                                sx={{backgroundColor:'#FFFFFF'}}
                                 onChange={(event) => setNewUser({ ...newUser, first_name: event.target.value })}
                             />
                         </Box>
@@ -108,6 +108,7 @@ function CreateAccount() {
                                 value={newUser.last_name}
                                 fullWidth={true}
                                 required
+                                sx={{backgroundColor:'#FFFFFF'}}
                                 onChange={(event) => setNewUser({ ...newUser, last_name: event.target.value })}
                             />
                         </Box>
@@ -123,6 +124,7 @@ function CreateAccount() {
                                 value={newUser.city}
                                 required
                                 fullWidth={true}
+                                sx={{backgroundColor:'#FFFFFF'}}
                                 onChange={(event) => setNewUser({ ...newUser, city: event.target.value })}
                             />
                         </Box>
@@ -136,7 +138,7 @@ function CreateAccount() {
                                 fullWidth={true}
                                 required
                                 inputProps={{ maxLength: 2 }}
-                                sx={{ width: 70 }}
+                                sx={{ width: 70, backgroundColor:'#FFFFFF' }}
                                 onChange={(event) => setNewUser({ ...newUser, state: event.target.value })}
                             />
                         </Box>
@@ -161,6 +163,7 @@ function CreateAccount() {
                                     value={newUser.description}
                                     fullWidth={true}
                                     required
+                                    sx={{backgroundColor:'#FFFFFF'}}
                                     onChange={(event) => setNewUser({ ...newUser, description: event.target.value })}
                                 />
                             </Box>
@@ -189,6 +192,7 @@ function CreateAccount() {
                                         value={newUser.description}
                                         fullWidth={true}
                                         required
+                                        sx={{backgroundColor:'#FFFFFF'}}
                                         onChange={(event) => setNewUser({ ...newUser, description: event.target.value })}
                                     />
                                 </Box>
