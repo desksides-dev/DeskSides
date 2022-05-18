@@ -1,27 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { Box, Button, Typography, InputLabel, FormHelperText, InputLabelProps, TextField, FormControl, Select, Chip } from '@mui/material'
-
+import { Box, Button, ButtonGroup, Typography, InputLabel, FormHelperText, InputLabelProps, TextField, FormControl, Select, Chip } from '@mui/material'
+import axios from 'axios'
 
 
 function JournalistAssessment() {
 
     const markets = useSelector((store) => store.markets);
     const pubs = useSelector((store) => store.pubs);
-    const user = useSelector((store) => store.user);
 
+    // stores user inputs for markets & publications until submit
     const [market, setMarkets] = useState([]);
     const [pub, setPubs] = useState([]);
 
     const dispatch = useDispatch();
     const history = useHistory();
 
+    // gets publications & markets from the database for multiselect fields
     useEffect(() => {
         dispatch({ type: 'GET_PUBS' });
         dispatch({ type: 'GET_MARKETS' });
     }, [])
 
+    // when the user adds multiple publications, function stores value in state.
     const handlePubsChange = (event) => {
         const { options } = event.target;
         const inputs = [];
@@ -33,6 +35,7 @@ function JournalistAssessment() {
         setPubs(inputs);
     };
 
+    // when the user adds multiple markets, function stores value in state.
     const handleMarketChange = (event) => {
         const { options } = event.target;
         const inputs = [];
@@ -43,6 +46,20 @@ function JournalistAssessment() {
         }
         setMarkets(inputs);
     };
+
+    const handleSubmit = () => {
+        let journalist = {
+            markets: market, 
+            pubs: pubs,
+        }
+
+        axios.post('/api/form', journalist)
+        .then(
+            history.push('/thankyou')
+        )
+        .catch((error) => {console.log('error in posting from journalist assessment:', error)})
+
+    }
 
     return (<>
         <Box sx={{
@@ -101,7 +118,7 @@ function JournalistAssessment() {
                     }}
                 >
                     {markets.map((market) => (
-                        <option key={market.id} value={market.market_name}>
+                        <option key={market.id} value={market.id}>
                             {market.market_name}
                         </option>
                     ))}
@@ -109,6 +126,19 @@ function JournalistAssessment() {
                 <FormHelperText>Hold ctrl or command to select multiple options</FormHelperText>
             </Box>
 
+            <Box sx={{ my: "5vmax", justifyContent: "left", textAlign: "left", }}>
+                <InputLabel htmlFor="print-medium">
+                    What is your primary publishing medium?
+                </InputLabel>
+
+                <ButtonGroup variant="text" id="print-medium" aria-label="text button group">
+                    <Button>Print</Button>
+                    <Button>Digital</Button>
+                    <Button>Broadcast</Button>
+                </ButtonGroup>
+                <FormHelperText>Please select one</FormHelperText>
+            </Box>
+            
             <Box sx={{ my: "5vmax", justifyContent: "left", textAlign: "left", }}>
 
                 <InputLabel htmlFor="select-multiple-pubs">
@@ -128,7 +158,7 @@ function JournalistAssessment() {
                     }}
                 >
                     {pubs.map((pub) => (
-                        <option key={pub.id} value={pub.pub_title}>
+                        <option key={pub.id} value={pub.id}>
                             {pub.pub_title}
                         </option>
                     ))}
@@ -137,9 +167,9 @@ function JournalistAssessment() {
             </Box>
 
             <Box sx={{ my: "5vmax", justifyContent: "left", textAlign: "left", }}>
-               <InputLabel htmlFor='stories-per-month'>
-                   How many stories per month do you typically publish?
-               </InputLabel>
+                <InputLabel htmlFor='stories-per-month'>
+                    How many stories per month do you typically publish?
+                </InputLabel>
                 <TextField
                     id="stories-per-month"
                     type="number"
@@ -152,7 +182,7 @@ function JournalistAssessment() {
             <Button
                 color="secondary"
                 variant="contained"
-                onClick={() => { history.push('/home') }}
+                onClick={handleSubmit}
                 sx={{
                     borderRadius: "2em",
                     typography: "h6",
