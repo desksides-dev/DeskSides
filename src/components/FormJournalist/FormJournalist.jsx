@@ -65,11 +65,11 @@ function JournalistAssessment() {
         })
     }
 
-    // sends state on dispatch, resets state, pushes user to the thank you page
+    // sends state on dispatch pushes user to the thank you page
     const handleSubmit = () => {
-        console.log('state from the journalist assessment: ', state)
-        dispatch({ type: 'J_ASSESS', payload: state })
-        history.push('/thankyou')
+        // console.log('state from the journalist assessment: ', state);
+        dispatch({ type: 'J_ASSESS', payload: state });
+        history.push('/thankyou');
     }
 
     return (<>
