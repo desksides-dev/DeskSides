@@ -43,6 +43,7 @@ function Login() {
           color="info"
           required
           value={username}
+          sx={{backgroundColor:'#FFFFFF'}}
           onChange={(event) => setUsername(event.target.value)}
         />
         <InputLabel htmlFor="password" sx={{ mt: 3 }}>Password</InputLabel>
@@ -53,6 +54,7 @@ function Login() {
           color="info"
           required
           value={password}
+          sx={{backgroundColor:'#FFFFFF'}}
           onChange={(event) => setPassword(event.target.value)}
           
         />
