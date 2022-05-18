@@ -26,7 +26,7 @@ function AdminList() {
   const handleDetails = (user) => {
     console.log("handleDetails clicked! user data =", user);
     dispatch({ type: "SET_ADMIN_ITEM", payload: user });
-    history.push(`/adminItem`);
+    history.push('/adminItem');
   };
 
   console.log("ADMIN - Get all users: ", adminUsers);

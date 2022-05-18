@@ -9,12 +9,18 @@ import Box from "@mui/material/Box";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
+import Button from "@mui/material/Button";
+import { Typography } from "@mui/material";
 
 function AdminItem() {
   const history = useHistory();
   const dispatch = useDispatch();
   const store = useSelector((store) => store);
   const adminItem = store.adminItem;
+
+  const handleBack = () => {
+      history.push('/admin')
+  }
 
   return (
     <div>
@@ -100,7 +106,40 @@ function AdminItem() {
         </Box>
 
         {/* Admin Input Box */}
-        <Box width="50vw">Item 2</Box>
+        <Box width="50vw">
+
+            <Button
+                color="info"
+                variant="contained"
+                sx={{ fontFamily: "Lato, sansSerif", ml: "1em", mt: "1em"}}
+                onClick={() => handleBack()}
+            >Back
+            </Button>
+
+            <Box>
+                {adminItem.approved === false ?
+                    <Box
+                        sx={{ ml: "20vw", mt: "1em"}}
+                    >
+                        <Typography 
+                            variant="h5"
+                            sx={{ fontFamily: "Lato, sansSerif" }}    
+                        >Approve User?</Typography>
+                        <Button 
+                            variant="contained" 
+                            color="secondary"
+                            sx={{ fontFamily: "Lato, sansSerif", ml: "2em", mt: "1em" }}
+                        >Approve</Button>
+                    </Box>
+                :
+                    <Box>
+                        <Typography variant="h5">Remove Approval?</Typography>
+                        <Button variant="contained" color="primary">Remove</Button>
+                    </Box>
+                }
+            </Box>
+
+        </Box>
       </Stack>
     </div>
   );
