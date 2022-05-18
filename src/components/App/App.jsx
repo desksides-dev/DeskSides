@@ -30,7 +30,7 @@ import LoginPage from '../Login/Login';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import JournalistAssessment from '../FormJournalist/FormJournalist';
 import BrandAssessment from '../FormBrand/FormBrand';
-
+import ThankYou from '../ThankYouPage/ThankYou';
 
 import './App.css';
 
@@ -207,6 +207,14 @@ function App() {
                 <LandingPage />
               }
             </Route>
+
+            <ProtectedRoute
+              // logged in shows Thank You Page
+              exact
+              path="/thankyou"
+            >
+              <ThankYou />
+            </ProtectedRoute>
 
             {/* If none of the other routes matched, we will show a 404. */}
             <Route>

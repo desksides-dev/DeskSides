@@ -69,7 +69,7 @@ function JournalistAssessment() {
     const handleSubmit = () => {
         console.log('state from the journalist assessment: ', state)
         dispatch({ type: 'J_ASSESS', payload: state })
-        // history.push('/thankyou')
+        history.push('/thankyou')
     }
 
     return (<>
