@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { Box, Button, MenuItem, Typography, InputLabel, FormHelperText, InputLabelProps, TextField, FormControl, Select, Chip } from '@mui/material'
-import axios from 'axios'
+import { Box, Button, MenuItem, Typography, InputLabel, FormHelperText,  TextField, FormControl, Select} from '@mui/material'
+
 
 
 function JournalistAssessment() {
-
+    // reducers that store the market & publication data from the database
     const markets = useSelector((store) => store.markets);
     const pubs = useSelector((store) => store.pubs);
 
@@ -65,7 +65,7 @@ function JournalistAssessment() {
         })
     }
 
-    //sends state on dispatch, resets state, pushes user to the thank you page
+    // sends state on dispatch, resets state, pushes user to the thank you page
     const handleSubmit = () => {
         console.log('state from the journalist assessment: ', state)
         dispatch({ type: 'J_ASSESS', payload: state })
@@ -145,7 +145,7 @@ function JournalistAssessment() {
                 <Select
                     labelId="pub-medium"
                     value={state.pub_medium}
-                    name="pub_medium" 
+                    name="pub_medium"
                     label="Medium"
                     onChange={handleChange}
                 >
