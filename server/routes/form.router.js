@@ -34,43 +34,46 @@ router.get('/markets', (req, res) => {
     });
 });
 
-router.post('/markets', rejectUnauthenticated, (req, res) => {
-    const market = req.body.market
+router.post('/markets/:id', rejectUnauthenticated, (req, res) => {
+    const market = Number(req.params.id)
     const id = req.user.id
 
         const queryText = 
-        `INSERT INTO "user_markets" 
+        `INSERT INTO "users_markets" 
         ("user_id", "markets_id")
         VALUES ($1, $2);`; 
-        const queryValues = [id, market.id];  
-    
+        const queryValues = [id, market];  
+
         pool
         .query(queryText, queryValues)
         .then((result) => {
+            res.sendStatus(204)
             })
         .catch((err) => {
-          console.log('Error getting markets for reducer: ', err);
+          console.log('Error posting markets to database at /form/markets: ', err);
           res.sendStatus(500);
         });
     
 });
 
-router.post('/publications', rejectUnauthenticated, (req, res) => {
-    const pub = req.body.pub
+router.post('/publications/:id', rejectUnauthenticated, (req, res) => {
+    const pub = Number(req.params.id)
     const id = req.user.id
 
         const queryText = 
-        `INSERT INTO "user_publications" 
+        `INSERT INTO "users_publications" 
         ("user_id", "publications_id")
         VALUES ($1, $2);`; 
-        const queryValues = [id, pub.id];  
+
+        const queryValues = [id, pub];  
     
         pool
         .query(queryText, queryValues)
         .then((result) => {
+            res.sendStatus(204)
             })
         .catch((err) => {
-          console.log('Error getting markets for reducer: ', err);
+          console.log('Error posting pubs to database at /form/publications: ', err);
           res.sendStatus(500);
         });
     
@@ -79,7 +82,6 @@ router.post('/publications', rejectUnauthenticated, (req, res) => {
 router.put('/brands', rejectUnauthenticated, (req, res) => {
     const queryText = `UPDATE "users";`; 
     const queryValues = [req.user.id]
-
 
     pool
     .query(queryText)
@@ -91,15 +93,20 @@ router.put('/brands', rejectUnauthenticated, (req, res) => {
 })
 
 router.put('/journalist', rejectUnauthenticated, (req, res) => {
-    const queryText = `UPDATE "users" ;`; 
-    const queryValues = [req.user.id]
+    const stories = Number(req.body.stories_per_month)
 
+    const queryText = 
+    `UPDATE "users" 
+    SET "pub_medium" = $2, "stories_per_month" = $3
+    WHERE "id" = $1;`; 
+
+    const queryValues = [req.user.id, req.body.pub_medium, stories ]
 
     pool
-    .query(queryText)
-    .then((result) => res.send(result.rows))
+    .query(queryText, queryValues)
+    .then((result) => res.sendStatus(200))
     .catch((err) => {
-      console.log('Error getting markets for reducer: ', err);
+      console.log('Error posting journalist details to database: ', err);
       res.sendStatus(500);
     });
 })

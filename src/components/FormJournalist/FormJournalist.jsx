@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { Box, Button, ButtonGroup, Typography, InputLabel, FormHelperText, InputLabelProps, TextField, FormControl, Select, Chip } from '@mui/material'
+import { Box, Button, MenuItem, Typography, InputLabel, FormHelperText, InputLabelProps, TextField, FormControl, Select, Chip } from '@mui/material'
 import axios from 'axios'
 
 
@@ -11,12 +11,9 @@ function JournalistAssessment() {
     const pubs = useSelector((store) => store.pubs);
 
     // stores user inputs for markets & publications until submit
-    const [market, setMarkets] = useState([]);
-    const [pub, setPubs] = useState([]);
-
     const [state, setState] = useState({
-        markets: market,
-        pubs: pub,
+        markets: [],
+        pubs: [],
         stories_per_month: 0,
         pub_medium: '',
     })
@@ -39,7 +36,10 @@ function JournalistAssessment() {
                 inputs.push(options[i].value);
             }
         }
-        setPubs(inputs);
+        setState({
+            ...state,
+            pubs: inputs
+        });
     };
 
     // when the user adds multiple markets, function stores value in state.
@@ -51,7 +51,10 @@ function JournalistAssessment() {
                 inputs.push(options[i].value);
             }
         }
-        setMarkets(inputs);
+        setState({
+            ...state,
+            markets: inputs
+        });
     };
 
     const handleChange = (event) => {
@@ -62,9 +65,11 @@ function JournalistAssessment() {
         })
     }
 
+    //sends state on dispatch, resets state, pushes user to the thank you page
     const handleSubmit = () => {
+        console.log('state from the journalist assessment: ', state)
         dispatch({ type: 'J_ASSESS', payload: state })
-        history.push('/thankyou')
+        // history.push('/thankyou')
     }
 
     return (<>
@@ -115,7 +120,7 @@ function JournalistAssessment() {
                 <Select
                     multiple
                     native
-                    value={market}
+                    value={state.markets}
                     // @ts-ignore Typings are not considering `native`
                     onChange={handleMarketChange}
                     helperText="Hold ctrl or command to select multiple"
@@ -162,7 +167,7 @@ function JournalistAssessment() {
                 <Select
                     multiple
                     native
-                    value={pub}
+                    value={state.pubs}
                     // @ts-ignore Typings are not considering `native`
                     onChange={handlePubsChange}
                     inputProps={{
