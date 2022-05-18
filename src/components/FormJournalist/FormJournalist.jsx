@@ -14,8 +14,15 @@ function JournalistAssessment() {
     const [market, setMarkets] = useState([]);
     const [pub, setPubs] = useState([]);
 
+    const [state, setState] = useState({
+        markets: market,
+        pubs: pub,
+        stories_per_month: 0,
+        pub_medium: '',
+    })
+
     const dispatch = useDispatch();
-    const history = useHistory();
+
 
     // gets publications & markets from the database for multiselect fields
     useEffect(() => {
@@ -47,18 +54,17 @@ function JournalistAssessment() {
         setMarkets(inputs);
     };
 
+    const handleChange = (event) => {
+        let value = event.target.value
+        setState({
+            ...state,
+            [event.target.name]: value
+        })
+    }
+
     const handleSubmit = () => {
-        let journalist = {
-            markets: market, 
-            pubs: pubs,
-        }
-
-        axios.post('/api/form', journalist)
-        .then(
-            history.push('/thankyou')
-        )
-        .catch((error) => {console.log('error in posting from journalist assessment:', error)})
-
+        dispatch({ type: 'J_ASSESS', payload: state })
+        history.push('/thankyou')
     }
 
     return (<>
@@ -127,18 +133,24 @@ function JournalistAssessment() {
             </Box>
 
             <Box sx={{ my: "5vmax", justifyContent: "left", textAlign: "left", }}>
-                <InputLabel htmlFor="print-medium">
+                <InputLabel htmlFor="pub-medium">
                     What is your primary publishing medium?
                 </InputLabel>
 
-                <ButtonGroup variant="text" id="print-medium" aria-label="text button group">
-                    <Button>Print</Button>
-                    <Button>Digital</Button>
-                    <Button>Broadcast</Button>
-                </ButtonGroup>
+                <Select
+                    labelId="pub-medium"
+                    value={state.pub_medium}
+                    name="pub_medium" 
+                    label="Medium"
+                    onChange={handleChange}
+                >
+                    <MenuItem name="pub_medium" value={'print'}>Print</MenuItem>
+                    <MenuItem name="pub_medium" value={'digital'}>Digital</MenuItem>
+                    <MenuItem name="pub_medium" value={'broadcast'}>Broadcast</MenuItem>
+                </Select>
                 <FormHelperText>Please select one</FormHelperText>
             </Box>
-            
+
             <Box sx={{ my: "5vmax", justifyContent: "left", textAlign: "left", }}>
 
                 <InputLabel htmlFor="select-multiple-pubs">
@@ -173,6 +185,9 @@ function JournalistAssessment() {
                 <TextField
                     id="stories-per-month"
                     type="number"
+                    name="stories_per_month"
+                    value={state.stories_per_month}
+                    onChange={handleChange}
                     InputLabelProps={{
                         shrink: true,
                     }}
