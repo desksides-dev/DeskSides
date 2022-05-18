@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 //MUI imports
 import Table from "@mui/material/Table";
@@ -13,6 +14,7 @@ import Button from "@mui/material/Button";
 import TableSortLabel from "@mui/material/TableSortLabel";
 
 function AdminList() {
+  const history = useHistory();
   const dispatch = useDispatch();
   const store = useSelector((store) => store);
   const adminUsers = store.adminUsers;
@@ -20,6 +22,12 @@ function AdminList() {
   useEffect(() => {
     dispatch({ type: "GET_ADMIN_USERS" });
   }, []);
+
+  const handleDetails = (user) => {
+    console.log("handleDetails clicked! user data =", user);
+    dispatch({ type: "SET_ADMIN_ITEM", payload: user });
+    history.push(`/adminItem`);
+  };
 
   console.log("ADMIN - Get all users: ", adminUsers);
 
@@ -40,26 +48,28 @@ function AdminList() {
         <TableBody>
           {/* short circuit to prevent race condition, only executes .map when array is not empty */}
           {adminUsers.length > 0 &&
-            adminUsers?.map((row) => (
+            adminUsers?.map((user) => (
               <TableRow
-                key={row.id}
+                key={user.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
                 <TableCell component="th" scope="row">
-                  {row.first_name}
+                  {user.first_name}
                 </TableCell>
-                <TableCell>{row.last_name}</TableCell>
-                <TableCell>{row.city}</TableCell>
-                <TableCell>{row.state}</TableCell>
-                <TableCell>{row.user_type}</TableCell>
-                <TableCell>{(row.approved).toString()}</TableCell>
+                <TableCell>{user.last_name}</TableCell>
+                <TableCell>{user.city}</TableCell>
+                <TableCell>{user.state}</TableCell>
+                <TableCell>{user.user_type}</TableCell>
+                <TableCell>{user.approved.toString()}</TableCell>
                 <TableCell>
-                    <Button 
-                        variant="contained"
-                        color="info"
-                        sx={{ fontFamily: "Lato, sansSerif" }}
-
-                    >Details</Button>
+                  <Button
+                    variant="contained"
+                    color="info"
+                    sx={{ fontFamily: "Lato, sansSerif" }}
+                    onClick={() => handleDetails(user)}
+                  >
+                    Details
+                  </Button>
                 </TableCell>
               </TableRow>
             ))}

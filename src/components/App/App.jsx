@@ -1,114 +1,102 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 import {
   HashRouter as Router,
   Redirect,
   Route,
   Switch,
-} from 'react-router-dom';
+} from "react-router-dom";
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 
-import Nav from '../Nav/Nav';
-import Footer from '../Footer/Footer';
+import Nav from "../Nav/Nav";
+import Footer from "../Footer/Footer";
 
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 //MUI fonts
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
 
-import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
+import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
 
+import AboutPage from "../AboutPage/AboutPage";
+import UserPage from "../UserPage/UserPage";
+import InfoPage from "../InfoPage/InfoPage";
+import LandingPage from "../LandingPage/LandingPage";
+import LoginPage from "../Login/Login";
+import RegisterPage from "../RegisterPage/RegisterPage";
+import AdminList from "../AdminList/AdminList";
+import AdminItem from "../AdminItem/AdminItem";
 
-import AboutPage from '../AboutPage/AboutPage';
-import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
-import LandingPage from '../LandingPage/LandingPage';
-import LoginPage from '../Login/Login';
-import RegisterPage from '../RegisterPage/RegisterPage';
-import AdminList from '../AdminList/AdminList';
-
-import './App.css';
+import "./App.css";
 
 function App() {
   const dispatch = useDispatch();
 
-  const user = useSelector(store => store.user);
+  const user = useSelector((store) => store.user);
 
   const theme = createTheme({
     palette: {
       primary: {
-        main: '#DC4634',
-        light: '#FFAA45'
+        main: "#DC4634",
+        light: "#FFAA45",
       },
       secondary: {
-        main: '#352558',
-        light: '#DACCFF'
+        main: "#352558",
+        light: "#DACCFF",
       },
       info: {
-        main: '#546D1D'
+        main: "#546D1D",
       },
       background: {
-        default: '#F6F3E3',
+        default: "#F6F3E3",
       },
     },
     typography: {
       h1: {
-        fontFamily: ['DM Serif Display', 'serif']
-          .join(',')
+        fontFamily: ["DM Serif Display", "serif"].join(","),
       },
       h2: {
-        fontFamily: ['DM Serif Display', 'serif']
-          .join(',')
+        fontFamily: ["DM Serif Display", "serif"].join(","),
       },
       h3: {
-        fontFamily: ['DM Serif Display', 'serif']
-          .join(',')
+        fontFamily: ["DM Serif Display", "serif"].join(","),
       },
       h4: {
-        fontFamily: ['DM Serif Display', 'serif']
-          .join(',')
+        fontFamily: ["DM Serif Display", "serif"].join(","),
       },
       h5: {
-        fontFamily: ['DM Serif Display', 'serif']
-          .join(',')
+        fontFamily: ["DM Serif Display", "serif"].join(","),
       },
       h6: {
-        fontFamily: ['DM Serif Display', 'serif']
-          .join(',')
+        fontFamily: ["DM Serif Display", "serif"].join(","),
       },
       button: {
-        fontFamily: ['DM Serif Display', 'serif']
-          .join(',')
+        fontFamily: ["DM Serif Display", "serif"].join(","),
       },
       body1: {
-        fontFamily: ['Lato', 'sans-serif;']
-          .join(','),
+        fontFamily: ["Lato", "sans-serif;"].join(","),
         fontWeight: 400,
       },
       body2: {
-        fontFamily: ['Lato', 'sans-serif;']
-          .join(','),
+        fontFamily: ["Lato", "sans-serif;"].join(","),
         fontWeight: 400,
       },
       subtitle1: {
-        fontFamily: ['Lato', 'sans-serif;']
-          .join(','),
+        fontFamily: ["Lato", "sans-serif;"].join(","),
         fontWeight: 100,
       },
       subtitle2: {
-        fontFamily: ['Lato', 'sans-serif;']
-          .join(','),
+        fontFamily: ["Lato", "sans-serif;"].join(","),
         fontWeight: 300,
-      }
+      },
     },
-
   });
 
   useEffect(() => {
-    dispatch({ type: 'FETCH_USER' });
+    dispatch({ type: "FETCH_USER" });
   }, [dispatch]);
 
   return (
@@ -150,61 +138,53 @@ function App() {
               <InfoPage />
             </ProtectedRoute>
 
-            <Route
-              exact
-              path="/login"
-            >
-              {user.id ?
-                // If the user is already logged in, 
+            <Route exact path="/login">
+              {user.id ? (
+                // If the user is already logged in,
                 // redirect to the /user page
                 <Redirect to="/user" />
-                :
+              ) : (
                 // Otherwise, show the login page
                 <LoginPage />
-              }
+              )}
             </Route>
 
-            <Route
-              exact
-              path="/registration"
-            >
-              {user.id ?
-                // If the user is already logged in, 
+            <Route exact path="/registration">
+              {user.id ? (
+                // If the user is already logged in,
                 // redirect them to the /user page
                 <Redirect to="/user" />
-                :
+              ) : (
                 // Otherwise, show the registration page
                 <RegisterPage />
-              }
+              )}
             </Route>
 
-            <Route
-              exact
-              path="/home"
-            >
-              {user.id ?
-                // If the user is already logged in, 
+            <Route exact path="/home">
+              {user.id ? (
+                // If the user is already logged in,
                 // redirect them to the /user page
                 <Redirect to="/user" />
-                :
+              ) : (
                 // Otherwise, show the Landing page
                 <LandingPage />
-              }
+              )}
             </Route>
 
-            {/* ADMIN view, require authentication and authorization */}
-            <ProtectedRoute
-              exact
-              path="/admin"
-            >
+            {/* ADMIN list view, require authentication and authorization */}
+            <ProtectedRoute exact path="/admin">
               <AdminList />
+            </ProtectedRoute>
+
+            {/* ADMIN list view, require authentication and authorization */}
+            <ProtectedRoute path="/adminItem">
+              <AdminItem />
             </ProtectedRoute>
 
             {/* If none of the other routes matched, we will show a 404. */}
             <Route>
               <h1>404</h1>
             </Route>
-
           </Switch>
           <Footer />
         </div>
