@@ -221,6 +221,7 @@ function AdminItem() {
 
           {/* matches list */}
           <Box>
+
             {adminItem.user_type === "brand" ? (
               <>
                 <Select
@@ -234,6 +235,7 @@ function AdminItem() {
                   inputProps={{
                     id: "select-multiple-matches",
                   }}
+                  sx={{ ml : "5vw", width : "40vw", height : "40vh"}}
                 >
                   {adminUsers.map((user) => (
                     <option key={user.id} value={user.id}>
