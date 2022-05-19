@@ -21,6 +21,7 @@ function JournalistAssessment() {
         calendar_link: '',
         profile_image_link: '',
         fileshare_link: '',
+        payment_link: '',
     })
 
     const dispatch = useDispatch();
@@ -294,6 +295,21 @@ function JournalistAssessment() {
                     variant="filled"
                     name="fileshare_link"
                     value={state.fileshare_link}
+                    onChange={handleChange}
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                />
+
+                <InputLabel htmlFor='payment_link'>
+                    Venmo Username
+                </InputLabel>
+                <TextField
+                    id="payment_link"
+                    color="secondary"
+                    variant="filled"
+                    name="payment_link"
+                    value={state.payment_link}
                     onChange={handleChange}
                     InputLabelProps={{
                         shrink: true,
