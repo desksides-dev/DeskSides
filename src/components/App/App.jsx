@@ -26,6 +26,11 @@ import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
+import LoginPage from '../Login/Login';
+// import RegisterPage from '../RegisterPage/RegisterPage';
+import JournalistAssessment from '../FormJournalist/FormJournalist';
+import BrandAssessment from '../FormBrand/FormBrand';
+import ThankYou from '../ThankYouPage/ThankYou';
 import Login from '../Login/Login';
 import CreateAccount from '../CreateAccount/CreateAccount';
 import BrandForm from '../BrandForm/BrandForm';
@@ -55,6 +60,9 @@ function App() {
       },
       background: {
         default: '#F6F3E3',
+      },
+      warning: {
+        main: '#FFAA45'
       },
     },
     typography: {
@@ -176,6 +184,20 @@ function App() {
 
             <Route
               exact
+              path="/assessment"
+            >
+              { (user.user_type === "brand") ?
+                // If the user is selected "brand" when registering, 
+                // show the Brand Assessment: 
+                <BrandAssessment />
+                :
+                // Otherwise show the Journalist Assessment:
+                <JournalistAssessment />
+              }
+            </Route>
+
+            <Route
+              exact
               path="/registration"
             >
               {user.id ?
@@ -201,6 +223,14 @@ function App() {
                 <LandingPage />
               }
             </Route>
+
+            <ProtectedRoute
+              // logged in shows Thank You Page
+              exact
+              path="/thankyou"
+            >
+              <ThankYou />
+            </ProtectedRoute>
 
             {/* If none of the other routes matched, we will show a 404. */}
             <Route>
