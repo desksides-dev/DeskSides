@@ -75,6 +75,9 @@ function AdminItem() {
               <ListItemText primary={`User Type : ${adminItem.user_type}`} />
             </ListItem>
             <ListItem>
+              <ListItemText primary={`Email : ${adminItem.username}`} />
+            </ListItem>
+            <ListItem>
               <ListItemText primary={`City : ${adminItem.city}`} />
             </ListItem>
             <ListItem>
@@ -191,6 +194,19 @@ function AdminItem() {
               </Box>
             )}
           </Box>
+
+        {/* matches list */}
+            <Box>
+              {adminItem.user_type === 'brand' ?
+                (
+                    <h2>List of journos to match to brands</h2>
+                )
+                :
+                (
+                    <h2>List of brands to match to journos</h2>
+                )
+            }  
+            </Box>
         </Box>
       </Stack>
     </div>
