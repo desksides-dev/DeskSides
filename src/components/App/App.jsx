@@ -25,12 +25,17 @@ import AboutPage from "../AboutPage/AboutPage";
 import UserPage from "../UserPage/UserPage";
 import InfoPage from "../InfoPage/InfoPage";
 import LandingPage from "../LandingPage/LandingPage";
-import LoginPage from "../Login/Login";
-import RegisterPage from "../RegisterPage/RegisterPage";
+// import RegisterPage from "../RegisterPage/RegisterPage";
 import AdminList from "../AdminList/AdminList";
 import AdminItem from "../AdminItem/AdminItem";
+import JournalistAssessment from '../FormJournalist/FormJournalist';
+import BrandAssessment from '../FormBrand/FormBrand';
+import ThankYou from '../ThankYouPage/ThankYou';
+import Login from '../Login/Login';
+import CreateAccount from '../CreateAccount/CreateAccount';
+import BrandForm from '../BrandForm/BrandForm';
 
-import "./App.css";
+import './App.css';
 
 function App() {
   const dispatch = useDispatch();
@@ -48,10 +53,15 @@ function App() {
         light: "#DACCFF",
       },
       info: {
-        main: "#546D1D",
+        main: '#546D1D',
+        light: '#839b49',
+        dark: '#284200'
       },
       background: {
         default: "#F6F3E3",
+      },
+      warning: {
+        main: '#FFAA45'
       },
     },
     typography: {
@@ -120,18 +130,22 @@ function App() {
 
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
-            If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
+            If the user is not logged in, the ProtectedRoute will show the Login (component).
             Even though it seems like they are different pages, the user is always on localhost:3000/user */}
             <ProtectedRoute
-              // logged in shows UserPage else shows LoginPage
+              // logged in shows UserPage else shows Login
               exact
               path="/user"
             >
               <UserPage />
             </ProtectedRoute>
 
+            <ProtectedRoute exact path ="/brand">
+              <BrandForm/>
+            </ProtectedRoute>
+
             <ProtectedRoute
-              // logged in shows InfoPage else shows LoginPage
+              // logged in shows InfoPage else shows Login
               exact
               path="/info"
             >
@@ -145,8 +159,23 @@ function App() {
                 <Redirect to="/user" />
               ) : (
                 // Otherwise, show the login page
-                <LoginPage />
+                <Login />
               )}
+                
+            </Route>
+
+            <Route
+              exact
+              path="/assessment"
+            >
+              { (user.user_type === "brand") ?
+                // If the user is selected "brand" when registering, 
+                // show the Brand Assessment: 
+                <BrandAssessment />
+                :
+                // Otherwise show the Journalist Assessment:
+                <JournalistAssessment />
+              }
             </Route>
 
             <Route exact path="/registration">
@@ -156,7 +185,7 @@ function App() {
                 <Redirect to="/user" />
               ) : (
                 // Otherwise, show the registration page
-                <RegisterPage />
+                <CreateAccount />
               )}
             </Route>
 
@@ -179,6 +208,14 @@ function App() {
             {/* ADMIN list view, require authentication and authorization */}
             <ProtectedRoute path="/adminItem">
               <AdminItem />
+            </ProtectedRoute>
+
+              // logged in shows Thank You Page
+            <ProtectedRoute  
+              exact
+              path="/thankyou"
+            >
+              <ThankYou />
             </ProtectedRoute>
 
             {/* If none of the other routes matched, we will show a 404. */}
