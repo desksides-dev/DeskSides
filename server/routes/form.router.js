@@ -80,14 +80,18 @@ router.post('/publications/:id', rejectUnauthenticated, (req, res) => {
 });
 
 router.put('/brands', rejectUnauthenticated, (req, res) => {
-    const queryText = `UPDATE "users";`; 
-    const queryValues = [req.user.id]
+    const stories = Number(req.body.stories_per_month)
+    const queryText = 
+    `UPDATE "users"
+    SET "stories_per_month" = $2, "pub_medium" = $3, "affiliate_link" = $4
+    WHERE "id" = $1;`; 
+    const queryValues = [req.user.id, stories, req.body.pub_medium, req.body.affiliate_link]
 
     pool
-    .query(queryText)
-    .then((result) => {})
+    .query(queryText, queryValues)
+    .then((result) => res.sendStatus(200))
     .catch((err) => {
-      console.log('Error getting markets for reducer: ', err);
+      console.log('Error updating brand to database: ', err);
       res.sendStatus(500);
     });
 })

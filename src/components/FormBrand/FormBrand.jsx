@@ -14,10 +14,12 @@ function BrandAssessment() {
         pubs: [],
         stories_per_month: 0,
         pub_medium: '',
+        affiliate_link: ''
     })
 
     const dispatch = useDispatch();
-
+    const history = useHistory();
+    
     // gets publications & markets from the database for multiselect fields
     useEffect(() => {
         dispatch({ type: 'GET_PUBS' });
@@ -64,8 +66,8 @@ function BrandAssessment() {
 
     // sends state on dispatch pushes user to the thank you page
     const handleSubmit = () => {
-        // console.log('state from the journalist assessment: ', state);
-        dispatch({ type: 'J_ASSESS', payload: state });
+        // console.log('state from the brand assessment: ', state);
+        dispatch({ type: 'B_ASSESS', payload: state });
         history.push('/thankyou');
     }
 
@@ -185,8 +187,9 @@ function BrandAssessment() {
                     How many press placements per quarter would you consider to be a success?
                 </InputLabel>
                 <Slider
-                getAriaValueText={valuetext}
                 value={state.stories_per_month}
+                onChange={handleChange}
+                name="stories_per_month"
                 valueLabelDisplay="auto"
                 step={1}
                 marks

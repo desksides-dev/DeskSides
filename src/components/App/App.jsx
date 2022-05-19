@@ -27,7 +27,7 @@ import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../Login/Login';
-import RegisterPage from '../RegisterPage/RegisterPage';
+// import RegisterPage from '../RegisterPage/RegisterPage';
 import JournalistAssessment from '../FormJournalist/FormJournalist';
 import BrandAssessment from '../FormBrand/FormBrand';
 import ThankYou from '../ThankYouPage/ThankYou';

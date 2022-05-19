@@ -41,11 +41,32 @@ function* postJournalist(action) {
     }
 }
 
+// worker Saga: will be fired on "B_ASSESS" actions. Post & Puts to database.
+function* postBrand(action) {
+    const state = action.payload
+    console.log('from *postBrand: ', state)
+
+    try {
+        for (const market of state.markets) {
+            yield axios.post(`/api/form/markets/${market}`)
+        }
+
+        for (const pub of state.pubs) {
+            yield axios.post(`/api/form/publications/${pub}`)
+        }
+
+        yield axios.put('/api/form/journalist', state)
+    } catch (error) {
+        console.log('error in *postBrand: ', error)
+    }
+}
+
 // main Saga to act as a conductor to correct path:
 function* formSaga() {
     yield takeLatest('GET_PUBS', getPubs);
     yield takeLatest('GET_MARKETS', getMarkets);
     yield takeLatest('J_ASSESS', postJournalist);
+    yield takeLatest('B_ASSESS', postBrand);
 }
 
 export default formSaga;
