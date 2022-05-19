@@ -11,6 +11,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import Button from "@mui/material/Button";
 import Select from "@mui/material/Select";
+import FormHelperText from "@mui/material/FormHelperText";
 import { Typography } from "@mui/material";
 
 function AdminItem() {
@@ -41,6 +42,22 @@ function AdminItem() {
     dispatch({ type: "UPDATE_APPROVAL_STATUS", payload: id, approvalStatus });
     dispatch({ type: "SET_ADMIN_ITEM", payload: adminItem });
   };
+
+  const handleMatchChange = (event) => {
+
+    console.log(event);
+    // const { options } = event.target;
+    // const inputs = [];
+    // for (let i = 0, l = options.length; i < l; i += 1) {
+    //     if (options[i].selected) {
+    //         inputs.push(options[i].value);
+    //     }
+    // }
+    // setState({
+    //     ...state,
+    //     pubs: inputs
+    // });
+};
 
   return (
     <div>
@@ -209,14 +226,14 @@ function AdminItem() {
                   color="warning"
                   value={adminUsers}
                   // @ts-ignore Typings are not considering `native`
-                  onChange={handlePubsChange}
+                  onChange={handleMatchChange}
                   inputProps={{
                       id: 'select-multiple-pubs',
                   }}
               >
-                  {pubs.map((pub) => (
-                      <option key={pub.id} value={pub.id}>
-                          {pub.pub_title}
+                  {adminUsers.map((user) => (
+                      <option key={user.id} value={user.id}>
+                          {user.first_name}, {user.last_name}
                       </option>
                   ))}
               </Select>
