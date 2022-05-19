@@ -107,7 +107,7 @@ function Nav() {
                 fontSize: "1em"
               }}
             >
-              {user.username}
+              {user.first_name}
             </Button>
 
             <Button
