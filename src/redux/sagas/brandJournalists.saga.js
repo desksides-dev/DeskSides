@@ -6,7 +6,6 @@ function* getBrandJournalists() {
     try {
         const response = yield axios.get('/api/brand-journalists');
         yield put ({type: 'SET_BRAND_JOURNALISTS', payload: response.data});
-        console.log(response.data);
     } catch (error) {
         console.log('getBrandJournalistsSaga', error);
     }

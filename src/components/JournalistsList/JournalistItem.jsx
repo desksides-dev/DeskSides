@@ -1,7 +1,7 @@
-function JournalistItem() {
+function JournalistItem({journalist}) {
     return (
         <>
-        JOURNALIST ITEM
+        {journalist.first_name}
         </>
     )
 }
