@@ -18,24 +18,27 @@ function AdminItem() {
   const store = useSelector((store) => store);
   const adminItem = store.adminItem;
 
+  //Back to admin list view
   const handleBack = () => {
-      history.push('/admin')
-  }
+    history.push("/admin");
+  };
 
+  //Toggles 'approved' in user table of database, updates reducer to render new/opposite button
   const handleApproval = () => {
-      console.log('handleApproval clicked! adminItem: ', adminItem);
-      const id = adminItem.id;
-      let approvalStatus;
-      if (adminItem.approved === true){
-          approvalStatus = false;
-          adminItem.approved = false;
-      } else {approvalStatus = true;
-        adminItem.approved = true;
+    console.log("handleApproval clicked! adminItem: ", adminItem);
+    const id = adminItem.id;
+    let approvalStatus;
+    if (adminItem.approved === true) {
+      approvalStatus = false;
+      adminItem.approved = false;
+    } else {
+      approvalStatus = true;
+      adminItem.approved = true;
     }
-      console.log("Approval Status =", approvalStatus, "adminItem =", adminItem);
-      dispatch({ type : "UPDATE_APPROVAL_STATUS", payload: id, approvalStatus})
-      dispatch({ type : "SET_ADMIN_ITEM", payload : adminItem });
-  }
+    console.log("Approval Status =", approvalStatus, "adminItem =", adminItem);
+    dispatch({ type: "UPDATE_APPROVAL_STATUS", payload: id, approvalStatus });
+    dispatch({ type: "SET_ADMIN_ITEM", payload: adminItem });
+  };
 
   return (
     <div>
@@ -64,7 +67,9 @@ function AdminItem() {
               <ListItemText primary={`Last Name : ${adminItem.last_name}`} />
             </ListItem>
             <ListItem>
-              <ListItemText primary={`Approved : ${(adminItem.approved).toString()}`} />
+              <ListItemText
+                primary={`Approved : ${adminItem.approved.toString()}`}
+              />
             </ListItem>
             <ListItem>
               <ListItemText primary={`User Type : ${adminItem.user_type}`} />
@@ -76,19 +81,27 @@ function AdminItem() {
               <ListItemText primary={`State : ${adminItem.state}`} />
             </ListItem>
             <ListItem>
-              <ListItemText primary={`Description : ${adminItem.description}`} />
+              <ListItemText
+                primary={`Description : ${adminItem.description}`}
+              />
             </ListItem>
             <ListItem>
               <ListItemText primary={`Medium : ${adminItem.pub_medium}`} />
             </ListItem>
             <ListItem>
-              <ListItemText primary={`Preferred Time Of Day : ${adminItem.time_of_day_pref}`} />
+              <ListItemText
+                primary={`Preferred Time Of Day : ${adminItem.time_of_day_pref}`}
+              />
             </ListItem>
             <ListItem>
-              <ListItemText primary={`Years Of Experience : ${adminItem.years_of_exp}`} />
+              <ListItemText
+                primary={`Years Of Experience : ${adminItem.years_of_exp}`}
+              />
             </ListItem>
             <ListItem>
-              <ListItemText primary={`Stories Per Month : ${adminItem.stories_per_month}`} />
+              <ListItemText
+                primary={`Stories Per Month : ${adminItem.stories_per_month}`}
+              />
             </ListItem>
             <ListItem>
               <ListItemText primary={`Brand Name : ${adminItem.brand_name}`} />
@@ -97,74 +110,87 @@ function AdminItem() {
               <ListItemText primary={`Plan Type : ${adminItem.plan_type}`} />
             </ListItem>
             <ListItem>
-              <ListItemText primary={`Payment Status : ${adminItem.payment_status}`} />
+              <ListItemText
+                primary={`Payment Status : ${adminItem.payment_status}`}
+              />
             </ListItem>
             <ListItem>
-              <ListItemText primary={`Payment Link : ${adminItem.payment_link}`} />
+              <ListItemText
+                primary={`Payment Link : ${adminItem.payment_link}`}
+              />
             </ListItem>
             <ListItem>
-              <ListItemText primary={`Profile Image Link: ${adminItem.profile_image_link}`} />
+              <ListItemText
+                primary={`Profile Image Link: ${adminItem.profile_image_link}`}
+              />
             </ListItem>
             <ListItem>
-              <ListItemText primary={`Calendar Link : ${adminItem.calendar_link}`} />
+              <ListItemText
+                primary={`Calendar Link : ${adminItem.calendar_link}`}
+              />
             </ListItem>
             <ListItem>
-              <ListItemText primary={`Fileshare Link : ${adminItem.fileshare_link}`} />
+              <ListItemText
+                primary={`Fileshare Link : ${adminItem.fileshare_link}`}
+              />
             </ListItem>
             <ListItem>
-              <ListItemText primary={`Brand Assets Link : ${adminItem.brand_assets_link}`} />
+              <ListItemText
+                primary={`Brand Assets Link : ${adminItem.brand_assets_link}`}
+              />
             </ListItem>
             <ListItem>
-              <ListItemText primary={`Affiliate Link : ${adminItem.affiliate_link}`} />
+              <ListItemText
+                primary={`Affiliate Link : ${adminItem.affiliate_link}`}
+              />
             </ListItem>
           </List>
         </Box>
 
         {/* Admin Input Box */}
         <Box width="50vw">
+          {/* button to return to admin list */}
+          <Button
+            color="info"
+            variant="contained"
+            sx={{ fontFamily: "Lato, sansSerif", ml: "1em", mt: "1em" }}
+            onClick={() => handleBack()}
+          >
+            Back
+          </Button>
 
-            <Button
-                color="info"
-                variant="contained"
-                sx={{ fontFamily: "Lato, sansSerif", ml: "1em", mt: "1em"}}
-                onClick={() => handleBack()}
-            >Back
-            </Button>
-
-            <Box>
-                {adminItem.approved === false ?
-                    <Box
-                        sx={{ ml: "20vw", mt: "1em"}}
-                    >
-                        <Typography 
-                            variant="h5"
-                            sx={{ fontFamily: "Lato, sansSerif" }}    
-                        >Approve User?</Typography>
-                        <Button 
-                            variant="contained" 
-                            color="secondary"
-                            sx={{ fontFamily: "Lato, sansSerif", ml: "2em", mt: "1em" }}
-                            onClick={(() => handleApproval(adminItem))}
-                        >Approve</Button>
-                    </Box>
-                :
-                    <Box
-                    sx={{ ml: "20vw", mt: "1em"}}
-                    >
-                        <Typography 
-                            variant="h5"
-                            sx={{ fontFamily: "Lato, sansSerif" }}
-                        >Remove Approval?</Typography>
-                        <Button 
-                            variant="contained"
-                            color="primary"
-                            sx={{ fontFamily: "Lato, sansSerif", ml: "2em", mt: "1em" }}
-                            onClick={(() => handleApproval(adminItem.id))}
-                        >Remove</Button>
-                    </Box>
-                }
-            </Box>
-
+          {/* displays button to toggle approval status. renders based on current status */}
+          <Box>
+            {adminItem.approved === false ? (
+              <Box sx={{ ml: "20vw", mt: "1em" }}>
+                <Typography variant="h5" sx={{ fontFamily: "Lato, sansSerif" }}>
+                  Approve User?
+                </Typography>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  sx={{ fontFamily: "Lato, sansSerif", ml: "2em", mt: "1em" }}
+                  onClick={() => handleApproval(adminItem)}
+                >
+                  Approve
+                </Button>
+              </Box>
+            ) : (
+              <Box sx={{ ml: "20vw", mt: "1em" }}>
+                <Typography variant="h5" sx={{ fontFamily: "Lato, sansSerif" }}>
+                  Remove Approval?
+                </Typography>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  sx={{ fontFamily: "Lato, sansSerif", ml: "2em", mt: "1em" }}
+                  onClick={() => handleApproval(adminItem.id)}
+                >
+                  Remove
+                </Button>
+              </Box>
+            )}
+          </Box>
         </Box>
       </Stack>
     </div>
