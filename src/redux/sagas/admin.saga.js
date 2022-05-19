@@ -12,8 +12,20 @@ function* getAdminUsers() {
     }
 }
 
+function* updateApprovalStatus(action){
+    console.log('IN updateApprovalStatus, action = ', action);
+    
+    try {
+        yield axios.put(`api/admin/${action.approvalStatus}/${action.payload}`)
+        yield put({ type: 'GET_ADMIN_USERS'})
+    } catch (err) {
+        console.log(err);    
+    }
+}
+
 function* getAdminUsersWatcher() {
     yield takeLatest('GET_ADMIN_USERS', getAdminUsers);
+    yield takeLatest('UPDATE_APPROVAL_STATUS', updateApprovalStatus);
 }
 
 export default getAdminUsersWatcher;

@@ -60,7 +60,7 @@ function AdminList() {
                 <TableCell>{user.city}</TableCell>
                 <TableCell>{user.state}</TableCell>
                 <TableCell>{user.user_type}</TableCell>
-                <TableCell>{user.approved.toString()}</TableCell>
+                <TableCell>{(user.approved).toString()}</TableCell>
                 <TableCell>
                   <Button
                     variant="contained"

@@ -22,6 +22,21 @@ function AdminItem() {
       history.push('/admin')
   }
 
+  const handleApproval = () => {
+      console.log('handleApproval clicked! adminItem: ', adminItem);
+      const id = adminItem.id;
+      let approvalStatus;
+      if (adminItem.approved === true){
+          approvalStatus = false;
+          adminItem.approved = false;
+      } else {approvalStatus = true;
+        adminItem.approved = true;
+    }
+      console.log("Approval Status =", approvalStatus, "adminItem =", adminItem);
+      dispatch({ type : "UPDATE_APPROVAL_STATUS", payload: id, approvalStatus})
+      dispatch({ type : "SET_ADMIN_ITEM", payload : adminItem });
+  }
+
   return (
     <div>
       <Stack
@@ -129,6 +144,7 @@ function AdminItem() {
                             variant="contained" 
                             color="secondary"
                             sx={{ fontFamily: "Lato, sansSerif", ml: "2em", mt: "1em" }}
+                            onClick={(() => handleApproval(adminItem))}
                         >Approve</Button>
                     </Box>
                 :
@@ -143,6 +159,7 @@ function AdminItem() {
                             variant="contained"
                             color="primary"
                             sx={{ fontFamily: "Lato, sansSerif", ml: "2em", mt: "1em" }}
+                            onClick={(() => handleApproval(adminItem.id))}
                         >Remove</Button>
                     </Box>
                 }
