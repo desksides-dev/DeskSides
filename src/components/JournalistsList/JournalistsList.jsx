@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import JournalistItem from './JournalistItem';
-import { Box, Typography } from '@mui/material';
+import { Box, Card, Typography, Stack } from '@mui/material';
 
 function JournalistsList() {
     const dispatch = useDispatch();
@@ -17,8 +17,8 @@ function JournalistsList() {
     console.log('journalists:', journalists);
 
     return (
-        <Box display="flex" justifyContent="center">
-            <Typography variant="h2">
+        <Box>
+            <Typography variant="h2" color="primary">
                 {user.first_name} {user.last_name}
             </Typography>
             <Typography>
@@ -30,13 +30,15 @@ function JournalistsList() {
                 alt="down arrow"
                 src="/images/down-arrow.svg"
             />
+            <Stack spacing={3}>
             {journalists.map(journalist => (
-                <Box key={journalist.id}>
+                <Card key={journalist.id}>
                     <JournalistItem
                         journalist={journalist}
                     />
-                </Box>
+                </Card>
             ))}
+            </Stack>
         </Box>
     )
 }
