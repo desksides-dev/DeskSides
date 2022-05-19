@@ -189,7 +189,7 @@ function AdminItem() {
           {/* displays button to toggle approval status. renders based on current status */}
           <Box>
             {adminItem.approved === false ? (
-              <Box sx={{ ml: "20vw", mt: "1em" }}>
+              <Box sx={{ ml: "20vw"}}>
                 <Typography variant="h5" sx={{ fontFamily: "Lato, sansSerif" }}>
                   Approve User?
                 </Typography>
@@ -203,7 +203,7 @@ function AdminItem() {
                 </Button>
               </Box>
             ) : (
-              <Box sx={{ ml: "20vw", mt: "1em" }}>
+              <Box sx={{ ml: "20vw"}}>
                 <Typography variant="h5" sx={{ fontFamily: "Lato, sansSerif" }}>
                   Remove Approval?
                 </Typography>
@@ -220,10 +220,14 @@ function AdminItem() {
           </Box>
 
           {/* matches list */}
-          <Box>
-
+          <Box
+            sx={{ mt : "1em"}}
+          >
             {adminItem.user_type === "brand" ? (
               <>
+                <Typography variant="h5" sx={{ ml : "18vw", fontFamily: "Lato, sansSerif" }}>
+                  Select New Match(es)
+                </Typography>
                 <Select
                   multiple
                   native
@@ -235,7 +239,7 @@ function AdminItem() {
                   inputProps={{
                     id: "select-multiple-matches",
                   }}
-                  sx={{ ml : "5vw", width : "40vw", height : "40vh"}}
+                  sx={{ ml : "15vw", mt : "1em", width : "20vw"}}
                 >
                   {adminUsers.map((user) => (
                     <option key={user.id} value={user.id}>
@@ -243,13 +247,33 @@ function AdminItem() {
                     </option>
                   ))}
                 </Select>
-                <FormHelperText>
+                <FormHelperText
+                  sx={{ ml : "15vw" }}
+                >
                   Hold ctrl or command to select multiple options
                 </FormHelperText>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  sx={{ fontFamily: "Lato, sansSerif", ml: "20vw", mt: "1em" }}  
+                >Submit Match(es)</Button>
               </>
             ) : (
               <h2>List of brands to match to journos</h2>
             )}
+          </Box>
+
+          <Box
+          sx={{ mt : "1em"}}
+          >
+          <Typography variant="h5" sx={{ ml : "17vw", fontFamily: "Lato, sansSerif" }}>
+                  Delete Existing Match(es)
+          </Typography> 
+          <Button
+                  variant="contained"
+                  color="primary"
+                  sx={{ fontFamily: "Lato, sansSerif", ml: "20vw", mt: "1em" }}  
+                >Delete Match(es)</Button>
           </Box>
         </Box>
       </Stack>
