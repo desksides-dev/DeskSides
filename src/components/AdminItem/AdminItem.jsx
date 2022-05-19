@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
@@ -19,7 +19,11 @@ function AdminItem() {
   const dispatch = useDispatch();
   const store = useSelector((store) => store);
   const adminItem = store.adminItem;
-  const adminUsers = store.admin;
+  const adminUsers = store.adminUsers;
+
+  const [state, setState] = useState({
+    matches: [],
+  });
 
   //Back to admin list view
   const handleBack = () => {
@@ -44,20 +48,21 @@ function AdminItem() {
   };
 
   const handleMatchChange = (event) => {
+    const { options } = event.target;
+    const inputs = [];
+    for (let i = 0, l = options.length; i < l; i += 1) {
+      if (options[i].selected) {
+        inputs.push(options[i].value);
+      }
+    }
+    setState({
+      ...state,
+      matches: inputs,
+    });
+    
+  };
 
-    console.log(event);
-    // const { options } = event.target;
-    // const inputs = [];
-    // for (let i = 0, l = options.length; i < l; i += 1) {
-    //     if (options[i].selected) {
-    //         inputs.push(options[i].value);
-    //     }
-    // }
-    // setState({
-    //     ...state,
-    //     pubs: inputs
-    // });
-};
+  console.log("handleMAtchChange, state =", state);
 
   return (
     <div>
@@ -214,38 +219,36 @@ function AdminItem() {
             )}
           </Box>
 
-        {/* matches list */}
-            <Box>
-              {adminItem.user_type === 'brand' ?
-                (
-                  <>
-                  <Select
+          {/* matches list */}
+          <Box>
+            {adminItem.user_type === "brand" ? (
+              <>
+                <Select
                   multiple
                   native
                   variant="filled"
                   color="warning"
-                  value={adminUsers}
+                  value={state.matches}
                   // @ts-ignore Typings are not considering `native`
                   onChange={handleMatchChange}
                   inputProps={{
-                      id: 'select-multiple-pubs',
+                    id: "select-multiple-matches",
                   }}
-              >
+                >
                   {adminUsers.map((user) => (
-                      <option key={user.id} value={user.id}>
-                          {user.first_name}, {user.last_name}
-                      </option>
+                    <option key={user.id} value={user.id}>
+                      {user.first_name} {user.last_name}
+                    </option>
                   ))}
-              </Select>
-              <FormHelperText>Hold ctrl or command to select multiple options</FormHelperText>
+                </Select>
+                <FormHelperText>
+                  Hold ctrl or command to select multiple options
+                </FormHelperText>
               </>
-                )
-                :
-                (
-                    <h2>List of brands to match to journos</h2>
-                )
-            }  
-            </Box>
+            ) : (
+              <h2>List of brands to match to journos</h2>
+            )}
+          </Box>
         </Box>
       </Stack>
     </div>
