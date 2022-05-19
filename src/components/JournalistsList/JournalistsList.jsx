@@ -26,7 +26,7 @@ function JournalistsList() {
             </Typography>
             <Box
                 component="img"
-                sx={{ height: "5em", width: "11em", }}
+                sx={{ width: "7em", }}
                 alt="down arrow"
                 src="/images/down-arrow.svg"
             />
