@@ -132,9 +132,18 @@ function AdminItem() {
                         >Approve</Button>
                     </Box>
                 :
-                    <Box>
-                        <Typography variant="h5">Remove Approval?</Typography>
-                        <Button variant="contained" color="primary">Remove</Button>
+                    <Box
+                    sx={{ ml: "20vw", mt: "1em"}}
+                    >
+                        <Typography 
+                            variant="h5"
+                            sx={{ fontFamily: "Lato, sansSerif" }}
+                        >Remove Approval?</Typography>
+                        <Button 
+                            variant="contained"
+                            color="primary"
+                            sx={{ fontFamily: "Lato, sansSerif", ml: "2em", mt: "1em" }}
+                        >Remove</Button>
                     </Box>
                 }
             </Box>
