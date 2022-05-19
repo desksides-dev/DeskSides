@@ -120,6 +120,8 @@ function JournalistAssessment() {
                 <Select
                     multiple
                     native
+                    color="secondary"
+                    variant="filled"
                     value={state.markets}
                     // @ts-ignore Typings are not considering `native`
                     onChange={handleMarketChange}
@@ -147,6 +149,8 @@ function JournalistAssessment() {
                     value={state.pub_medium}
                     name="pub_medium"
                     label="Medium"
+                    variant="filled"
+                    color="secondary"
                     onChange={handleChange}
                 >
                     <MenuItem name="pub_medium" value={'print'}>Print</MenuItem>
@@ -167,6 +171,8 @@ function JournalistAssessment() {
                 <Select
                     multiple
                     native
+                    color="secondary"
+                    variant="filled"
                     value={state.pubs}
                     // @ts-ignore Typings are not considering `native`
                     onChange={handlePubsChange}
@@ -190,6 +196,8 @@ function JournalistAssessment() {
                 <TextField
                     id="stories-per-month"
                     type="number"
+                    color="secondary"
+                    variant="filled"
                     name="stories_per_month"
                     value={state.stories_per_month}
                     onChange={handleChange}

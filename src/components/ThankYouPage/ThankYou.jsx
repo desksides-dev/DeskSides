@@ -12,7 +12,7 @@ function ThankYou(props) {
         align: "center",
         justifyContent: "left",
         textAlign: "left",
-        height: "100vh",
+        height: "80vh",
         pl: "10vw",
         pr: "25vw",
         py: "10vh"

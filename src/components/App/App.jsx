@@ -60,6 +60,9 @@ function App() {
       background: {
         default: '#F6F3E3',
       },
+      warning: {
+        main: '#FFAA45'
+      },
     },
     typography: {
       h1: {

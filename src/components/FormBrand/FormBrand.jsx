@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { Box, Button, MenuItem, Slider, Typography, InputLabel, FormHelperText, TextField, Select } from '@mui/material'
+import { Box, Button, MenuItem, Slider, Typography, InputLabel, FormHelperText, TextField, Select, FormControl } from '@mui/material'
 
 
 function BrandAssessment() {
@@ -108,9 +108,11 @@ function BrandAssessment() {
             pr: "50vw",
             py: "5vh"
         }} >
+            {/* <FormControl> */}
+            <form>
             <Box sx={{ my: "5vmax", justifyContent: "left", textAlign: "left", }}>
 
-                <InputLabel htmlFor="select-multiple-markets">
+                <InputLabel shrink={false} htmlFor="select-multiple-markets">
                     Which markets does your brand sit in?
                 </InputLabel>
                 <InputLabel shrink htmlFor="select-multiple-markets">
@@ -119,6 +121,9 @@ function BrandAssessment() {
                 <Select
                     multiple
                     native
+                    color="warning"
+                    label="select-multiple-markets"
+                    variant="filled"
                     value={state.markets}
                     // @ts-ignore Typings are not considering `native`
                     onChange={handleMarketChange}
@@ -137,7 +142,7 @@ function BrandAssessment() {
             </Box>
 
             <Box sx={{ my: "5vmax", justifyContent: "left", textAlign: "left", }}>
-                <InputLabel htmlFor="pub-medium">
+                <InputLabel shrink={false} htmlFor="pub-medium">
                     What medium is your priority to be published in?
                 </InputLabel>
 
@@ -145,6 +150,8 @@ function BrandAssessment() {
                     labelId="pub-medium"
                     value={state.pub_medium}
                     name="pub_medium"
+                    variant="filled"
+                    color="warning"
                     label="Medium"
                     onChange={handleChange}
                 >
@@ -157,7 +164,7 @@ function BrandAssessment() {
 
             <Box sx={{ my: "5vmax", justifyContent: "left", textAlign: "left", }}>
 
-                <InputLabel htmlFor="select-multiple-pubs">
+                <InputLabel shrink={false} htmlFor="select-multiple-pubs">
                     Which publications do you consider to be your goals to be published in?
                 </InputLabel>
                 <InputLabel shrink htmlFor="select-multiple-pubs">
@@ -166,6 +173,8 @@ function BrandAssessment() {
                 <Select
                     multiple
                     native
+                    variant="filled"
+                    color="warning"
                     value={state.pubs}
                     // @ts-ignore Typings are not considering `native`
                     onChange={handlePubsChange}
@@ -183,7 +192,7 @@ function BrandAssessment() {
             </Box>
 
             <Box sx={{ my: "5vmax", justifyContent: "left", textAlign: "left", }}>
-                <InputLabel htmlFor='stories-per-month'>
+                <InputLabel shrink={false} htmlFor='stories-per-month'>
                     How many press placements per quarter would you consider to be a success?
                 </InputLabel>
                 <Slider
@@ -191,6 +200,7 @@ function BrandAssessment() {
                 onChange={handleChange}
                 name="stories_per_month"
                 valueLabelDisplay="auto"
+                color="warning"
                 step={1}
                 marks
                 min={1}
@@ -199,11 +209,13 @@ function BrandAssessment() {
             </Box>
 
             <Box sx={{ my: "5vmax", justifyContent: "left", textAlign: "left", }}>
-                <InputLabel htmlFor='stories-per-month'>
+                <InputLabel shrink={false} htmlFor='stories-per-month'>
                     Are you currently on an affiliate platform? If so, what is your merchant link?
                 </InputLabel>
                 <TextField
-                    id="stories-per-month"
+                    labelId="stories-per-month"
+                    color="warning"
+                    variant="filled"
                     name="stories_per_month"
                     value={state.affiliate_link}
                     onChange={handleChange}
@@ -214,7 +226,7 @@ function BrandAssessment() {
             </Box>
 
             <Button
-                color="primary"
+                color="warning"
                 variant="contained"
                 onClick={handleSubmit}
                 sx={{
@@ -223,6 +235,8 @@ function BrandAssessment() {
                     textTransform: "lowercase"
                 }}
             > submit </Button>
+            </form>
+            {/* </FormControl> */}
         </Box>
     </>);
 }
