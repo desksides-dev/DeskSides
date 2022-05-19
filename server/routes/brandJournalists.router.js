@@ -5,7 +5,7 @@ const {rejectUnauthenticated} = require('../modules/authentication-middleware')
 
 // GET array of journalists matched with specified brand
 router.get('/', rejectUnauthenticated, (req, res) => {
-    console.log('journalists GET route');
+    console.log('brand-journalists GET route');
 
     const queryText = `SELECT * FROM "users"
                        JOIN "journalists_brands" ON "users".id = "journalists_brands".journalists_id
