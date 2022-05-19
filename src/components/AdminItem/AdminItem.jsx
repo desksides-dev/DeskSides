@@ -10,6 +10,7 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import Button from "@mui/material/Button";
+import Select from "@mui/material/Select";
 import { Typography } from "@mui/material";
 
 function AdminItem() {
@@ -17,6 +18,7 @@ function AdminItem() {
   const dispatch = useDispatch();
   const store = useSelector((store) => store);
   const adminItem = store.adminItem;
+  const adminUsers = store.admin;
 
   //Back to admin list view
   const handleBack = () => {
@@ -199,7 +201,27 @@ function AdminItem() {
             <Box>
               {adminItem.user_type === 'brand' ?
                 (
-                    <h2>List of journos to match to brands</h2>
+                  <>
+                  <Select
+                  multiple
+                  native
+                  variant="filled"
+                  color="warning"
+                  value={adminUsers}
+                  // @ts-ignore Typings are not considering `native`
+                  onChange={handlePubsChange}
+                  inputProps={{
+                      id: 'select-multiple-pubs',
+                  }}
+              >
+                  {pubs.map((pub) => (
+                      <option key={pub.id} value={pub.id}>
+                          {pub.pub_title}
+                      </option>
+                  ))}
+              </Select>
+              <FormHelperText>Hold ctrl or command to select multiple options</FormHelperText>
+              </>
                 )
                 :
                 (
