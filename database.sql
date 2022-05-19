@@ -16,7 +16,7 @@ CREATE TABLE "users" (
 	"user_type" varchar(20),
 	"description" varchar(1000),
 	"pub_medium" varchar(20),
-	"approved" BOOLEAN,
+	"approved" BOOLEAN NOT NULL DEFAULT false,
 	"years_of_exp" integer,
 	"stories_per_month" integer,
 	"brand_name" varchar(125),
