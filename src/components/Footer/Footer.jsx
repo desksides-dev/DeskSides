@@ -12,7 +12,7 @@ function Footer() {
       spacing={12}
       justifyContent="center"
       alignItems="center"
-      sx={{ border: "1px #546D1D solid", backgroundColor: "white", mt: 10 }}
+      sx={{ border: "1px #546D1D solid", backgroundColor: "white"}}
       fontFamily="Lato, sans-serif"
     >
       <Box>

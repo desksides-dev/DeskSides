@@ -5,8 +5,16 @@ function JournalistItem({ journalist }) {
     return (
         <Grid container direction="row" spacing={2}>
             <Box sx={{ width: '30%' }}>
-            <Avatar sx={{bgcolor:'#DACCFF', color:'#352558', width: 70, height: 70}}>
-                {journalist.first_name[0]} {journalist.last_name[0]}
+            <Avatar sx={{bgcolor:'#DACCFF', 
+                         color:'#352558', 
+                         width: 70, 
+                         height: 70, 
+                         fontSize:32,
+                         border: 1, 
+                         borderColor: '#352558', 
+                         padding: 3,
+                         textTransform: 'uppercase'}}>
+                {journalist.first_name[0]}{journalist.last_name[0]}
             </Avatar>
             </Box>
             <Box sx={{ width: '80%' }}>
