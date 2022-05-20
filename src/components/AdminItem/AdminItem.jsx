@@ -79,25 +79,6 @@ function AdminItem() {
     dispatch({ type: "POST_MATCHES", payload: adminItem, state });
   };
 
-  const setUserMatches = () => {
-    const userMatches = [];
-
-    for (const user of adminUsers) {
-      for (const match of adminMatches.journalists_id) {
-        if (user.id === match.journalists_id) {
-        }
-      }
-      for (const match of adminMatches.brands_id) {
-        if (user.id === match.brand_id) {
-        }
-      }
-      setMatches(matches);
-    }
-    console.log(matches);
-  };
-
-  console.log();
-
   return (
     <div>
       <Stack
@@ -230,7 +211,7 @@ function AdminItem() {
                 <Button
                   variant="contained"
                   color="secondary"
-                  sx={{ fontFamily: "Lato, sansSerif", ml: "2em", mt: "1em" }}
+                  sx={{ fontFamily: "Lato, sansSerif", ml: "2em" }}
                   onClick={() => handleApproval(adminItem)}
                 >
                   Approve
@@ -244,7 +225,7 @@ function AdminItem() {
                 <Button
                   variant="contained"
                   color="primary"
-                  sx={{ fontFamily: "Lato, sansSerif", ml: "2em", mt: "1em" }}
+                  sx={{ fontFamily: "Lato, sansSerif", ml: "2em" }}
                   onClick={() => handleApproval(adminItem.id)}
                 >
                   Remove
@@ -259,7 +240,7 @@ function AdminItem() {
               <>
                 <Typography
                   variant="h5"
-                  sx={{ ml: "18vw", fontFamily: "Lato, sansSerif" }}
+                  sx={{ ml: "17vw", fontFamily: "Lato, sansSerif" }}
                 >
                   Select New Match(es)
                 </Typography>
@@ -274,7 +255,7 @@ function AdminItem() {
                   inputProps={{
                     id: "select-multiple-matches",
                   }}
-                  sx={{ ml: "15vw", mt: "1em", width: "20vw" }}
+                  sx={{ ml: "15vw", width: "20vw" }}
                 >
                   {adminUsers.map((user) => (
                     <option key={user.id} value={user.id}>
@@ -288,7 +269,7 @@ function AdminItem() {
                 <Button
                   variant="contained"
                   color="secondary"
-                  sx={{ fontFamily: "Lato, sansSerif", ml: "20vw", mt: "1em" }}
+                  sx={{ fontFamily: "Lato, sansSerif", ml: "20vw"}}
                   onClick={() => handleSubmit()}
                 >
                   Submit Match(es)
@@ -302,36 +283,36 @@ function AdminItem() {
           <Box sx={{ mt: "1em" }}>
             <Typography
               variant="h5"
-              sx={{ ml: "17vw", fontFamily: "Lato, sansSerif" }}
+              sx={{ ml: "16vw", fontFamily: "Lato, sansSerif" }}
             >
               Delete Existing Match(es)
             </Typography>
-            {/* <Select
+            <Select
                   multiple
                   native
                   variant="filled"
                   color="warning"
                   value={state.deleteMatches}
                   // @ts-ignore Typings are not considering `native`
-                  onChange={handleDeleteMatchChange}
+                  // onChange={handleDeleteMatchChange}
                   inputProps={{
                     id: "select-multiple-matches",
                   }}
-                  sx={{ ml: "15vw", mt: "1em", width: "20vw" }}
+                  sx={{ ml: "15vw", width: "20vw" }}
                 >
-                  {adminMatches.map((match) => (
-                    <option key={user.id} value={user.id}>
-                      {user.first_name} {user.last_name}
+                  {adminMatches?.map((match) => (
+                    <option key={match.id} value={match.id}>
+                      {match.first_name} {match.last_name}
                     </option>
                   ))}
-                </Select> */}
+                </Select>
             <FormHelperText sx={{ ml: "15vw" }}>
               Hold ctrl or command to select multiple options
             </FormHelperText>
             <Button
               variant="contained"
               color="primary"
-              sx={{ fontFamily: "Lato, sansSerif", ml: "20vw", mt: "1em" }}
+              sx={{ fontFamily: "Lato, sansSerif", ml: "20vw"}}
             >
               Delete Match(es)
             </Button>

@@ -48,15 +48,17 @@ function* postMatches(action){
 
 function* getAdminMatches(action){
 
-    console.log('getAdminMatches id =', action.payload.id);
     
     const id = action.payload.id;
-
+    let userType = 'journalist'; 
+    if (action.payload.user_type === 'journalist'){ 
+        userType = 'brand'
+    }
+    console.log('getAdminMatches id =', action.payload.id, 'userType =', userType);
     try {
-        const adminMatches = yield axios.get(`/api/admin/matches/${id}`);
+        const adminMatches = yield axios.get(`/api/admin/matches/${id}/${userType}`)
         console.log('@@@@@@ get all matches:', adminMatches.data);
         yield put({ type: 'SET_ADMIN_MATCHES', payload: adminMatches.data });
-
     } catch (err) {
         console.log('getAdminMatches error', err);
     }

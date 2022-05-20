@@ -77,9 +77,10 @@ router.post('/:journoId/:brandId', (req, res) => {
 
 });
 
-router.get('/matches/:id', rejectUnauthenticated, (req, res) => {
+router.get('/matches/:id/:userType', rejectUnauthenticated, (req, res) => {
 
     const id = req.params.id;
+    const userType = req.params.userType;
 
     if (req.user.user_type === 'admin') {
 
@@ -87,9 +88,10 @@ router.get('/matches/:id', rejectUnauthenticated, (req, res) => {
         SELECT * FROM "journalists_brands" 
         JOIN "users" ON "journalists_brands"."journalists_id" = "users"."id" OR "journalists_brands"."brands_id" = "users"."id"
         WHERE "journalists_id" = $1 OR "brands_id" = $1
+        AND "users"."user_type" = $2
         ;`
 
-        pool.query(queryText, [id])
+        pool.query(queryText, [id, userType])
             .then((result) => {
                 res.send(result.rows);
             })
@@ -100,7 +102,6 @@ router.get('/matches/:id', rejectUnauthenticated, (req, res) => {
     else {
         console.log('UNAUTHORIZED!')
     }
-
 });
 
 module.exports = router;
