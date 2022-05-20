@@ -17,11 +17,11 @@ function BrandAssessment() {
         pub_medium: '',
         affiliate_link: '',
         time_of_day_pref: '',
-        calendar_link: '',
-        profile_image_link: '',
-        fileshare_link: '',
-        payment_link: '',
-        brand_assets_link: '',
+        // calendar_link: '',
+        // profile_image_link: '',
+        // fileshare_link: '',
+        // payment_link: '',
+        // brand_assets_link: '',
     })
 
     const dispatch = useDispatch();
@@ -269,7 +269,7 @@ function BrandAssessment() {
                     </Select>
                 </Box>
 
-                <Box sx={{ my: "5vmax", justifyContent: "left", textAlign: "left", }}>
+                {/* <Box sx={{ my: "5vmax", justifyContent: "left", textAlign: "left", }}>
                     <InputLabel htmlFor='profile_image'>
                         Please include links to the following:
                     </InputLabel>
@@ -327,24 +327,25 @@ function BrandAssessment() {
                             }}
                         />
                     </Box>
+                    <Box sx={{ my: "2vmax", justifyContent: "left", textAlign: "left", }}>
+                        <InputLabel htmlFor='brand_assets_link'>
+                            Link to your Brand Assets
+                        </InputLabel>
+                        <TextField
+                            id="brand_assets_link"
+                            color="warning"
+                            variant="filled"
+                            name="brand_assets_link"
+                            value={state.brand_assets_link}
+                            onChange={handleChange}
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                        />
+                    </Box>
+                </Box> */}
 
-                    <InputLabel htmlFor='brand_assets_link'>
-                        Link to your Brand Assets
-                    </InputLabel>
-                    <TextField
-                        id="brand_assets_link"
-                        color="warning"
-                        variant="filled"
-                        name="brand_assets_link"
-                        value={state.brand_assets_link}
-                        onChange={handleChange}
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                    />
-                </Box>
-
-                <Box sx={{ my: "2vmax", justifyContent: "left", textAlign: "left", }}>
+                {/* <Box sx={{ my: "2vmax", justifyContent: "left", textAlign: "left", }}>
 
                     <InputLabel htmlFor='payment_link'>
                         Venmo Username
@@ -360,7 +361,7 @@ function BrandAssessment() {
                             shrink: true,
                         }}
                     />
-                </Box>
+                </Box> */}
 
 
                 <Button
