@@ -50,6 +50,33 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         console.log('');
         
       });
+
+      //POST route to user matches
+    router.post('/:journoId/:brandId', (req, res) => {
+        
+        const journoId = req.params.journoId;
+        const brandId = req.params.brandId;
+
+        console.log('^^^^^^^^^^^^ admin match post journoId =', journoId, 'brandId =', brandId);
+        
+        const queryText = `
+            INSERT INTO "journalists_brands"
+            ("journalists_id", "brands_id") 
+            VALUES ($1, $2)
+            ;`
+
+        pool.query(queryText, [journoId, brandId])
+        .then((result) => {
+            res.sendStatus(201);
+          })
+        .catch((err) => {
+          res.sendStatus(500);
+        });
+
+        console.log('');
+        
+      });
+    
 });
 
 module.exports = router;

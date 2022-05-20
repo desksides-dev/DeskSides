@@ -12,9 +12,7 @@ function* getAdminUsers() {
     }
 }
 
-function* updateApprovalStatus(action){
-    console.log('IN updateApprovalStatus, action = ', action);
-    
+function* updateApprovalStatus(action){    
     try {
         yield axios.put(`api/admin/${action.approvalStatus}/${action.payload}`)
         yield put({ type: 'GET_ADMIN_USERS'})
@@ -23,9 +21,35 @@ function* updateApprovalStatus(action){
     }
 }
 
+function* postMatches(action){
+    const matches = action.state.matches;
+    const id = action.payload.id
+    console.log('%%%% in postMatches saga. matches =', matches);
+
+    if (action.payload.user_type === 'journalist'){
+        try {
+            for(const matchId of matches){
+                yield axios.post(`/api/admin/${id}/${matchId}`)
+            }
+        } catch (error) {
+            console.log(error);    
+        }
+    }
+    else{
+        try {
+            for(const matchId of matches){
+                yield axios.post(`/api/admin/${matchId}/${id}`)
+            }
+        } catch (error) {
+            console.log(error);    
+        }
+    }
+}
+
 function* getAdminUsersWatcher() {
     yield takeLatest('GET_ADMIN_USERS', getAdminUsers);
     yield takeLatest('UPDATE_APPROVAL_STATUS', updateApprovalStatus);
+    yield takeLatest('POST_MATCHES', postMatches);
 }
 
 export default getAdminUsersWatcher;

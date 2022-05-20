@@ -59,8 +59,14 @@ function AdminItem() {
       ...state,
       matches: inputs,
     });
-    
   };
+  
+  const handleSubmit = () => {
+    console.log('#### handleSubmit clicked! adminItem =', adminItem, 'state =', state);
+    dispatch({ type: "POST_MATCHES", payload: adminItem, state})
+  };
+    
+  
 
   console.log("handleMAtchChange, state =", state);
 
@@ -255,7 +261,8 @@ function AdminItem() {
                 <Button
                   variant="contained"
                   color="secondary"
-                  sx={{ fontFamily: "Lato, sansSerif", ml: "20vw", mt: "1em" }}  
+                  sx={{ fontFamily: "Lato, sansSerif", ml: "20vw", mt: "1em" }} 
+                  onClick={() => handleSubmit()}
                 >Submit Match(es)</Button>
               </>
             ) : (
