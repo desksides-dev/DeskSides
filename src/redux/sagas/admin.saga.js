@@ -31,6 +31,8 @@ function* postMatches(action){
             for(const matchId of matches){
                 yield axios.post(`/api/admin/${id}/${matchId}`)
             }
+            yield put({ type: 'GET_ADMIN_MATCHES', payload: action.payload });
+
         } catch (error) {
             console.log(error);    
         }
@@ -40,14 +42,31 @@ function* postMatches(action){
             for(const matchId of matches){
                 yield axios.post(`/api/admin/${matchId}/${id}`)
             }
+            yield put({ type: 'GET_ADMIN_MATCHES', payload: action.payload });
+
         } catch (error) {
             console.log(error);    
         }
     }
 }
 
-function* getAdminMatches(action){
+function* deleteMatches(action){
+    const matches = action.state.toDelete;
+    const id = action.payload.id
 
+    console.log('^^^^^^^^^^^^^^delete Matches. matches =', matches, 'id =', id);
+    
+    try {
+        for(const matchId of matches){
+            yield axios.delete(`/api/admin/${id}/${matchId}`)
+        }
+        yield put({ type: 'GET_ADMIN_MATCHES', payload: action.payload });
+    } catch (error) {
+        console.log(error);    
+    }
+}
+
+function* getAdminMatches(action){
     
     const id = action.payload.id;
     let userType = 'journalist'; 
@@ -69,6 +88,7 @@ function* getAdminUsersWatcher() {
     yield takeLatest('UPDATE_APPROVAL_STATUS', updateApprovalStatus);
     yield takeLatest('POST_MATCHES', postMatches);
     yield takeLatest('GET_ADMIN_MATCHES', getAdminMatches);
+    yield takeLatest('DELETE_MATCHES', deleteMatches);
 }
 
 export default getAdminUsersWatcher;

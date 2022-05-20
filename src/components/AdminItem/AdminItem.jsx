@@ -29,9 +29,8 @@ function AdminItem() {
   //used to hold values from multi select (add or delete matches) lists on change
   const [state, setState] = useState({
     matches: [],
+    toDelete: [],
   });
-
-  const [matches, setMatches] = useState([]);
 
   //Back to admin list view
   const handleBack = () => {
@@ -69,14 +68,32 @@ function AdminItem() {
     });
   };
 
+  const handleDeleteChange = (event) => {
+    const { options } = event.target;
+    const inputs = [];
+    for (let i = 0, l = options.length; i < l; i += 1) {
+      if (options[i].selected) {
+        inputs.push(options[i].value);
+      }
+    }
+    setState({
+      ...state,
+      toDelete: inputs,
+    });
+  };
+
   const handleSubmit = () => {
+    dispatch({ type: "POST_MATCHES", payload: adminItem, state });
+  };
+
+  const handleDelete = () => {
     console.log(
-      "#### handleSubmit clicked! adminItem =",
+      "#### handleDelete clicked! adminItem =",
       adminItem,
       "state =",
       state
     );
-    dispatch({ type: "POST_MATCHES", payload: adminItem, state });
+    dispatch({ type: "DELETE_MATCHES", payload: adminItem, state });
   };
 
   return (
@@ -219,7 +236,7 @@ function AdminItem() {
               </Box>
             ) : (
               <Box sx={{ ml: "20vw" }}>
-                <Typography variant="h5" sx={{ fontFamily: "Lato, sansSerif" }}>
+                <Typography variant="h5" sx={{ fontFamily: "Lato, sansSerif"}}>
                   Remove Approval?
                 </Typography>
                 <Button
@@ -292,15 +309,15 @@ function AdminItem() {
                   native
                   variant="filled"
                   color="warning"
-                  value={state.deleteMatches}
+                  value={state.toDelete}
                   // @ts-ignore Typings are not considering `native`
-                  // onChange={handleDeleteMatchChange}
+                  onChange={handleDeleteChange}
                   inputProps={{
                     id: "select-multiple-matches",
                   }}
                   sx={{ ml: "15vw", width: "20vw" }}
                 >
-                  {adminMatches?.map((match) => (
+                  {adminMatches.length > 0 && adminMatches.map((match) => (
                     <option key={match.id} value={match.id}>
                       {match.first_name} {match.last_name}
                     </option>
@@ -313,6 +330,7 @@ function AdminItem() {
               variant="contained"
               color="primary"
               sx={{ fontFamily: "Lato, sansSerif", ml: "20vw"}}
+              onClick={() => handleDelete()}
             >
               Delete Match(es)
             </Button>

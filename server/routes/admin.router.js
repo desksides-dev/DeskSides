@@ -104,4 +104,30 @@ router.get('/matches/:id/:userType', rejectUnauthenticated, (req, res) => {
     }
 });
 
+//DELETE user matches
+router.delete('/:journoId/:brandId', (req, res) => {
+
+    const journoId = req.params.journoId;
+    const brandId = req.params.brandId;
+
+    const queryText = `
+            DELETE FROM "journalists_brands"
+            WHERE "journalists_id" = $1 OR "brands_id" = $1
+            AND "journalists_id" = $2 OR "brands_id" = $2
+            ;`
+
+            console.log('^^^^^^^^^^^^^^delete Matches. journoId =', journoId, 'brandId =', brandId);
+
+    pool.query(queryText, [journoId, brandId])
+        .then((result) => {
+            res.sendStatus(204);
+        })
+        .catch((err) => {
+            res.sendStatus(500);
+        });
+
+    console.log('');
+
+});
+
 module.exports = router;
