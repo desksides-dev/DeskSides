@@ -25,6 +25,7 @@ function JournalistAssessment() {
     })
 
     const dispatch = useDispatch();
+    const history = useHistory();
 
 
     // gets publications & markets from the database for multiselect fields
@@ -156,14 +157,15 @@ function JournalistAssessment() {
                     name="pub_medium"
                     label="Medium"
                     variant="filled"
+                    displayEmpty
                     color="secondary"
                     onChange={handleChange}
                 >
+                    <MenuItem name="time_of_day_pref" value="" disabled><em>Please select one:</em></MenuItem>
                     <MenuItem name="pub_medium" value={'print'}>Print</MenuItem>
                     <MenuItem name="pub_medium" value={'digital'}>Digital</MenuItem>
                     <MenuItem name="pub_medium" value={'broadcast'}>Broadcast</MenuItem>
                 </Select>
-                <FormHelperText>Please select one</FormHelperText>
             </Box>
 
             <Box sx={{ my: "5vmax", justifyContent: "left", textAlign: "left", }}>
@@ -180,7 +182,6 @@ function JournalistAssessment() {
                     color="secondary"
                     variant="filled"
                     value={state.pubs}
-                    // @ts-ignore Typings are not considering `native`
                     onChange={handlePubsChange}
                     inputProps={{
                         id: 'select-multiple-pubs',
@@ -243,13 +244,14 @@ function JournalistAssessment() {
                     label="Medium"
                     variant="filled"
                     color="secondary"
+                    displayEmpty
                     onChange={handleChange}
                 >
+                    <MenuItem name="time_of_day_pref" value="" disabled><em>Please select one:</em></MenuItem>
                     <MenuItem name="time_of_day_pref" value={'Morning'}>Morning</MenuItem>
                     <MenuItem name="time_of_day_pref" value={'Afternoon'}>Afternoon</MenuItem>
                     <MenuItem name="time_of_day_pref" value={'Evening'}>Evening</MenuItem>
                 </Select>
-                <FormHelperText>Please select one</FormHelperText>
             </Box>
 
             <Box sx={{ my: "5vmax", justifyContent: "left", textAlign: "left", }}>

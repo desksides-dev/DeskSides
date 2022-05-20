@@ -21,6 +21,7 @@ function BrandAssessment() {
         profile_image_link: '',
         fileshare_link: '',
         payment_link: '',
+        brand_assets_link: '',
     })
 
     const dispatch = useDispatch();
@@ -120,6 +121,7 @@ function BrandAssessment() {
                         Brand Name
                     </InputLabel>
                     <TextField
+                        required
                         id="brand_name"
                         color="warning"
                         variant="filled"
@@ -130,12 +132,9 @@ function BrandAssessment() {
                             shrink: true,
                         }}
                     />
-
                 </Box>
 
                 <Box sx={{ my: "5vmax", justifyContent: "left", textAlign: "left", }}>
-
-
                     <InputLabel shrink={false} htmlFor="select-multiple-markets">
                         Which markets does your brand sit in?
                     </InputLabel>
@@ -274,52 +273,79 @@ function BrandAssessment() {
                     <InputLabel htmlFor='profile_image'>
                         Please include links to the following:
                     </InputLabel>
-                    <br />
-                    <InputLabel htmlFor='profile_image'>
-                        Profile Image
+
+                    <Box sx={{ my: "2vmax", justifyContent: "left", textAlign: "left", }}>
+
+                        <InputLabel htmlFor='profile_image'>
+                            Profile Image
+                        </InputLabel>
+                        <TextField
+                            id="profile_image"
+                            color="warning"
+                            variant="filled"
+                            name="profile_image_link"
+                            value={state.profile_image_link}
+                            onChange={handleChange}
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                        />
+
+                    </Box>
+                    <Box sx={{ my: "2vmax", justifyContent: "left", textAlign: "left", }}>
+
+                        <InputLabel htmlFor='calendar_link'>
+                            Calendar Link
+                        </InputLabel>
+                        <TextField
+                            id="calendar_link"
+                            color="warning"
+                            variant="filled"
+                            name="calendar_link"
+                            value={state.calendar_link}
+                            onChange={handleChange}
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                        />
+
+                    </Box>
+                    <Box sx={{ my: "2vmax", justifyContent: "left", textAlign: "left", }}>
+
+                        <InputLabel htmlFor='fileshare_link'>
+                            FileShare Link
+                        </InputLabel>
+                        <TextField
+                            id="fileshare_link"
+                            color="warning"
+                            variant="filled"
+                            name="fileshare_link"
+                            value={state.fileshare_link}
+                            onChange={handleChange}
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                        />
+                    </Box>
+
+                    <InputLabel htmlFor='brand_assets_link'>
+                        Link to your Brand Assets
                     </InputLabel>
                     <TextField
-                        id="profile_image"
+                        id="brand_assets_link"
                         color="warning"
                         variant="filled"
-                        name="profile_image_link"
-                        value={state.profile_image_link}
+                        name="brand_assets_link"
+                        value={state.brand_assets_link}
                         onChange={handleChange}
                         InputLabelProps={{
                             shrink: true,
                         }}
                     />
-                    <br />
-                    <InputLabel htmlFor='calendar_link'>
-                        Calendar Link
-                    </InputLabel>
-                    <TextField
-                        id="calendar_link"
-                        color="warning"
-                        variant="filled"
-                        name="calendar_link"
-                        value={state.calendar_link}
-                        onChange={handleChange}
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                    />
-                    <br />
-                    <InputLabel htmlFor='fileshare_link'>
-                        FileShare Link
-                    </InputLabel>
-                    <TextField
-                        id="fileshare_link"
-                        color="warning"
-                        variant="filled"
-                        name="fileshare_link"
-                        value={state.fileshare_link}
-                        onChange={handleChange}
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                    />
-                    <br />
+                </Box>
+
+                <Box sx={{ my: "2vmax", justifyContent: "left", textAlign: "left", }}>
+
                     <InputLabel htmlFor='payment_link'>
                         Venmo Username
                     </InputLabel>
@@ -335,6 +361,7 @@ function BrandAssessment() {
                         }}
                     />
                 </Box>
+
 
                 <Button
                     color="warning"
