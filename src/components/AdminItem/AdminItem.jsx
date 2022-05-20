@@ -26,7 +26,8 @@ function AdminItem() {
 
   useEffect(() => {
     dispatch({ type: "GET_ADMIN_MATCHES", payload: adminItem });
-
+    dispatch({ type: "GET_ADMIN_BRANDS" });
+    dispatch({ type: "GET_ADMIN_JOURNOS" });
   }, []);
 
   //used to hold values from multi select (add or delete matches) lists on change

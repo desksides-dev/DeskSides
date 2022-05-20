@@ -86,7 +86,7 @@ function* getAdminMatches(action){
 function* getAdminBrands() {
     try {
         const adminBrands = yield axios.get(`/api/admin/brands`);
-        console.log('get all brands:', adminUsers.data);
+        console.log('get all brands:', adminBrands.data);
         yield put({ type: 'SET_ADMIN_BRANDS', payload: adminBrands.data });
     } catch (err) {
         console.log('getAdminBrands error', err);
@@ -99,7 +99,7 @@ function* getAdminJournos() {
         console.log('get all journos:', adminJournos.data);
         yield put({ type: 'SET_ADMIN_JOURNOS', payload: adminJournos.data });
     } catch (err) {
-        console.log('getAdminBrands error', err);
+        console.log('getAdminJournos error', err);
     }
 }
 
