@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from "react-router-dom";
 import { Container, Button, Box, InputLabel, TextField, Typography } from '@mui/material';
 
-function BrandForm() {
+function BrandDetails() {
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -103,4 +103,4 @@ function BrandForm() {
     )
 }
 
-export default BrandForm;
+export default BrandDetails;

@@ -33,7 +33,7 @@ import BrandAssessment from '../FormBrand/FormBrand';
 import ThankYou from '../ThankYouPage/ThankYou';
 import Login from '../Login/Login';
 import CreateAccount from '../CreateAccount/CreateAccount';
-import BrandForm from '../FormBrand/BrandForm';
+import BrandForm from '../FormBrand/BrandDetails';
 import JournalistsList from '../JournalistsList/JournalistsList';
 
 import './App.css';

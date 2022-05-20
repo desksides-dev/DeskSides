@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import BrandDetails from './BrandDetails';
 import { Box, Button, MenuItem, Slider, Typography, InputLabel, FormHelperText, TextField, Select, FormControl } from '@mui/material'
 
 
@@ -79,6 +80,7 @@ function BrandAssessment() {
     }
 
     return (<>
+    <BrandDetails/>
         <Box sx={{
             backgroundColor: "#232323",
             align: "center",
