@@ -150,7 +150,15 @@ function App() {
               exact
               path="/user"
             >
-              <UserPage />
+              {user.id && user.approved ?
+                // If the user is approved, 
+                // redirect to the /user page
+                <UserPage />
+                :
+                // Otherwise, show the info page
+                <InfoPage />
+              }
+              
             </ProtectedRoute>
 
             <ProtectedRoute exact path ="/brand">
@@ -172,7 +180,7 @@ function App() {
               exact
               path="/login"
             >
-              {user.id ?
+              {user.id && user.approved ?
                 // If the user is already logged in, 
                 // redirect to the /user page
                 <Redirect to="/user" />
@@ -200,7 +208,7 @@ function App() {
               exact
               path="/registration"
             >
-              {user.id ?
+              {user.id && user.approved ?
                 // If the user is already logged in, 
                 // redirect them to the /user page
                 <Redirect to="/user" />
@@ -214,7 +222,7 @@ function App() {
               exact
               path="/home"
             >
-              {user.id ?
+              {user.id && user.approved ?
                 // If the user is already logged in, 
                 // redirect them to the /user page
                 <Redirect to="/user" />
