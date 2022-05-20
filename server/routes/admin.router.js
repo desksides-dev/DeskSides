@@ -84,9 +84,10 @@ router.get('/matches/:id', rejectUnauthenticated, (req, res) => {
     if (req.user.user_type === 'admin') {
 
         const queryText = `
-            SELECT * FROM "journalists_brands" 
-            WHERE "journalists_id" = $1 OR "brands_id" = $1
-            ORDER BY "id" DESC`
+        SELECT * FROM "journalists_brands" 
+        JOIN "users" ON "journalists_brands"."journalists_id" = "users"."id" OR "journalists_brands"."brands_id" = "users"."id"
+        WHERE "journalists_id" = $1 OR "brands_id" = $1
+        ;`
 
         pool.query(queryText, [id])
             .then((result) => {

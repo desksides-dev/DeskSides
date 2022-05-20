@@ -31,6 +31,8 @@ function AdminItem() {
     matches: [],
   });
 
+  const [matches, setMatches] = useState([]);
+
   //Back to admin list view
   const handleBack = () => {
     history.push("/admin");
@@ -75,6 +77,23 @@ function AdminItem() {
       state
     );
     dispatch({ type: "POST_MATCHES", payload: adminItem, state });
+  };
+
+  const setUserMatches = () => {
+    const userMatches = [];
+
+    for (const user of adminUsers) {
+      for (const match of adminMatches.journalists_id) {
+        if (user.id === match.journalists_id) {
+        }
+      }
+      for (const match of adminMatches.brands_id) {
+        if (user.id === match.brand_id) {
+        }
+      }
+      setMatches(matches);
+    }
+    console.log(matches);
   };
 
   console.log();
@@ -287,6 +306,28 @@ function AdminItem() {
             >
               Delete Existing Match(es)
             </Typography>
+            {/* <Select
+                  multiple
+                  native
+                  variant="filled"
+                  color="warning"
+                  value={state.deleteMatches}
+                  // @ts-ignore Typings are not considering `native`
+                  onChange={handleDeleteMatchChange}
+                  inputProps={{
+                    id: "select-multiple-matches",
+                  }}
+                  sx={{ ml: "15vw", mt: "1em", width: "20vw" }}
+                >
+                  {adminMatches.map((match) => (
+                    <option key={user.id} value={user.id}>
+                      {user.first_name} {user.last_name}
+                    </option>
+                  ))}
+                </Select> */}
+            <FormHelperText sx={{ ml: "15vw" }}>
+              Hold ctrl or command to select multiple options
+            </FormHelperText>
             <Button
               variant="contained"
               color="primary"
