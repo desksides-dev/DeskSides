@@ -28,9 +28,9 @@ function UserPage() {
         align: "center",
         justifyContent: "left",
         textAlign: "left",
-        height: "30vh",
+        height: "40vh",
         pl: "10vw",
-        pr: "45vw",
+        pr: "43vw",
         py: "5vh"
       }} >
 
@@ -45,7 +45,8 @@ function UserPage() {
           color="background.default"
           fontSize={32}
           paragraph={true}>
-          Welcome to your brand dashboard:
+          Welcome, {user.first_name} {user.last_name}, to your dashboard:  
+           your one-stop solution for managing your brand.
         </Typography>
       </Box>
 
@@ -106,7 +107,7 @@ function UserPage() {
           <IconButton
             size="small"
             sx={{ p: "2vmax" }}
-            onClick={() => { window.open(history.push('/brand-journalist')) }}>
+            onClick={() => { history.push('/brand-journalists') }}>
             <Box
               component="img"
               sx={{ width: "7em", height: "7em", m: "1vmax" }}
@@ -120,7 +121,7 @@ function UserPage() {
           <IconButton
             size="small"
             sx={{ p: "2vmax" }}
-            onClick={() => { window.open(history.push('/brand-journalist')) }}>
+            onClick={() => {history.push('/brand-edit')}}>
             <Box
               component="img"
               sx={{ width: "7em", height: "7em", m: "1vmax" }}
