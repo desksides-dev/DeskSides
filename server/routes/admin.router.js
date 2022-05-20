@@ -116,7 +116,7 @@ router.delete('/:journoId/:brandId', (req, res) => {
             AND "journalists_id" = $2 OR "brands_id" = $2
             ;`
 
-            console.log('^^^^^^^^^^^^^^delete Matches. journoId =', journoId, 'brandId =', brandId);
+    console.log('^^^^^^^^^^^^^^delete Matches. journoId =', journoId, 'brandId =', brandId);
 
     pool.query(queryText, [journoId, brandId])
         .then((result) => {
@@ -128,6 +128,48 @@ router.delete('/:journoId/:brandId', (req, res) => {
 
     console.log('');
 
+});
+
+//GET all brands
+router.get('/brands', rejectUnauthenticated, (req, res) => {
+
+    if (req.user.user_type === 'admin') {
+
+        const queryText = `SELECT * FROM "users" WHERE "user_type" = 'brand' ORDER BY "id" DESC`
+
+        pool.query(queryText)
+            .then((result) => {
+                res.send(result.rows);
+            })
+            .catch((err) => {
+                res.sendStatus(500);
+            });
+    }
+    else {
+        console.log('UNAUTHORIZED!')
+    }
+});
+
+//GET all journalists
+router.get('/journos', rejectUnauthenticated, (req, res) => {
+
+    console.log(req.user);
+
+    if (req.user.user_type === 'admin') {
+
+        const queryText = `SELECT * FROM "users" WHERE "user_type" = 'journalist' ORDER BY "id" DESC`
+
+        pool.query(queryText)
+            .then((result) => {
+                res.send(result.rows);
+            })
+            .catch((err) => {
+                res.sendStatus(500);
+            });
+    }
+    else {
+        console.log('UNAUTHORIZED!')
+    }
 });
 
 module.exports = router;

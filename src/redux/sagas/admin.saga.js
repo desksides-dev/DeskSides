@@ -83,12 +83,34 @@ function* getAdminMatches(action){
     }
 }
 
+function* getAdminBrands() {
+    try {
+        const adminBrands = yield axios.get(`/api/admin/brands`);
+        console.log('get all brands:', adminUsers.data);
+        yield put({ type: 'SET_ADMIN_BRANDS', payload: adminBrands.data });
+    } catch (err) {
+        console.log('getAdminBrands error', err);
+    }
+}
+
+function* getAdminJournos() {
+    try {
+        const adminJournos = yield axios.get(`/api/admin/journos`);
+        console.log('get all journos:', adminJournos.data);
+        yield put({ type: 'SET_ADMIN_JOURNOS', payload: adminJournos.data });
+    } catch (err) {
+        console.log('getAdminBrands error', err);
+    }
+}
+
 function* getAdminUsersWatcher() {
     yield takeLatest('GET_ADMIN_USERS', getAdminUsers);
     yield takeLatest('UPDATE_APPROVAL_STATUS', updateApprovalStatus);
     yield takeLatest('POST_MATCHES', postMatches);
     yield takeLatest('GET_ADMIN_MATCHES', getAdminMatches);
     yield takeLatest('DELETE_MATCHES', deleteMatches);
+    yield takeLatest('GET_ADMIN_BRANDS', getAdminBrands);
+    yield takeLatest('GET_ADMIN_JOURNOS', getAdminJournos);
 }
 
 export default getAdminUsersWatcher;

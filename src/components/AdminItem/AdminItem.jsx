@@ -21,9 +21,12 @@ function AdminItem() {
   const adminItem = store.adminItem;
   const adminUsers = store.adminUsers;
   const adminMatches = store.adminMatches;
+  const adminJournos = store.adminJournos;
+  const adminBrands = store.adminBrands;
 
   useEffect(() => {
     dispatch({ type: "GET_ADMIN_MATCHES", payload: adminItem });
+
   }, []);
 
   //used to hold values from multi select (add or delete matches) lists on change
@@ -98,10 +101,7 @@ function AdminItem() {
 
   return (
     <div>
-      <Stack
-        direction="row"
-        spacing={0}
-      >
+      <Stack direction="row" spacing={0}>
         <Box width="10vw">
           {/* button to return to admin list */}
           <Button
@@ -109,11 +109,9 @@ function AdminItem() {
             variant="contained"
             sx={{ fontFamily: "Lato, sansSerif", ml: "1em", mt: "1em" }}
             onClick={() => handleBack()}
-            onClick={() => { window.open(`${adminItem.username}`) }}>
           >
             Back
           </Button>
-
         </Box>
         {/* User Information Box */}
         <Box width="40vw">
@@ -220,39 +218,47 @@ function AdminItem() {
 
         {/* Admin Input Box */}
         <Box width="40vw">
-          
           {/* displays button to toggle approval status. renders based on current status */}
           <Box>
             {adminItem.approved === false ? (
-              <Box sx={{ }}>
+              <Box sx={{ mt: "1em" }}>
                 <Typography variant="h5" sx={{ fontFamily: "Lato, sansSerif" }}>
                   Approve User?
                 </Typography>
                 <Button
                   variant="contained"
                   color="secondary"
-                  sx={{ fontFamily: "Lato, sansSerif"}}
-                  onClick={() => handleApproval(adminItem)}
+                  sx={{ fontFamily: "Lato, sansSerif" }}
+                  onClick={() => {
+                    window.open(`mailto: ${adminItem.username}`),
+                      handleApproval(adminItem);
+                  }}
                 >
                   Approve
                 </Button>
-                <FormHelperText sx={{  }}>
-              Reminder: email user to notify upon approval
-            </FormHelperText>
+                <FormHelperText sx={{}}>
+                  Reminder: email user to notify upon approval
+                </FormHelperText>
               </Box>
             ) : (
-              <Box sx={{ }}>
-                <Typography variant="h5" sx={{ fontFamily: "Lato, sansSerif"}}>
+              <Box sx={{}}>
+                <Typography variant="h5" sx={{ fontFamily: "Lato, sansSerif" }}>
                   Remove Approval?
                 </Typography>
                 <Button
                   variant="contained"
                   color="primary"
                   sx={{ fontFamily: "Lato, sansSerif" }}
-                  onClick={() => handleApproval(adminItem.id)}
+                  onClick={() => {
+                    window.open(`mailto: ${adminItem.username}`),
+                      handleApproval(adminItem);
+                  }}
                 >
                   Remove
                 </Button>
+                <FormHelperText sx={{}}>
+                  Reminder: email user to notify upon removal
+                </FormHelperText>
               </Box>
             )}
           </Box>
@@ -261,10 +267,7 @@ function AdminItem() {
           <Box sx={{ mt: "1em" }}>
             {adminItem.user_type === "brand" ? (
               <>
-                <Typography
-                  variant="h5"
-                  sx={{ fontFamily: "Lato, sansSerif" }}
-                >
+                <Typography variant="h5" sx={{ fontFamily: "Lato, sansSerif" }}>
                   Select New Match(es)
                 </Typography>
                 <Select
@@ -278,7 +281,7 @@ function AdminItem() {
                   inputProps={{
                     id: "select-multiple-matches",
                   }}
-                  sx={{  width: "20vw" }}
+                  sx={{ width: "20vw" }}
                 >
                   {adminUsers.map((user) => (
                     <option key={user.id} value={user.id}>
@@ -286,13 +289,13 @@ function AdminItem() {
                     </option>
                   ))}
                 </Select>
-                <FormHelperText sx={{  }}>
+                <FormHelperText sx={{}}>
                   Hold ctrl or command to select multiple options
                 </FormHelperText>
                 <Button
                   variant="contained"
                   color="secondary"
-                  sx={{ fontFamily: "Lato, sansSerif"}}
+                  sx={{ fontFamily: "Lato, sansSerif" }}
                   onClick={() => handleSubmit()}
                 >
                   Submit Match(es)
@@ -303,39 +306,38 @@ function AdminItem() {
             )}
           </Box>
 
+          {/* delete list */}
           <Box sx={{ mt: "1em" }}>
-            <Typography
-              variant="h5"
-              sx={{  fontFamily: "Lato, sansSerif" }}
-            >
+            <Typography variant="h5" sx={{ fontFamily: "Lato, sansSerif" }}>
               Delete Existing Match(es)
             </Typography>
             <Select
-                  multiple
-                  native
-                  variant="filled"
-                  color="warning"
-                  value={state.toDelete}
-                  // @ts-ignore Typings are not considering `native`
-                  onChange={handleDeleteChange}
-                  inputProps={{
-                    id: "select-multiple-matches",
-                  }}
-                  sx={{  width: "20vw" }}
-                >
-                  {adminMatches.length > 0 && adminMatches.map((match) => (
-                    <option key={match.id} value={match.id}>
-                      {match.first_name} {match.last_name}
-                    </option>
-                  ))}
-                </Select>
-            <FormHelperText sx={{  }}>
+              multiple
+              native
+              variant="filled"
+              color="warning"
+              value={state.toDelete}
+              // @ts-ignore Typings are not considering `native`
+              onChange={handleDeleteChange}
+              inputProps={{
+                id: "select-multiple-matches",
+              }}
+              sx={{ width: "20vw" }}
+            >
+              {adminMatches.length > 0 &&
+                adminMatches.map((match) => (
+                  <option key={match.id} value={match.id}>
+                    {match.first_name} {match.last_name}
+                  </option>
+                ))}
+            </Select>
+            <FormHelperText sx={{}}>
               Hold ctrl or command to select multiple options
             </FormHelperText>
             <Button
               variant="contained"
               color="primary"
-              sx={{ fontFamily: "Lato, sansSerif"}}
+              sx={{ fontFamily: "Lato, sansSerif" }}
               onClick={() => handleDelete()}
             >
               Delete Match(es)
