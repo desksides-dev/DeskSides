@@ -46,10 +46,27 @@ function* postMatches(action){
     }
 }
 
+function* getAdminMatches(action){
+
+    console.log('getAdminMatches id =', action.payload.id);
+    
+    const id = action.payload.id;
+
+    try {
+        const adminMatches = yield axios.get(`/api/admin/matches/${id}`);
+        console.log('@@@@@@ get all matches:', adminMatches.data);
+        yield put({ type: 'SET_ADMIN_MATCHES', payload: adminMatches.data });
+
+    } catch (err) {
+        console.log('getAdminMatches error', err);
+    }
+}
+
 function* getAdminUsersWatcher() {
     yield takeLatest('GET_ADMIN_USERS', getAdminUsers);
     yield takeLatest('UPDATE_APPROVAL_STATUS', updateApprovalStatus);
     yield takeLatest('POST_MATCHES', postMatches);
+    yield takeLatest('GET_ADMIN_MATCHES', getAdminMatches);
 }
 
 export default getAdminUsersWatcher;

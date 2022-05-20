@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
@@ -20,7 +20,13 @@ function AdminItem() {
   const store = useSelector((store) => store);
   const adminItem = store.adminItem;
   const adminUsers = store.adminUsers;
+  const adminMatches = store.adminMatches;
 
+  useEffect(() => {
+    dispatch({ type: "GET_ADMIN_MATCHES", payload: adminItem });
+  }, []);
+
+  //used to hold values from multi select (add or delete matches) lists on change
   const [state, setState] = useState({
     matches: [],
   });
@@ -60,15 +66,18 @@ function AdminItem() {
       matches: inputs,
     });
   };
-  
-  const handleSubmit = () => {
-    console.log('#### handleSubmit clicked! adminItem =', adminItem, 'state =', state);
-    dispatch({ type: "POST_MATCHES", payload: adminItem, state})
-  };
-    
-  
 
-  console.log("handleMAtchChange, state =", state);
+  const handleSubmit = () => {
+    console.log(
+      "#### handleSubmit clicked! adminItem =",
+      adminItem,
+      "state =",
+      state
+    );
+    dispatch({ type: "POST_MATCHES", payload: adminItem, state });
+  };
+
+  console.log();
 
   return (
     <div>
@@ -195,7 +204,7 @@ function AdminItem() {
           {/* displays button to toggle approval status. renders based on current status */}
           <Box>
             {adminItem.approved === false ? (
-              <Box sx={{ ml: "20vw"}}>
+              <Box sx={{ ml: "20vw" }}>
                 <Typography variant="h5" sx={{ fontFamily: "Lato, sansSerif" }}>
                   Approve User?
                 </Typography>
@@ -209,7 +218,7 @@ function AdminItem() {
                 </Button>
               </Box>
             ) : (
-              <Box sx={{ ml: "20vw"}}>
+              <Box sx={{ ml: "20vw" }}>
                 <Typography variant="h5" sx={{ fontFamily: "Lato, sansSerif" }}>
                   Remove Approval?
                 </Typography>
@@ -226,12 +235,13 @@ function AdminItem() {
           </Box>
 
           {/* matches list */}
-          <Box
-            sx={{ mt : "1em"}}
-          >
+          <Box sx={{ mt: "1em" }}>
             {adminItem.user_type === "brand" ? (
               <>
-                <Typography variant="h5" sx={{ ml : "18vw", fontFamily: "Lato, sansSerif" }}>
+                <Typography
+                  variant="h5"
+                  sx={{ ml: "18vw", fontFamily: "Lato, sansSerif" }}
+                >
                   Select New Match(es)
                 </Typography>
                 <Select
@@ -245,7 +255,7 @@ function AdminItem() {
                   inputProps={{
                     id: "select-multiple-matches",
                   }}
-                  sx={{ ml : "15vw", mt : "1em", width : "20vw"}}
+                  sx={{ ml: "15vw", mt: "1em", width: "20vw" }}
                 >
                   {adminUsers.map((user) => (
                     <option key={user.id} value={user.id}>
@@ -253,34 +263,37 @@ function AdminItem() {
                     </option>
                   ))}
                 </Select>
-                <FormHelperText
-                  sx={{ ml : "15vw" }}
-                >
+                <FormHelperText sx={{ ml: "15vw" }}>
                   Hold ctrl or command to select multiple options
                 </FormHelperText>
                 <Button
                   variant="contained"
                   color="secondary"
-                  sx={{ fontFamily: "Lato, sansSerif", ml: "20vw", mt: "1em" }} 
+                  sx={{ fontFamily: "Lato, sansSerif", ml: "20vw", mt: "1em" }}
                   onClick={() => handleSubmit()}
-                >Submit Match(es)</Button>
+                >
+                  Submit Match(es)
+                </Button>
               </>
             ) : (
               <h2>List of brands to match to journos</h2>
             )}
           </Box>
 
-          <Box
-          sx={{ mt : "1em"}}
-          >
-          <Typography variant="h5" sx={{ ml : "17vw", fontFamily: "Lato, sansSerif" }}>
-                  Delete Existing Match(es)
-          </Typography> 
-          <Button
-                  variant="contained"
-                  color="primary"
-                  sx={{ fontFamily: "Lato, sansSerif", ml: "20vw", mt: "1em" }}  
-                >Delete Match(es)</Button>
+          <Box sx={{ mt: "1em" }}>
+            <Typography
+              variant="h5"
+              sx={{ ml: "17vw", fontFamily: "Lato, sansSerif" }}
+            >
+              Delete Existing Match(es)
+            </Typography>
+            <Button
+              variant="contained"
+              color="primary"
+              sx={{ fontFamily: "Lato, sansSerif", ml: "20vw", mt: "1em" }}
+            >
+              Delete Match(es)
+            </Button>
           </Box>
         </Box>
       </Stack>

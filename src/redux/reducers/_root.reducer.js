@@ -5,6 +5,7 @@ import adminUsers from './admin.reducer';
 import adminItem from './adminItem.reducer'
 import pubs from './pubs.reducer';
 import markets from './markets.reducer';
+import adminMatches from './adminMatches.reducer'
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   adminItem,
   pubs, // list of publications from database
   markets, // list of markets from database
+  adminMatches,
 });
 
 export default rootReducer;
