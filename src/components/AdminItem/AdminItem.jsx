@@ -100,11 +100,23 @@ function AdminItem() {
     <div>
       <Stack
         direction="row"
-        divider={<Divider orientation="vertical" flexItem />}
         spacing={0}
       >
+        <Box width="10vw">
+          {/* button to return to admin list */}
+          <Button
+            color="info"
+            variant="contained"
+            sx={{ fontFamily: "Lato, sansSerif", ml: "1em", mt: "1em" }}
+            onClick={() => handleBack()}
+            onClick={() => { window.open(`${adminItem.username}`) }}>
+          >
+            Back
+          </Button>
+
+        </Box>
         {/* User Information Box */}
-        <Box width="50vw">
+        <Box width="40vw">
           <List
             sx={{
               width: "100%",
@@ -207,42 +219,36 @@ function AdminItem() {
         </Box>
 
         {/* Admin Input Box */}
-        <Box width="50vw">
-          {/* button to return to admin list */}
-          <Button
-            color="info"
-            variant="contained"
-            sx={{ fontFamily: "Lato, sansSerif", ml: "1em", mt: "1em" }}
-            onClick={() => handleBack()}
-          >
-            Back
-          </Button>
-
+        <Box width="40vw">
+          
           {/* displays button to toggle approval status. renders based on current status */}
           <Box>
             {adminItem.approved === false ? (
-              <Box sx={{ ml: "20vw" }}>
+              <Box sx={{ }}>
                 <Typography variant="h5" sx={{ fontFamily: "Lato, sansSerif" }}>
                   Approve User?
                 </Typography>
                 <Button
                   variant="contained"
                   color="secondary"
-                  sx={{ fontFamily: "Lato, sansSerif", ml: "2em" }}
+                  sx={{ fontFamily: "Lato, sansSerif"}}
                   onClick={() => handleApproval(adminItem)}
                 >
                   Approve
                 </Button>
+                <FormHelperText sx={{  }}>
+              Reminder: email user to notify upon approval
+            </FormHelperText>
               </Box>
             ) : (
-              <Box sx={{ ml: "20vw" }}>
+              <Box sx={{ }}>
                 <Typography variant="h5" sx={{ fontFamily: "Lato, sansSerif"}}>
                   Remove Approval?
                 </Typography>
                 <Button
                   variant="contained"
                   color="primary"
-                  sx={{ fontFamily: "Lato, sansSerif", ml: "2em" }}
+                  sx={{ fontFamily: "Lato, sansSerif" }}
                   onClick={() => handleApproval(adminItem.id)}
                 >
                   Remove
@@ -257,7 +263,7 @@ function AdminItem() {
               <>
                 <Typography
                   variant="h5"
-                  sx={{ ml: "17vw", fontFamily: "Lato, sansSerif" }}
+                  sx={{ fontFamily: "Lato, sansSerif" }}
                 >
                   Select New Match(es)
                 </Typography>
@@ -272,7 +278,7 @@ function AdminItem() {
                   inputProps={{
                     id: "select-multiple-matches",
                   }}
-                  sx={{ ml: "15vw", width: "20vw" }}
+                  sx={{  width: "20vw" }}
                 >
                   {adminUsers.map((user) => (
                     <option key={user.id} value={user.id}>
@@ -280,13 +286,13 @@ function AdminItem() {
                     </option>
                   ))}
                 </Select>
-                <FormHelperText sx={{ ml: "15vw" }}>
+                <FormHelperText sx={{  }}>
                   Hold ctrl or command to select multiple options
                 </FormHelperText>
                 <Button
                   variant="contained"
                   color="secondary"
-                  sx={{ fontFamily: "Lato, sansSerif", ml: "20vw"}}
+                  sx={{ fontFamily: "Lato, sansSerif"}}
                   onClick={() => handleSubmit()}
                 >
                   Submit Match(es)
@@ -300,7 +306,7 @@ function AdminItem() {
           <Box sx={{ mt: "1em" }}>
             <Typography
               variant="h5"
-              sx={{ ml: "16vw", fontFamily: "Lato, sansSerif" }}
+              sx={{  fontFamily: "Lato, sansSerif" }}
             >
               Delete Existing Match(es)
             </Typography>
@@ -315,7 +321,7 @@ function AdminItem() {
                   inputProps={{
                     id: "select-multiple-matches",
                   }}
-                  sx={{ ml: "15vw", width: "20vw" }}
+                  sx={{  width: "20vw" }}
                 >
                   {adminMatches.length > 0 && adminMatches.map((match) => (
                     <option key={match.id} value={match.id}>
@@ -323,13 +329,13 @@ function AdminItem() {
                     </option>
                   ))}
                 </Select>
-            <FormHelperText sx={{ ml: "15vw" }}>
+            <FormHelperText sx={{  }}>
               Hold ctrl or command to select multiple options
             </FormHelperText>
             <Button
               variant="contained"
               color="primary"
-              sx={{ fontFamily: "Lato, sansSerif", ml: "20vw"}}
+              sx={{ fontFamily: "Lato, sansSerif"}}
               onClick={() => handleDelete()}
             >
               Delete Match(es)
