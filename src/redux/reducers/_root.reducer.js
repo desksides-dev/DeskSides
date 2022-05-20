@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import errors from './errors.reducer';
 import user from './user.reducer';
+import brandJournalists from './brandJournalists.reducer'
 import pubs from './pubs.reducer';
 import markets from './markets.reducer';
 
@@ -13,6 +14,7 @@ import markets from './markets.reducer';
 const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   user, // will have an id and username if someone is logged in
+  brandJournalists,
   pubs, // list of publications from database
   markets, // list of markets from database
 });

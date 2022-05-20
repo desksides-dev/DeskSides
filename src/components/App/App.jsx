@@ -34,6 +34,7 @@ import ThankYou from '../ThankYouPage/ThankYou';
 import Login from '../Login/Login';
 import CreateAccount from '../CreateAccount/CreateAccount';
 import BrandForm from '../BrandForm/BrandForm';
+import JournalistsList from '../JournalistsList/JournalistsList';
 
 import './App.css';
 
@@ -162,6 +163,9 @@ function App() {
               path="/info"
             >
               <InfoPage />
+            </ProtectedRoute>
+            <ProtectedRoute exact path = "/brand-journalists">
+              <JournalistsList/>
             </ProtectedRoute>
 
             <Route
