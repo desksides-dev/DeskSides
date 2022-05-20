@@ -34,7 +34,7 @@ function JournalistsList() {
                 <Typography variant="h1" color="primary" sx={{mt:1}}>
                     {user.first_name} {user.last_name}
                 </Typography>
-                <Typography sx={{mt:2, fontSize:20}}>
+                <Typography sx={{mt:2, fontSize:22}}>
                     Let's take this to the next level.
                 </Typography>
                 <Box
@@ -51,7 +51,7 @@ function JournalistsList() {
                             <Card
                                 variant="outlined"
                                 key={journalist.id}
-                                sx={{ border: 1.4, borderColor: '#352558', padding: 3, backgroundColor: '#FFFBF8' }}
+                                sx={{ border: 1.4, borderColor: '#352558', pl:4, pt:3, pb:3, pr:0, backgroundColor: '#FFFBF8' }}
                             >
                                 <JournalistItem
                                     journalist={journalist}
