@@ -35,6 +35,7 @@ import Login from '../Login/Login';
 import CreateAccount from '../CreateAccount/CreateAccount';
 import BrandForm from '../FormBrand/BrandForm';
 import JournalistsList from '../JournalistsList/JournalistsList';
+import ComingSoon from '../ComingSoonPage/ComingSoonPage';
 
 import './App.css';
 
@@ -157,8 +158,7 @@ function App() {
                 :
                 // Otherwise, show the info page
                 <InfoPage />
-              }
-              
+              } 
             </ProtectedRoute>
 
             <ProtectedRoute exact path ="/brand">
@@ -239,6 +239,10 @@ function App() {
             >
               <ThankYou />
             </ProtectedRoute>
+
+            <Route exact path="/comingsoon">
+              <ComingSoon />
+            </Route>
 
             {/* If none of the other routes matched, we will show a 404. */}
             <Route>
