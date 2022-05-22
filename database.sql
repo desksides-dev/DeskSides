@@ -11,7 +11,7 @@ CREATE TABLE "users" (
 	"profile_image_link" varchar(500),
 	"calendar_link" varchar(500),
 	"payment_link" varchar(500),
-	"fileshare_link" varchar(50),
+	"fileshare_link" varchar(500),
 	"time_of_day_pref" varchar(50),
 	"user_type" varchar(20),
 	"description" varchar(1000),

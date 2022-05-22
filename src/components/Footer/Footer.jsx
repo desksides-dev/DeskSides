@@ -4,15 +4,18 @@ import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
+import { useHistory } from 'react-router-dom';
 
 function Footer() {
+  const history = useHistory();
+
   return (
     <Stack
       direction="row"
       spacing={12}
       justifyContent="center"
       alignItems="center"
-      sx={{ border: "1px #546D1D solid", backgroundColor: "white" }}
+      sx={{ border: "1px #546D1D solid", backgroundColor: "white"}}
       fontFamily="Lato, sans-serif"
     >
       <Box>
@@ -29,7 +32,7 @@ function Footer() {
         <Link
           fontFamily="inherit"
           sx={{ textDecoration: "none", color: "#546D1D" }}
-          href="/"
+          href="#/comingsoon"
         >
           TERMS & CONDITIONS
         </Link>
@@ -52,7 +55,7 @@ function Footer() {
         <Link
           fontFamily="inherit"
           sx={{ textDecoration: "none", color: "#546D1D" }}
-          href="/"
+          href="#/comingsoon"
         >
           FACEBOOK
         </Link>

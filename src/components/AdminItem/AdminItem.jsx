@@ -350,7 +350,7 @@ function AdminItem() {
                   }}
                   sx={{ width: "20vw" }}
                 >
-                  {adminJournos.map((user) => (
+                  {adminJournos?.map((user) => (
                     <option key={user.id} value={user.id}>
                       {user.first_name} {user.last_name}
                     </option>
@@ -386,7 +386,7 @@ function AdminItem() {
                   }}
                   sx={{ width: "20vw" }}
                 >
-                  {adminBrands.map((user) => (
+                  {adminBrands?.map((user) => (
                     <option key={user.id} value={user.id}>
                       {user.first_name} {user.last_name}
                     </option>
@@ -426,7 +426,7 @@ function AdminItem() {
               sx={{ width: "20vw" }}
             >
               {adminMatches.length > 0 &&
-                adminMatches.map((match) => (
+                adminMatches?.map((match) => (
                   <option key={match.id} value={match.id}>
                     {match.first_name} {match.last_name}
                   </option>

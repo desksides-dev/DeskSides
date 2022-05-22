@@ -21,6 +21,8 @@ function AdminList() {
 
   useEffect(() => {
     dispatch({ type: "GET_ADMIN_USERS" });
+    dispatch({ type: "GET_ADMIN_BRANDS" });
+    dispatch({ type: "GET_ADMIN_JOURNOS" });
   }, []);
 
   const handleDetails = (user) => {

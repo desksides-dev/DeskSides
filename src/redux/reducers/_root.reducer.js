@@ -3,6 +3,7 @@ import errors from './errors.reducer';
 import user from './user.reducer';
 import adminUsers from './admin.reducer';
 import adminItem from './adminItem.reducer'
+import brandJournalists from './brandJournalists.reducer'
 import pubs from './pubs.reducer';
 import markets from './markets.reducer';
 import adminMatches from './adminMatches.reducer';
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
   adminItem,
   adminBrands,
   adminJournos,
+  brandJournalists,
   pubs, // list of publications from database
   markets, // list of markets from database
   adminMatches,

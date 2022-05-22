@@ -33,7 +33,9 @@ import BrandAssessment from '../FormBrand/FormBrand';
 import ThankYou from '../ThankYouPage/ThankYou';
 import Login from '../Login/Login';
 import CreateAccount from '../CreateAccount/CreateAccount';
-import BrandForm from '../BrandForm/BrandForm';
+import BrandForm from '../FormBrand/BrandForm';
+import JournalistsList from '../JournalistsList/JournalistsList';
+import ComingSoon from '../ComingSoonPage/ComingSoonPage';
 
 import './App.css';
 
@@ -137,7 +139,14 @@ function App() {
               exact
               path="/user"
             >
-              <UserPage />
+              {user.id && user.approved ?
+                // If the user is approved, 
+                // redirect to the /user page
+                <UserPage />
+                :
+                // Otherwise, show the info page
+                <InfoPage />
+              } 
             </ProtectedRoute>
 
             <ProtectedRoute exact path ="/brand">
@@ -151,10 +160,16 @@ function App() {
             >
               <InfoPage />
             </ProtectedRoute>
+            <ProtectedRoute exact path = "/brand-journalists">
+              <JournalistsList/>
+            </ProtectedRoute>
 
-            <Route exact path="/login">
-              {user.id ? (
-                // If the user is already logged in,
+            <Route
+              exact
+              path="/login"
+            >
+              {user.id && user.approved ? (
+                // If the user is already logged in, 
                 // redirect to the /user page
                 <Redirect to="/user" />
               ) : (
@@ -178,9 +193,12 @@ function App() {
               }
             </Route>
 
-            <Route exact path="/registration">
-              {user.id ? (
-                // If the user is already logged in,
+            <Route
+              exact
+              path="/registration"
+            >
+              {user.id && user.approved ? (
+                // If the user is already logged in, 
                 // redirect them to the /user page
                 <Redirect to="/user" />
               ) : (
@@ -189,9 +207,12 @@ function App() {
               )}
             </Route>
 
-            <Route exact path="/home">
-              {user.id ? (
-                // If the user is already logged in,
+            <Route
+              exact
+              path="/home"
+            >
+              {user.id && user.approved ? (
+                // If the user is already logged in, 
                 // redirect them to the /user page
                 <Redirect to="/user" />
               ) : (
@@ -217,6 +238,10 @@ function App() {
             >
               <ThankYou />
             </ProtectedRoute>
+
+            <Route exact path="/comingsoon">
+              <ComingSoon />
+            </Route>
 
             {/* If none of the other routes matched, we will show a 404. */}
             <Route>

@@ -55,7 +55,7 @@ function* postBrand(action) {
             yield axios.post(`/api/form/publications/${pub}`)
         }
 
-        yield axios.put('/api/form/journalist', state)
+        yield axios.put('/api/form/brands', state)
     } catch (error) {
         console.log('error in *postBrand: ', error)
     }

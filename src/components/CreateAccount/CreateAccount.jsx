@@ -73,7 +73,7 @@ function CreateAccount() {
                         <Box sx={{ width: '48.5%' }}>
                             <InputLabel htmlFor="password" variant="standard" color="primary">Password</InputLabel>
                             <TextField
-                                type="text"
+                                type="password"
                                 name="password"
                                 value={newUser.password}
                                 color="info"
