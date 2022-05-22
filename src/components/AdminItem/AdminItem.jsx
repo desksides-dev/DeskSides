@@ -114,7 +114,7 @@ function AdminItem() {
             Back
           </Button>
         </Box>
-        {/* User Information Box */}
+        {/* User Information Box, renders content based on user_type */}
         <Box width="40vw">
           <List
             sx={{
@@ -127,93 +127,159 @@ function AdminItem() {
               "& ul": { padding: 0 },
             }}
           >
-            <ListItem>
-              <ListItemText primary={`First Name : ${adminItem.first_name}`} />
-            </ListItem>
-            <ListItem>
-              <ListItemText primary={`Last Name : ${adminItem.last_name}`} />
-            </ListItem>
-            <ListItem>
-              <ListItemText
-                primary={`Approved : ${adminItem.approved.toString()}`}
-              />
-            </ListItem>
-            <ListItem>
-              <ListItemText primary={`User Type : ${adminItem.user_type}`} />
-            </ListItem>
-            <ListItem>
-              <ListItemText primary={`Email : ${adminItem.username}`} />
-            </ListItem>
-            <ListItem>
-              <ListItemText primary={`City : ${adminItem.city}`} />
-            </ListItem>
-            <ListItem>
-              <ListItemText primary={`State : ${adminItem.state}`} />
-            </ListItem>
-            <ListItem>
-              <ListItemText
-                primary={`Description : ${adminItem.description}`}
-              />
-            </ListItem>
-            <ListItem>
-              <ListItemText primary={`Medium : ${adminItem.pub_medium}`} />
-            </ListItem>
-            <ListItem>
-              <ListItemText
-                primary={`Preferred Time Of Day : ${adminItem.time_of_day_pref}`}
-              />
-            </ListItem>
-            <ListItem>
-              <ListItemText
-                primary={`Years Of Experience : ${adminItem.years_of_exp}`}
-              />
-            </ListItem>
-            <ListItem>
-              <ListItemText
-                primary={`Stories Per Month : ${adminItem.stories_per_month}`}
-              />
-            </ListItem>
-            <ListItem>
-              <ListItemText primary={`Brand Name : ${adminItem.brand_name}`} />
-            </ListItem>
-            <ListItem>
-              <ListItemText primary={`Plan Type : ${adminItem.plan_type}`} />
-            </ListItem>
-            <ListItem>
-              <ListItemText
-                primary={`Payment Status : ${adminItem.payment_status}`}
-              />
-            </ListItem>
-            <ListItem>
-              <ListItemText
-                primary={`Payment Link : ${adminItem.payment_link}`}
-              />
-            </ListItem>
-            <ListItem>
-              <ListItemText
-                primary={`Profile Image Link: ${adminItem.profile_image_link}`}
-              />
-            </ListItem>
-            <ListItem>
-              <ListItemText
-                primary={`Calendar Link : ${adminItem.calendar_link}`}
-              />
-            </ListItem>
-            <ListItem>
-              <ListItemText
-                primary={`Fileshare Link : ${adminItem.fileshare_link}`}
-              />
-            </ListItem>
-            <ListItem>
-              <ListItemText
-                primary={`Brand Assets Link : ${adminItem.brand_assets_link}`}
-              />
-            </ListItem>
-            <ListItem>
-              <ListItemText
-                primary={`Affiliate Link : ${adminItem.affiliate_link}`}
-              />
-            </ListItem>
+            {adminItem.user_type === "brand" ? (
+              <>
+                <ListItem>
+                  <ListItemText
+                    primary={`Name : ${adminItem.first_name} ${adminItem.last_name}`}
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemText
+                    primary={`Approved : ${adminItem.approved.toString()}`}
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemText
+                    primary={`User Type : ${adminItem.user_type}`}
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemText primary={`Email : ${adminItem.username}`} />
+                </ListItem>
+                <ListItem>
+                  <ListItemText primary={`City : ${adminItem.city}`} />
+                </ListItem>
+                <ListItem>
+                  <ListItemText primary={`State : ${adminItem.state}`} />
+                </ListItem>
+                <ListItem>
+                  <ListItemText
+                    primary={`Description : ${adminItem.description}`}
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemText
+                    primary={`Preferred Time Of Day : ${adminItem.time_of_day_pref}`}
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemText
+                    primary={`Brand Name : ${adminItem.brand_name}`}
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemText
+                    primary={`Plan Type : ${adminItem.plan_type}`}
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemText
+                    primary={`Payment Status : ${adminItem.payment_status}`}
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemText
+                    primary={`Payment Link : ${adminItem.payment_link}`}
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemText
+                    primary={`Profile Image Link: ${adminItem.profile_image_link}`}
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemText
+                    primary={`Calendar Link : ${adminItem.calendar_link}`}
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemText
+                    primary={`Fileshare Link : ${adminItem.fileshare_link}`}
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemText
+                    primary={`Brand Assets Link : ${adminItem.brand_assets_link}`}
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemText
+                    primary={`Affiliate Link : ${adminItem.affiliate_link}`}
+                  />
+                </ListItem>
+              </>
+            ) : (
+              <>
+                <ListItem>
+                  <ListItemText
+                    primary={`Name : ${adminItem.first_name} ${adminItem.last_name}`}
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemText
+                    primary={`Approved : ${adminItem.approved.toString()}`}
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemText
+                    primary={`User Type : ${adminItem.user_type}`}
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemText primary={`Email : ${adminItem.username}`} />
+                </ListItem>
+                <ListItem>
+                  <ListItemText primary={`City : ${adminItem.city}`} />
+                </ListItem>
+                <ListItem>
+                  <ListItemText primary={`State : ${adminItem.state}`} />
+                </ListItem>
+                <ListItem>
+                  <ListItemText
+                    primary={`Description : ${adminItem.description}`}
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemText primary={`Medium : ${adminItem.pub_medium}`} />
+                </ListItem>
+                <ListItem>
+                  <ListItemText
+                    primary={`Preferred Time Of Day : ${adminItem.time_of_day_pref}`}
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemText
+                    primary={`Years Of Experience : ${adminItem.years_of_exp}`}
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemText
+                    primary={`Stories Per Month : ${adminItem.stories_per_month}`}
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemText
+                    primary={`Profile Image Link: ${adminItem.profile_image_link}`}
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemText
+                    primary={`Calendar Link : ${adminItem.calendar_link}`}
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemText
+                    primary={`Fileshare Link : ${adminItem.fileshare_link}`}
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemText
+                    primary={`Affiliate Link : ${adminItem.affiliate_link}`}
+                  />
+                </ListItem>
+              </>
+            )}
           </List>
         </Box>
 
@@ -284,7 +350,7 @@ function AdminItem() {
                   }}
                   sx={{ width: "20vw" }}
                 >
-                  {adminUsers.map((user) => (
+                  {adminJournos.map((user) => (
                     <option key={user.id} value={user.id}>
                       {user.first_name} {user.last_name}
                     </option>
@@ -303,7 +369,41 @@ function AdminItem() {
                 </Button>
               </>
             ) : (
-              <h2>List of brands to match to journos</h2>
+              <>
+                <Typography variant="h5" sx={{ fontFamily: "Lato, sansSerif" }}>
+                  Select New Match(es)
+                </Typography>
+                <Select
+                  multiple
+                  native
+                  variant="filled"
+                  color="warning"
+                  value={state.matches}
+                  // @ts-ignore Typings are not considering `native`
+                  onChange={handleMatchChange}
+                  inputProps={{
+                    id: "select-multiple-matches",
+                  }}
+                  sx={{ width: "20vw" }}
+                >
+                  {adminBrands.map((user) => (
+                    <option key={user.id} value={user.id}>
+                      {user.first_name} {user.last_name}
+                    </option>
+                  ))}
+                </Select>
+                <FormHelperText sx={{}}>
+                  Hold ctrl or command to select multiple options
+                </FormHelperText>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  sx={{ fontFamily: "Lato, sansSerif" }}
+                  onClick={() => handleSubmit()}
+                >
+                  Submit Match(es)
+                </Button>
+              </>
             )}
           </Box>
 
