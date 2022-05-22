@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 //MUI imports
-import Divider from "@mui/material/Divider";
+import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
@@ -130,8 +130,21 @@ function AdminItem() {
             {adminItem.user_type === "brand" ? (
               <>
                 <ListItem>
+                <Avatar sx={{bgcolor:'#FFAA45', 
+                         color:'#DC4634', 
+                         width: 90, 
+                         height: 90, 
+                         fontSize:38,
+                         border: 1, 
+                         borderColor: '#DC4634', 
+                         padding: 3,
+                         textTransform: 'uppercase'}}>
+                {adminItem.first_name[0]}{adminItem.last_name[0]}
+            </Avatar>
+            </ListItem>
+            <ListItem>
                   <ListItemText
-                    primary={`Name : ${adminItem.first_name} ${adminItem.last_name}`}
+                    primary={`${adminItem.first_name} ${adminItem.last_name}`}
                   />
                 </ListItem>
                 <ListItem>
@@ -212,8 +225,23 @@ function AdminItem() {
             ) : (
               <>
                 <ListItem>
+                <Avatar sx={{
+                    bgcolor: '#DACCFF',
+                    color: '#352558',
+                    width: 90,
+                    height: 90,
+                    fontSize: 38,
+                    border: 1,
+                    borderColor: '#352558',
+                    padding: 3,
+                    textTransform: 'uppercase',
+                }}>
+                    {adminItem.first_name[0]}{adminItem.last_name[0]}
+                </Avatar>
+                </ListItem>
+                <ListItem>
                   <ListItemText
-                    primary={`Name : ${adminItem.first_name} ${adminItem.last_name}`}
+                    primary={`${adminItem.first_name} ${adminItem.last_name}`}
                   />
                 </ListItem>
                 <ListItem>
