@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
-import "./Nav.css";
 import { useSelector, useDispatch } from "react-redux";
 
 //MUI imports
@@ -17,7 +16,7 @@ function Nav() {
       direction="row"
       justifyContent="space-between"
       alignItems="center"
-      sx={{ borderBottom: "1px #546D1D solid", backgroundColor: "white", pl:5, pr:5, minWidth:800 }}
+      sx={{ borderBottom: "1px #546D1D solid", backgroundColor: "white", pl:5, pr:5, minWidth:1200, }}
       fontFamily="Lato, sans-serif"
     >
 
@@ -55,7 +54,7 @@ function Nav() {
             component="img"
             sx={{
               height: "5em",
-              width: "12em",
+              width: "11em",
             }}
             alt="DeskSides Logo"
             src="/images/desksides-logo.svg"

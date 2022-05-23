@@ -12,22 +12,19 @@ function Footer() {
   return (
     <Stack
       direction="row"
-      spacing={12}
-      justifyContent="center"
+      justifyContent="space-between"
       alignItems="center"
-      sx={{ border: "1px #546D1D solid", backgroundColor: "white"}}
+      sx={{ borderTop: "1px #546D1D solid", borderBottom:"1px #546D1D solid", backgroundColor: "white", pl:5, pr:5, minWidth:1200, bottom:0, left:0, right:0}}
       fontFamily="Lato, sans-serif"
     >
       <Box>
         <Link
           fontFamily="inherit"
-          sx={{ textDecoration: "none", color: "#546D1D" }}
+          sx={{ textDecoration: "none", color: "#546D1D", mr:5 }}
         >
-          COPYRIGHT © 2022
+          COPYRIGHT DESKSIDES © 2022
         </Link>
-      </Box>
 
-      <Box>
         {/* this link may need to be removed and spacing modified. it is currently a placeholder  */}
         <Link
           fontFamily="inherit"
@@ -37,8 +34,7 @@ function Footer() {
           TERMS & CONDITIONS
         </Link>
       </Box>
-
-      <Link href="/" sx={{ paddingLeft: "4em" }}>
+      <Link href="/">
         <Box
           component="img"
           sx={{
@@ -59,29 +55,27 @@ function Footer() {
         >
           FACEBOOK
         </Link>
-      </Box>
 
-      <Box>
         <Link
-          sx={{ textDecoration: "none", color: "#546D1D" }}
+          sx={{ textDecoration: "none", color: "#546D1D", ml:5 }}
           fontFamily="inherit"
           href="https://www.instagram.com/desksides/"
           target="_blank"
         >
           INSTAGRAM
         </Link>
-      </Box>
 
-      <Box>
         {/* need to update hover/click color of this button */}
         <Button
           fontFamily="inherit"
           variant="contained"
+          disableElevation
           sx={{
             backgroundColor: "#FFAA45",
             borderRadius: "2em",
             fontFamily: "Lato, sans-serif",
             fontWeight: "bold",
+            ml:5
           }}
           href="mailto:blish@desksides.com"
         >
