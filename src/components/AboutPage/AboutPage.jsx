@@ -79,7 +79,14 @@ function AboutPage() {
 
     </Box>
     <Box
-      sx={{ backgroundColor: "#232323", align: "center", justifyContent: "center", textAlign: "center", height: "auto", px: "25vw", py: "10vh" }} >
+      sx={{ 
+        backgroundColor: "#232323", 
+        align: "center", 
+        justifyContent: "center", 
+        textAlign: "center", 
+        height: "auto", 
+        px: "25vw", 
+        py: "10vh" }} >
 
       <Typography
         variant="body1"
