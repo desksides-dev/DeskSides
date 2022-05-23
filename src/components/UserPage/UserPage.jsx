@@ -129,7 +129,7 @@ function UserPage() {
           <IconButton
             size="small"
             sx={{ p: "2vmax" }}
-            onClick={() => {history.push('/brand-edit')}}>
+            onClick={() => {history.push('/comingsoon')}}>
             <Box
               component="img"
               sx={{ width: "7em", height: "7em", m: "1vmax" }}
