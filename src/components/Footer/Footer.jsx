@@ -75,6 +75,7 @@ function Footer() {
       <Box>
         {/* need to update hover/click color of this button */}
         <Button
+          disableElevation
           fontFamily="inherit"
           variant="contained"
           sx={{
