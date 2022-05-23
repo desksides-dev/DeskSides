@@ -22,6 +22,8 @@ function UserPage() {
 
   //if user is admin, redirects to admin view
   {user.user_type === 'admin' && history.push('/admin')}
+
+  {user.brand_name === null && history.push('/assessment')}
   
   return (
     <>
