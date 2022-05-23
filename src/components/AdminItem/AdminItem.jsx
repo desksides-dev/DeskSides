@@ -43,7 +43,6 @@ function AdminItem() {
 
   //Toggles 'approved' in user table of database, updates reducer to render new/opposite button
   const handleApproval = () => {
-    console.log("handleApproval clicked! adminItem: ", adminItem);
     const id = adminItem.id;
     let approvalStatus;
     if (adminItem.approved === true) {
@@ -58,6 +57,7 @@ function AdminItem() {
     dispatch({ type: "SET_ADMIN_ITEM", payload: adminItem });
   };
 
+  //stores selections from match list in an array to accommodate multiple selections
   const handleMatchChange = (event) => {
     const { options } = event.target;
     const inputs = [];
@@ -72,6 +72,7 @@ function AdminItem() {
     });
   };
 
+  //stores selections from delete list in an array to accommodate multiple selections
   const handleDeleteChange = (event) => {
     const { options } = event.target;
     const inputs = [];
@@ -86,22 +87,16 @@ function AdminItem() {
     });
   };
 
+  //adds matched suers to database
   const handleSubmit = () => {
-    console.log('!!!!!!!!!! submit matches clicked!, adminItem=', adminItem, 'state=', state);
     dispatch({ type: "POST_MATCHES", payload: adminItem, state });
   };
 
+  //removes matches from database
   const handleDelete = () => {
-    console.log(
-      "#### handleDelete clicked! adminItem =",
-      adminItem,
-      "state =",
-      state
-    );
     dispatch({ type: "DELETE_MATCHES", payload: adminItem, state });
   };
 
-  console.log('!!!!!!adminMatches!!!!!!!', adminMatches);
   return (
     <div>
       <Stack direction="row" spacing={0}>
@@ -132,19 +127,24 @@ function AdminItem() {
             {adminItem.user_type === "brand" ? (
               <>
                 <ListItem>
-                <Avatar sx={{bgcolor:'#FFAA45', 
-                         color:'#DC4634', 
-                         width: 90, 
-                         height: 90, 
-                         fontSize:38,
-                         border: 1, 
-                         borderColor: '#DC4634', 
-                         padding: 3,
-                         textTransform: 'uppercase'}}>
-                {adminItem.first_name[0]}{adminItem.last_name[0]}
-            </Avatar>
-            </ListItem>
-            <ListItem>
+                  <Avatar
+                    sx={{
+                      bgcolor: "#FFAA45",
+                      color: "#DC4634",
+                      width: 90,
+                      height: 90,
+                      fontSize: 38,
+                      border: 1,
+                      borderColor: "#DC4634",
+                      padding: 3,
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    {adminItem.first_name[0]}
+                    {adminItem.last_name[0]}
+                  </Avatar>
+                </ListItem>
+                <ListItem>
                   <ListItemText
                     primary={`${adminItem.first_name} ${adminItem.last_name}`}
                   />
@@ -227,19 +227,22 @@ function AdminItem() {
             ) : (
               <>
                 <ListItem>
-                <Avatar sx={{
-                    bgcolor: '#DACCFF',
-                    color: '#352558',
-                    width: 90,
-                    height: 90,
-                    fontSize: 38,
-                    border: 1,
-                    borderColor: '#352558',
-                    padding: 3,
-                    textTransform: 'uppercase',
-                }}>
-                    {adminItem.first_name[0]}{adminItem.last_name[0]}
-                </Avatar>
+                  <Avatar
+                    sx={{
+                      bgcolor: "#DACCFF",
+                      color: "#352558",
+                      width: 90,
+                      height: 90,
+                      fontSize: 38,
+                      border: 1,
+                      borderColor: "#352558",
+                      padding: 3,
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    {adminItem.first_name[0]}
+                    {adminItem.last_name[0]}
+                  </Avatar>
                 </ListItem>
                 <ListItem>
                   <ListItemText
@@ -360,7 +363,7 @@ function AdminItem() {
             )}
           </Box>
 
-          {/* matches list */}
+          {/* potential matches list */}
           <Box sx={{ mt: "1em" }}>
             {adminItem.user_type === "brand" ? (
               <>
@@ -437,7 +440,7 @@ function AdminItem() {
             )}
           </Box>
 
-          {/* delete list */}
+          {/* display current matches / delete from list */}
           <Box sx={{ mt: "1em" }}>
             <Typography variant="h5" sx={{ fontFamily: "Lato, sansSerif" }}>
               Delete Existing Match(es)
