@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
@@ -30,6 +30,14 @@ function AdminList() {
     history.push("/adminItem");
   };
 
+  //table sort state
+  const [orderDirection, setOrderDirection] = useState('asc');
+  const [valueToOrderBy, setValueToOrderBy] = useState('name');
+  
+  //table pagination state
+  // const [page, setPage] = useState(0)
+  // const [rowsPerPage, setRowsPerPage] = useState(10) 
+
   return (
     <>
       <TableContainer component={Paper}>
@@ -37,19 +45,39 @@ function AdminList() {
           <TableHead>
             <TableRow>
               <TableCell key="name" sx={{ fontWeight: "bolder" }}>
-                <TableSortLabel>Name</TableSortLabel>
+                <TableSortLabel
+                  active={"name" === "name"}
+                  direction="asc"
+                  onClick={createSortHandler("name")}
+                >Name</TableSortLabel>
               </TableCell>
               <TableCell key="city" sx={{ fontWeight: "bolder" }}>
-                <TableSortLabel>City</TableSortLabel>
+                <TableSortLabel
+                  active={"city" === "city"}
+                  direction="asc"
+                  onClick={createSortHandler("city")}
+                >City</TableSortLabel>
               </TableCell>
               <TableCell key="state" sx={{ fontWeight: "bolder" }}>
-                <TableSortLabel>State</TableSortLabel>
+                <TableSortLabel
+                  active={"state" === "state"}
+                  direction="asc"
+                  onClick={createSortHandler("state")}
+                >State</TableSortLabel>
               </TableCell>
               <TableCell key="type" sx={{ fontWeight: "bolder" }}>
-                <TableSortLabel>User Type</TableSortLabel>
+                <TableSortLabel
+                  active={"type" === "type"}
+                  direction="asc"
+                  onClick={createSortHandler("type")}
+                >User Type</TableSortLabel>
               </TableCell>
-              <TableCell sx={{ fontWeight: "bolder" }}>
-                <TableSortLabel>Approved</TableSortLabel>
+              <TableCell key="status" sx={{ fontWeight: "bolder" }}>
+                <TableSortLabel
+                    active={"status" === "status"}
+                    direction="asc"
+                    onClick={createSortHandler("status")}
+                >Approved</TableSortLabel>
               </TableCell>
               <TableCell></TableCell>
             </TableRow>
