@@ -107,8 +107,8 @@ router.delete('/:journoId/:brandId', (req, res) => {
 
     const queryText = `
             DELETE FROM "journalists_brands"
-            WHERE "journalists_id" = $1 OR "brands_id" = $1
-            AND "journalists_id" = $2 OR "brands_id" = $2
+            WHERE "journalists_id" = $1 AND "brands_id" = $2
+            OR "journalists_id" = $2 AND "brands_id" = $1
             ;`
 
     pool.query(queryText, [journoId, brandId])
