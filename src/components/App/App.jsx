@@ -33,7 +33,6 @@ import BrandAssessment from '../FormBrand/FormBrand';
 import ThankYou from '../ThankYouPage/ThankYou';
 import Login from '../Login/Login';
 import CreateAccount from '../CreateAccount/CreateAccount';
-import BrandForm from '../FormBrand/BrandDetails';
 import JournalistsList from '../JournalistsList/JournalistsList';
 
 import './App.css';
@@ -151,10 +150,6 @@ function App() {
               path="/user"
             >
               <UserPage />
-            </ProtectedRoute>
-
-            <ProtectedRoute exact path ="/brand">
-              <BrandForm/>
             </ProtectedRoute>
 
             <ProtectedRoute

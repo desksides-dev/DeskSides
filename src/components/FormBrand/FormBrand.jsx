@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import BrandDetails from './BrandDetails';
-import { Box, Button, MenuItem, Slider, Typography, InputLabel, FormHelperText, TextField, Select, FormControl } from '@mui/material'
+import { Box, Button, MenuItem, Slider, Stack, Typography, InputLabel, FormHelperText, TextField, Select, FormControl } from '@mui/material'
+
 
 
 function BrandAssessment() {
@@ -80,7 +80,6 @@ function BrandAssessment() {
     }
 
     return (<>
-    <BrandDetails/>
         <Box sx={{
             backgroundColor: "#232323",
             align: "center",
@@ -118,6 +117,7 @@ function BrandAssessment() {
             py: "5vh"
         }} >
             <form>
+
                 <Box sx={{ my: "5vmax", justifyContent: "left", textAlign: "left", }}>
                     <InputLabel htmlFor='brand_name'>
                         Brand Name
