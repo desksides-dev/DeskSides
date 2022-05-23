@@ -24,7 +24,6 @@ import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
 import AboutPage from "../AboutPage/AboutPage";
 import UserPage from "../UserPage/UserPage";
 import InfoPage from "../InfoPage/InfoPage";
-import LandingPage from "../LandingPage/LandingPage";
 // import RegisterPage from "../RegisterPage/RegisterPage";
 import AdminList from "../AdminList/AdminList";
 import AdminItem from "../AdminItem/AdminItem";
@@ -218,7 +217,7 @@ function App() {
                 <Redirect to="/user" />
               ) : (
                 // Otherwise, show the Landing page
-                <LandingPage />
+                <InfoPage />
               )}
             </Route>
 
