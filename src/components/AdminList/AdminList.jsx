@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
@@ -30,52 +30,125 @@ function AdminList() {
     history.push("/adminItem");
   };
 
+  //table sort state
+  const [orderDirection, setOrderDirection] = useState('asc');
+  const [valueToOrderBy, setValueToOrderBy] = useState('status'); 
+
+  const handleRequestSort = (event, property) => {
+    const isAscending = (valueToOrderBy === property && orderDirection === 'asc')
+    setValueToOrderBy(property)
+    setOrderDirection(isAscending ? 'desc' : 'asc')
+  }
+
+  const createSortHandler = (property) => (event) => {
+    handleRequestSort(event, property)
+  }
+
+  const descendingComparator = (a, b, orderBy) => {
+    if(b[orderBy] < a[orderBy]){
+      return -1
+    }
+    else if(b[orderBy] > a[orderBy]){
+      return 1
+    }
+    else{
+      return 0
+    }
+  }
+
+  const getComparator = (order, orderBy) => {
+    return order === 'desc'
+      ? (a,b) => descendingComparator(a, b, orderBy)
+      : (a,b) => -descendingComparator(a, b, orderBy)
+  }
+
+  const sortedRowInformation = (rowArray, comparator) => {
+    const stabilizeRowArray = rowArray.map((el,  index) => [el, index])
+    stabilizeRowArray.sort((a,b) => {
+      const order = comparator(a[0], b[0])
+      if(order !==0) return order
+      return a[1] - b[1]
+    })
+    return stabilizeRowArray.map((el) => el[0])
+  }
+
 
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell sx={{ fontWeight: "bolder" }}>First Name</TableCell>
-            <TableCell sx={{ fontWeight: "bolder" }}>Last Name</TableCell>
-            <TableCell sx={{ fontWeight: "bolder" }}>City</TableCell>
-            <TableCell sx={{ fontWeight: "bolder" }}>State</TableCell>
-            <TableCell sx={{ fontWeight: "bolder" }}>User Type</TableCell>
-            <TableCell sx={{ fontWeight: "bolder" }}>Approved</TableCell>
-            <TableCell></TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {/* short circuit to prevent race condition, only executes .map when array is not empty */}
-          {adminUsers.length > 0 &&
-            adminUsers?.map((user) => (
+    <>
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell key="first_name" sx={{ fontWeight: "bolder" }}>
+                <TableSortLabel
+                  active={valueToOrderBy === "first_name"}
+                  direction={valueToOrderBy === "first_name" ? orderDirection: "asc"}
+                  onClick={createSortHandler("first_name")}
+                >Name</TableSortLabel>
+              </TableCell>
+              <TableCell key="city" sx={{ fontWeight: "bolder" }}>
+                <TableSortLabel
+                  active={valueToOrderBy === "city"}
+                  direction={valueToOrderBy === "city" ? orderDirection: "asc"}
+                  onClick={createSortHandler("city")}
+                >City</TableSortLabel>
+              </TableCell>
+              <TableCell key="state" sx={{ fontWeight: "bolder" }}>
+                <TableSortLabel
+                  active={valueToOrderBy === "state"}
+                  direction={valueToOrderBy === "state" ? orderDirection: "asc"}
+                  onClick={createSortHandler("state")}
+                >State</TableSortLabel>
+              </TableCell>
+              <TableCell key="user_type" sx={{ fontWeight: "bolder" }}>
+                <TableSortLabel
+                  active={valueToOrderBy === "user_type"}
+                  direction={valueToOrderBy === "user_type" ? orderDirection: "asc"}
+                  onClick={createSortHandler("user_type")}
+                >User Type</TableSortLabel>
+              </TableCell>
+              <TableCell key="approved" sx={{ fontWeight: "bolder" }}>
+                <TableSortLabel
+                    active={valueToOrderBy === "approved"}
+                    direction={valueToOrderBy === "approved" ? orderDirection: "asc"}
+                    onClick={createSortHandler("approved")}
+                >Approved</TableSortLabel>
+              </TableCell>
+              <TableCell></TableCell>
+            </TableRow>
+          </TableHead>
+          {
+            adminUsers.length > 0 &&
+            sortedRowInformation(adminUsers, getComparator(orderDirection, valueToOrderBy)).map((user, index) => (
               <TableRow
-                key={user.id}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell component="th" scope="row">
-                  {user.first_name}
-                </TableCell>
-                <TableCell>{user.last_name}</TableCell>
-                <TableCell>{user.city}</TableCell>
-                <TableCell>{user.state}</TableCell>
-                <TableCell>{user.user_type}</TableCell>
-                <TableCell>{user.approved.toString()}</TableCell>
-                <TableCell>
-                  <Button
-                    variant="contained"
-                    color="info"
-                    sx={{ fontFamily: "Lato, sansSerif" }}
-                    onClick={() => handleDetails(user)}
-                  >
-                    Details
-                  </Button>
-                </TableCell>
-              </TableRow>
-            ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+              key={user.id}
+              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+            >
+              <TableCell component="th" scope="row">
+                {user.first_name} {user.last_name}
+              </TableCell>
+              <TableCell>{user.city}</TableCell>
+              <TableCell>{user.state}</TableCell>
+              <TableCell>{user.user_type}</TableCell>
+              <TableCell>{user.approved.toString()}</TableCell>
+              <TableCell>
+                <Button
+                  disableElevation
+                  variant="contained"
+                  color="info"
+                  sx={{ fontFamily: "Lato, sansSerif" }}
+                  onClick={() => handleDetails(user)}
+                >
+                  Details
+                </Button>
+              </TableCell>
+            </TableRow>
+            ))
+          }
+          
+        </Table>
+      </TableContainer>
+    </>
   );
 }
 

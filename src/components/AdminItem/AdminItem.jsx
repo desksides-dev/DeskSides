@@ -103,6 +103,7 @@ function AdminItem() {
         <Box width="10vw">
           {/* button to return to admin list */}
           <Button
+            disableElevation
             color="info"
             variant="contained"
             sx={{ fontFamily: "Lato, sansSerif", ml: "1em", mt: "1em" }}
@@ -326,6 +327,7 @@ function AdminItem() {
                   Approve User?
                 </Typography>
                 <Button
+                  disableElevation
                   variant="contained"
                   color="secondary"
                   sx={{ fontFamily: "Lato, sansSerif" }}
@@ -346,6 +348,7 @@ function AdminItem() {
                   Remove Approval?
                 </Typography>
                 <Button
+                  disableElevation
                   variant="contained"
                   color="primary"
                   sx={{ fontFamily: "Lato, sansSerif" }}
@@ -393,6 +396,7 @@ function AdminItem() {
                   Hold ctrl or command to select multiple options
                 </FormHelperText>
                 <Button
+                  disableElevation
                   variant="contained"
                   color="secondary"
                   sx={{ fontFamily: "Lato, sansSerif" }}
@@ -429,6 +433,7 @@ function AdminItem() {
                   Hold ctrl or command to select multiple options
                 </FormHelperText>
                 <Button
+                  disableElevation
                   variant="contained"
                   color="secondary"
                   sx={{ fontFamily: "Lato, sansSerif" }}
@@ -469,6 +474,7 @@ function AdminItem() {
               Hold ctrl or command to select multiple options
             </FormHelperText>
             <Button
+              disableElevation
               variant="contained"
               color="primary"
               sx={{ fontFamily: "Lato, sansSerif" }}

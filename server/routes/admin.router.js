@@ -37,15 +37,19 @@ router.put('/:approvalStatus/:id', (req, res) => {
             WHERE "id" = $2
             ;`
 
-    pool.query(queryText, [approvalStatus, id])
-        .then((result) => {
-            res.send(result.rows);
-        })
-        .catch((err) => {
-            res.sendStatus(500);
-        });
+    if (req.user.user_type === 'admin') {
 
-    console.log('');
+        pool.query(queryText, [approvalStatus, id])
+            .then((result) => {
+                res.send(result.rows);
+            })
+            .catch((err) => {
+                res.sendStatus(500);
+            });
+
+    } else {
+        console.log('UNAUTHORIZED!')
+    }
 
 });
 
@@ -61,15 +65,19 @@ router.post('/:journoId/:brandId', (req, res) => {
             VALUES ($1, $2)
             ;`
 
-    pool.query(queryText, [journoId, brandId])
-        .then((result) => {
-            res.sendStatus(201);
-        })
-        .catch((err) => {
-            res.sendStatus(500);
-        });
+    if (req.user.user_type === 'admin') {
 
-    console.log('');
+        pool.query(queryText, [journoId, brandId])
+            .then((result) => {
+                res.sendStatus(201);
+            })
+            .catch((err) => {
+                res.sendStatus(500);
+            });
+
+    } else {
+        console.log('UNAUTHORIZED!')
+    }
 
 });
 
@@ -111,15 +119,19 @@ router.delete('/:journoId/:brandId', (req, res) => {
             OR "journalists_id" = $2 AND "brands_id" = $1
             ;`
 
-    pool.query(queryText, [journoId, brandId])
-        .then((result) => {
-            res.sendStatus(204);
-        })
-        .catch((err) => {
-            res.sendStatus(500);
-        });
+    if (req.user.user_type === 'admin') {
 
-    console.log('');
+        pool.query(queryText, [journoId, brandId])
+            .then((result) => {
+                res.sendStatus(204);
+            })
+            .catch((err) => {
+                res.sendStatus(500);
+            });
+
+    } else {
+        console.log('UNAUTHORIZED!')
+    }
 
 });
 
