@@ -36,7 +36,7 @@ function CreateAccount() {
     }; // end registerUser
 
     return (
-        <Container maxWidth="md" sx={{ mt: 10 }}>
+        <Container maxWidth="md" sx={{ mt: 10}}>
             <Typography variant="h3">
                 Create account
             </Typography>
@@ -169,12 +169,12 @@ function CreateAccount() {
                             </Box>
                             <Button
                                 type="submit"
-                                variant="text"
+                                variant="outlined"
                                 disableElevation
                                 color="info"
                                 size="large"
                                 fullWidth={true}
-                                sx={{ textTransform: 'none', fontSize: '1.6em' }}
+                                sx={{ textTransform: 'none', borderRadius: 1, mt: 5, border: '2.2px solid', fontSize: '1.4em'}}
                             >
                                 Submit for approval
                             </Button>
@@ -198,12 +198,12 @@ function CreateAccount() {
                                 </Box>
                                 <Button
                                     type="submit"
-                                    variant="text"
+                                    variant="outlined"
                                     disableElevation
                                     color="info"
                                     size="large"
                                     fullWidth={true}
-                                    sx={{ textTransform: 'none', fontSize: '1.6em' }}
+                                    sx={{ textTransform: 'none', borderRadius: 1, mt: 5, border: '2.2px solid', fontSize: '1.4em'}}
                                 >
                                     Submit for approval
                                 </Button>

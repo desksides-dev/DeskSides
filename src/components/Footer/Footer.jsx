@@ -14,7 +14,7 @@ function Footer() {
       direction="row"
       justifyContent="space-between"
       alignItems="center"
-      sx={{ borderTop: "1px #546D1D solid", backgroundColor: "white", pl:5, pr:5, minWidth:1200 }}
+      sx={{ borderTop: "1px #546D1D solid", borderBottom:"1px #546D1D solid", backgroundColor: "white", pl:5, pr:5, minWidth:1200, bottom:0, left:0, right:0}}
       fontFamily="Lato, sans-serif"
     >
       <Box>
