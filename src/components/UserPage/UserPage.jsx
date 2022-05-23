@@ -27,7 +27,7 @@ function UserPage() {
   {user.user_type === 'journalist' && history.push('/info')}
 
   //brands get redirected to the assessment until they have at least submitted a brand name
-  {user.brand_name === null && history.push('/assessment')}
+  {(user.brand_name === null && user.user_type === 'brand') && history.push('/assessment')}
   
   return (
     <>
