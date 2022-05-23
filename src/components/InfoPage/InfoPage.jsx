@@ -1,7 +1,10 @@
 import React from 'react';
-import { Box, Typography, Stack, Button } from '@mui/material'
+import { Box, Typography, Stack, Button } from '@mui/material';
+import {useHistory} from 'react-router-dom';
 
 function InfoPage() {
+  const history = useHistory();
+
   return (
     <>
       <Box sx={{
