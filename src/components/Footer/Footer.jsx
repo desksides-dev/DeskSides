@@ -70,7 +70,6 @@ function Footer() {
           disableElevation
           fontFamily="inherit"
           variant="contained"
-          disableElevation
           sx={{
             backgroundColor: "#FFAA45",
             borderRadius: "2em",
