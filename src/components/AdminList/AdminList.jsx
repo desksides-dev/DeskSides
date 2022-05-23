@@ -26,12 +26,10 @@ function AdminList() {
   }, []);
 
   const handleDetails = (user) => {
-    console.log("handleDetails clicked! user data =", user);
     dispatch({ type: "SET_ADMIN_ITEM", payload: user });
-    history.push('/adminItem');
+    history.push("/adminItem");
   };
 
-  console.log("ADMIN - Get all users: ", adminUsers);
 
   return (
     <TableContainer component={Paper}>
@@ -62,7 +60,7 @@ function AdminList() {
                 <TableCell>{user.city}</TableCell>
                 <TableCell>{user.state}</TableCell>
                 <TableCell>{user.user_type}</TableCell>
-                <TableCell>{(user.approved).toString()}</TableCell>
+                <TableCell>{user.approved.toString()}</TableCell>
                 <TableCell>
                   <Button
                     variant="contained"
