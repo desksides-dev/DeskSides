@@ -65,7 +65,7 @@ function Login() {
             color="info"
             size="large"
             fullWidth={true}
-            sx={{ textTransform: 'none', borderRadius: 1, mt: 5, border: '2.2px solid', fontSize: '1.4em'}}
+            sx={{ textTransform: 'none', borderRadius: 1, mt: 5, border: '2.2px solid', fontSize: '1.4em', fontFamily:'Lato'}}
           >
             Sign in
           </Button>
@@ -75,7 +75,7 @@ function Login() {
         <Link
           color="#546D1D"
           onClick={() => { history.push('/registration') }}
-          sx={{ pl: 1.5, cursor: 'pointer', color: '#546D1D' }}
+          sx={{ pl: 1.5, cursor: 'pointer', color: '#546D1D', }}
         >
           Sign up
         </Link>

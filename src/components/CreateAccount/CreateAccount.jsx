@@ -203,7 +203,7 @@ function CreateAccount() {
                                     color="info"
                                     size="large"
                                     fullWidth={true}
-                                    sx={{ textTransform: 'none', borderRadius: 1, mt: 5, border: '2.2px solid', fontSize: '1.4em'}}
+                                    sx={{ textTransform: 'none', borderRadius: 1, mt: 5, border: '2.2px solid', fontSize: '1.4em', fontFamily:'Lato'}}
                                 >
                                     Submit for approval
                                 </Button>
