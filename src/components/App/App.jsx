@@ -65,6 +65,9 @@ function App() {
       warning: {
         main: '#FFAA45'
       },
+      success: {
+        main: '#DACCFF'
+      },
     },
     typography: {
       h1: {
