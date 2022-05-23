@@ -30,7 +30,8 @@ import AdminList from "../AdminList/AdminList";
 import AdminItem from "../AdminItem/AdminItem";
 import JournalistAssessment from '../FormJournalist/FormJournalist';
 import BrandAssessment from '../FormBrand/FormBrand';
-import ThankYou from '../ThankYouPage/ThankYou';
+import ThankYouJournalist from '../ThankYouPage/ThankYouJournalist';
+import ThankYouBrand from "../ThankYouPage/ThankYouBrand";
 import Login from '../Login/Login';
 import CreateAccount from '../CreateAccount/CreateAccount';
 import JournalistsList from '../JournalistsList/JournalistsList';
@@ -234,7 +235,14 @@ function App() {
               exact
               path="/thankyou"
             >
-              <ThankYou />
+              { (user.user_type === "brand") ?
+                // If the user is selected "brand" when registering, 
+                // show the Brand Assessment: 
+                <ThankYouBrand/>
+                :
+                // Otherwise show the Journalist Assessment:
+                <ThankYouJournalist />
+              }
             </ProtectedRoute>
 
             <Route exact path="/comingsoon">
