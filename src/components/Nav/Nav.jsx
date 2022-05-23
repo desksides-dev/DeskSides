@@ -1,56 +1,53 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import "./Nav.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 //MUI imports
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import Stack from "@mui/material/Stack";
+import { AppBar, Box, Toolbar, Typography, Button, Stack, IconButton } from '@mui/material';
+import { AccountCircle, Logout, AccountBox, Login } from '@mui/icons-material';
 
 function Nav() {
   const user = useSelector((store) => store.user);
   const history = useHistory();
+  const dispatch = useDispatch();
 
   return (
     <Stack
       direction="row"
-      spacing={12}
-      justifyContent="center"
+      justifyContent="space-between"
       alignItems="center"
-      sx={{ border: "1px #546D1D solid", backgroundColor: "white" }}
+      sx={{ borderBottom: "1px #546D1D solid", backgroundColor: "white", pl:5, pr:5, minWidth:800 }}
       fontFamily="Lato, sans-serif"
     >
-      <Toolbar>
+
 
         {/* ABOUT button */}
-        <Button
-          onClick={() => history.push("/about")}
-          sx={{
-            fontFamily: "Lato, sans-serif",
-            color: "#546D1D",
-            fontSize: "1em",
-          }}
-        >
-          About
-        </Button>
+        <Box>
+          <Button
+            onClick={() => history.push("/about")}
+            sx={{
+              fontFamily: "Lato, sans-serif",
+              color: "#546D1D",
+              fontSize: "1em",
+              mr:5
+            }}
+          >
+            About
+          </Button>
 
-        {/* HOW IT WORKS button */}
-        <Button
-          onClick={() => history.push("/info")}
-          sx={{
-            fontFamily: "Lato, sans-serif",
-            color: "#546D1D",
-            ml: "8em",
-            fontSize: "1em"
-          }}
-        >
-          How It Works
-        </Button>
+          {/* HOW IT WORKS button */}
+          <Button
+            onClick={() => history.push("/info")}
+            sx={{
+              fontFamily: "Lato, sans-serif",
+              color: "#546D1D",
+              fontSize: "1em"
+            }}
+          >
+            How It Works
+          </Button>
+        </Box>
 
         {/* LOGO / HOME LINK */}
         <Link to="/">
@@ -58,8 +55,7 @@ function Nav() {
             component="img"
             sx={{
               height: "5em",
-              width: "11em",
-              ml: "10em"
+              width: "12em",
             }}
             alt="DeskSides Logo"
             src="/images/desksides-logo.svg"
@@ -69,60 +65,42 @@ function Nav() {
 
         {/* DISPLAYS WHEN USER NOT LOGGED IN - REGISTRATION AND LOGIN BUTTONS */}
         {!user.id && (
-          <>
+          <Box>
             <Button
               onClick={() => history.push("/registration")}
-              sx={{
-                fontFamily: "Lato, sans-serif",
-                color: "#546D1D",
-                ml: "12em",
-                fontSize: "1em",
-              }}
+              sx={{ color: "#546D1D", mr:4}}
             >
-              Get Started
+              <Typography>
+                Get Started
+              </Typography>
             </Button>
-            <Button
-              onClick={() => history.push("/login")}
-              sx={{
-                fontFamily: "Lato, sans-serif",
-                color: "#546D1D",
-                ml: "8em",
-                fontSize: "1em",
-              }}
-            >
-              Sign In
+            <Button onClick={() => history.push("/login")} sx={{ color: "#546D1D", }}>
+              <Login/>
+              <Typography sx={{ml:1}}>
+                Sign In
+              </Typography>
             </Button>
-          </>
+          </Box>
         )}
 
         {/* DISPLAYS WHEN USER LOGGED IN - USERNAME AND USER PROFILE */}
         {user.id && (
-          <>
-            <Button
-              onClick={() => history.push("/user")}
-              sx={{
-                fontFamily: "Lato, sans-serif",
-                color: "#546D1D",
-                ml: "24em",
-                fontSize: "1em"
-              }}
-            >
-              {user.first_name}
+          <Box>
+            <Button onClick={() => history.push("/user")} sx={{ color: '#546D1D' }}>
+              <AccountCircle />
+              <Typography sx={{ ml: 1, mr: 3, textTransform: 'uppercase' }}>
+                {user.first_name}
+              </Typography>
+            </Button>
+            <Button sx={{ color: '#546D1D' }} onClick={() => dispatch({ type: 'LOGOUT' })}>
+              <Logout />
+              <Typography sx={{ ml: 1 }}>
+                LOGOUT
+              </Typography>
             </Button>
 
-            <Button
-              onClick={() => history.push("/user")}
-              sx={{
-                fontFamily: "Lato, sans-serif",
-                color: "#546D1D",
-                fontSize: "1em"
-              }}
-            >
-              <AccountCircleIcon />
-            </Button>
-          </>
+          </Box>
         )}
-      </Toolbar>
     </Stack>
   );
 }
