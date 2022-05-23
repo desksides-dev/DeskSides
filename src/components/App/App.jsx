@@ -152,13 +152,14 @@ function App() {
               } 
             </ProtectedRoute>
 
-            <ProtectedRoute
+            <Route
               // logged in shows InfoPage else shows Login
               exact
               path="/info"
             >
               <InfoPage />
-            </ProtectedRoute>
+            </Route>
+            
             <ProtectedRoute exact path = "/brand-journalists">
               <JournalistsList/>
             </ProtectedRoute>
@@ -230,8 +231,8 @@ function App() {
               <AdminItem />
             </ProtectedRoute>
 
-              // logged in shows Thank You Page
-            <ProtectedRoute  
+            
+            <Route  
               exact
               path="/thankyou"
             >
@@ -243,7 +244,7 @@ function App() {
                 // Otherwise show the Journalist Assessment:
                 <ThankYouJournalist />
               }
-            </ProtectedRoute>
+            </Route>
 
             <Route exact path="/comingsoon">
               <ComingSoon />
