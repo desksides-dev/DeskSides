@@ -9,6 +9,7 @@ const passport = require('./strategies/user.strategy');
 
 // Route includes
 const userRouter = require('./routes/user.router');
+const adminRouter = require('./routes/admin.router')
 const brandJournalistsRouter = require('./routes/brandJournalists.router');
 const formRouter = require('./routes/form.router');
 
@@ -25,6 +26,7 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
+app.use('/api/admin', adminRouter);
 app.use('/api/brand-journalists', brandJournalistsRouter);
 app.use('/api/form', formRouter);
 

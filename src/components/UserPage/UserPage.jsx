@@ -20,7 +20,9 @@ function UserPage() {
     },
   }));
 
-
+  //if user is admin, redirects to admin view
+  {user.user_type === 'admin' && history.push('/admin')}
+  
   return (
     <>
       <Box sx={{
