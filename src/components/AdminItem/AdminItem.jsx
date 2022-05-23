@@ -87,6 +87,7 @@ function AdminItem() {
   };
 
   const handleSubmit = () => {
+    console.log('!!!!!!!!!! submit matches clicked!, adminItem=', adminItem, 'state=', state);
     dispatch({ type: "POST_MATCHES", payload: adminItem, state });
   };
 
@@ -100,6 +101,7 @@ function AdminItem() {
     dispatch({ type: "DELETE_MATCHES", payload: adminItem, state });
   };
 
+  console.log('!!!!!!adminMatches!!!!!!!', adminMatches);
   return (
     <div>
       <Stack direction="row" spacing={0}>

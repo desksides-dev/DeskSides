@@ -12,71 +12,72 @@ function* getAdminUsers() {
     }
 }
 
-function* updateApprovalStatus(action){    
+function* updateApprovalStatus(action) {
     try {
         yield axios.put(`api/admin/${action.approvalStatus}/${action.payload}`)
-        yield put({ type: 'GET_ADMIN_USERS'})
+        yield put({ type: 'GET_ADMIN_USERS' })
     } catch (err) {
-        console.log(err);    
+        console.log(err);
     }
 }
 
-function* postMatches(action){
+// POST user to user matches to database
+function* postMatches(action) {
     const matches = action.state.matches;
     const id = action.payload.id
     console.log('%%%% in postMatches saga. matches =', matches);
 
-    if (action.payload.user_type === 'journalist'){
+    if (action.payload.user_type === 'journalist') {
         try {
-            for(const matchId of matches){
+            for (const matchId of matches) {
                 yield axios.post(`/api/admin/${id}/${matchId}`)
             }
             yield put({ type: 'GET_ADMIN_MATCHES', payload: action.payload });
 
         } catch (error) {
-            console.log(error);    
+            console.log(error);
         }
     }
-    else{
+    else {
         try {
-            for(const matchId of matches){
+            for (const matchId of matches) {
                 yield axios.post(`/api/admin/${matchId}/${id}`)
             }
             yield put({ type: 'GET_ADMIN_MATCHES', payload: action.payload });
 
         } catch (error) {
-            console.log(error);    
+            console.log(error);
         }
     }
 }
 
-function* deleteMatches(action){
+//DELETE matches from database
+function* deleteMatches(action) {
     const matches = action.state.toDelete;
     const id = action.payload.id
 
     console.log('^^^^^^^^^^^^^^delete Matches. matches =', matches, 'id =', id);
-    
+
     try {
-        for(const matchId of matches){
+        for (const matchId of matches) {
             yield axios.delete(`/api/admin/${id}/${matchId}`)
         }
         yield put({ type: 'GET_ADMIN_MATCHES', payload: action.payload });
     } catch (error) {
-        console.log(error);    
+        console.log(error);
     }
 }
 
-function* getAdminMatches(action){
-    
+function* getAdminMatches(action) {
+
     const id = action.payload.id;
-    let userType = 'journalist'; 
-    if (action.payload.user_type === 'journalist'){ 
-        userType = 'brand'
-    }
-    console.log('getAdminMatches id =', action.payload.id, 'userType =', userType);
+    let userMatchType = 'journalist';
+    if (action.payload.user_type === 'journalist') {
+        userMatchType = 'brand'
+    } else if (action.payload.user_type === 'brand') { userMatchType = 'journalist' }
     try {
-        const adminMatches = yield axios.get(`/api/admin/matches/${id}/${userType}`)
-        console.log('@@@@@@ get all matches:', adminMatches.data);
+        const adminMatches = yield axios.get(`/api/admin/matches/${id}/${userMatchType}`)
+        console.log('@@@@@@ get all matches, id:', action.payload.id, 'userMatchType:', userMatchType, 'adminMatches.data:', adminMatches.data);
         yield put({ type: 'SET_ADMIN_MATCHES', payload: adminMatches.data });
     } catch (err) {
         console.log('getAdminMatches error', err);
