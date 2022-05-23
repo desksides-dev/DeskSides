@@ -30,7 +30,8 @@ import AdminList from "../AdminList/AdminList";
 import AdminItem from "../AdminItem/AdminItem";
 import JournalistAssessment from '../FormJournalist/FormJournalist';
 import BrandAssessment from '../FormBrand/FormBrand';
-import ThankYou from '../ThankYouPage/ThankYou';
+import ThankYouJournalist from '../ThankYouPage/ThankYouJournalist';
+import ThankYouBrand from "../ThankYouPage/ThankYouBrand";
 import Login from '../Login/Login';
 import CreateAccount from '../CreateAccount/CreateAccount';
 import JournalistsList from '../JournalistsList/JournalistsList';
@@ -152,13 +153,14 @@ function App() {
               } 
             </ProtectedRoute>
 
-            <ProtectedRoute
+            <Route
               // logged in shows InfoPage else shows Login
               exact
               path="/info"
             >
               <InfoPage />
-            </ProtectedRoute>
+            </Route>
+            
             <ProtectedRoute exact path = "/brand-journalists">
               <JournalistsList/>
             </ProtectedRoute>
@@ -230,13 +232,20 @@ function App() {
               <AdminItem />
             </ProtectedRoute>
 
-              // logged in shows Thank You Page
-            <ProtectedRoute  
+            
+            <Route  
               exact
               path="/thankyou"
             >
-              <ThankYou />
-            </ProtectedRoute>
+              { (user.user_type === "brand") ?
+                // If the user is selected "brand" when registering, 
+                // show the Brand Assessment: 
+                <ThankYouBrand/>
+                :
+                // Otherwise show the Journalist Assessment:
+                <ThankYouJournalist />
+              }
+            </Route>
 
             <Route exact path="/comingsoon">
               <ComingSoon />

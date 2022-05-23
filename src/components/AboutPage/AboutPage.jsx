@@ -140,6 +140,7 @@ function AboutPage() {
       <Button
         color="info"
         variant="contained"
+        disableElevation
         onClick={() => { history.push('/registration') }}
         sx={{
           borderRadius: "2em",

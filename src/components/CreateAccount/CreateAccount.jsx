@@ -32,6 +32,15 @@ function CreateAccount() {
             type: 'REGISTER',
             payload: newUser
         });
+
+        if (newUser.user_type == "brand") {
+            history.push('/thankyou')
+        } else if (newUser.user_type == "journalist") {
+            history.push('/assessment')
+        } else {
+            history.push('/info')
+        }
+
         setNewUser(userObj);
     }; // end registerUser
 
