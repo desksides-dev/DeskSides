@@ -4,7 +4,7 @@ import { Box, Button, Typography} from '@mui/material'
 
 
 
-function ThankYou(props) {
+function ThankYouBrand(props) {
 
   return (
     <Box sx={{
@@ -29,7 +29,7 @@ function ThankYou(props) {
             color="#F6F3E3"
             fontSize={32}
             paragraph={true}>
-            Thank you for completing your assessment.
+            Thank you for registering.
         </Typography>
         <br />
         <Typography
@@ -44,6 +44,6 @@ function ThankYou(props) {
   );
 }
 
-export default ThankYou;
+export default ThankYouBrand;
 
  

@@ -76,7 +76,7 @@ function BrandAssessment() {
     const handleSubmit = () => {
         // console.log('state from the brand assessment: ', state);
         dispatch({ type: 'B_ASSESS', payload: state });
-        history.push('/thankyou');
+        history.push('/user');
     }
 
     return (<>

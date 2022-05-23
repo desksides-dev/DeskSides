@@ -43,7 +43,9 @@ function JournalistItem({ journalist }) {
             <Grid item>
                 <CardActions>
                     <Stack justifyContent="space-around" >
-                        <IconButton sx={{padding:2}}>
+                        <IconButton 
+                        sx={{padding:2}}
+                        onClick={() => {window.open(`${journalist.calendar_link}`)}}>
                             <Box
                                 component="img"
                                 sx={{ width: "1.7em" }}
@@ -51,7 +53,8 @@ function JournalistItem({ journalist }) {
                                 src="/images/calendar-icon.svg"
                             />
                         </IconButton>
-                        <IconButton sx={{padding:2}}>
+                        <IconButton sx={{padding:2}}
+                        onClick={() => {window.open(`mailto:${journalist.username}?cc=blish@desksides.com`)}}>
                         <Box
                                 component="img"
                                 sx={{ width: "1.7em" }}
@@ -59,10 +62,11 @@ function JournalistItem({ journalist }) {
                                 src="/images/message-icon.svg"
                             />
                         </IconButton>
-                        <IconButton sx={{padding:2}}>
+                        <IconButton sx={{padding:2}}
+                        onClick={() => {window.open(`${journalist.fileshare_link}`)}}>
                         <Box
                                 component="img"
-                                sx={{ width: "1.7em" }}
+                                sx={{ width: "1.7em", height: "1.7em" }}
                                 alt="folder icon"
                                 src="/images/folder-icon.svg"
                             />

@@ -22,6 +22,12 @@ function UserPage() {
 
   //if user is admin, redirects to admin view
   {user.user_type === 'admin' && history.push('/admin')}
+
+  //journalists only get to see the info page
+  {user.user_type === 'journalist' && history.push('/info')}
+
+  //brands get redirected to the assessment until they have at least submitted a brand name
+  {user.brand_name === null && history.push('/assessment')}
   
   return (
     <>
