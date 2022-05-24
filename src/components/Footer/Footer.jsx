@@ -12,9 +12,14 @@ function Footer() {
   return (
     <Stack
       direction="row"
-      justifyContent="space-between"
       alignItems="center"
-      sx={{ borderTop: "1px #546D1D solid", borderBottom:"1px #546D1D solid", backgroundColor: "white", pl:5, pr:5, minWidth:1200, bottom:0, left:0, right:0}}
+      justifyContent="center"
+      width="100vw"
+      sx={{ 
+        borderTop: "1px #546D1D solid", 
+        borderBottom:"1px #546D1D solid", 
+        backgroundColor: "white", 
+        }}
       fontFamily="Lato, sans-serif"
     >
       <Box>
@@ -34,6 +39,14 @@ function Footer() {
           TERMS & CONDITIONS
         </Link>
       </Box>
+
+      <Box
+      alignSelf="center"
+      sx={{
+        p: "1vmax",
+        mx: "10vw"
+      }}
+      >
       <Link href="/">
         <Box
           component="img"
@@ -45,6 +58,7 @@ function Footer() {
           src="/images/desksides-logo.svg"
         />
       </Link>
+      </Box>
 
       <Box>
         {/* this link needs official facebook address */}
