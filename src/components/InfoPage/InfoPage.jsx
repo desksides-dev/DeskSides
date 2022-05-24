@@ -13,6 +13,7 @@ function InfoPage() {
         height: "60vh",
         textDecoration: "underline",
         border: "1px #546D1D solid",
+        borderTop: "0px"
       }}>
         <br />
 
