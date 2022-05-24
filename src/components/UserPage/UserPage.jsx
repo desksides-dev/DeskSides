@@ -1,12 +1,13 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import { Box, Typography, IconButton, Tooltip, tooltipClasses } from '@mui/material';
-import { Light } from '@mui/icons-material';
+
 
 function UserPage() {
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const user = useSelector((store) => store.user);
 
@@ -19,6 +20,11 @@ function UserPage() {
       fontSize: 11,
     },
   }));
+
+  const handleClick = () => {
+    dispatch({type: 'SET_EDIT_USER', payload: user})
+    history.push('/')
+  }
 
   //if user is admin, redirects to admin view
   {user.user_type === 'admin' && history.push('/admin')}
@@ -129,7 +135,7 @@ function UserPage() {
           <IconButton
             size="small"
             sx={{ p: "2vmax" }}
-            onClick={() => {history.push('/comingsoon')}}>
+            onClick={handleClick}>
             <Box
               component="img"
               sx={{ width: "7em", height: "7em", m: "1vmax" }}

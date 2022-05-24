@@ -1,38 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import {useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Box, Button, MenuItem, Slider, Typography, InputLabel, FormHelperText, TextField, Select} from '@mui/material'
 
-function BrandAssessment() {
+function UserEdit() {
+    
+    const user = useSelector((store) => store.edit);
     const markets = useSelector((store) => store.markets);
     const pubs = useSelector((store) => store.pubs);
-
-    // stores user inputs for markets & publications until submit
-    const [state, setState] = useState({
-        markets: [],
-        pubs: [],
-        brand_name: '',
-        stories_per_month: 0,
-        pub_medium: '',
-        affiliate_link: '',
-        time_of_day_pref: '',
-        calendar_link: '',
-        profile_image_link: '',
-        fileshare_link: '',
-        payment_link: '',
-        brand_assets_link: '',
-    })
 
     const dispatch = useDispatch();
     const history = useHistory();
 
-    // gets publications & markets from the database for multiselect fields
-    useEffect(() => {
-        dispatch({ type: 'GET_PUBS' });
-        dispatch({ type: 'GET_MARKETS' });
-    }, [])
+    const handleChange = (event) => {
+        dispatch({ 
+            type: 'EDIT_ONCHANGE', 
+            payload: { property: event.target.name, value: event.target.value }
+        });
+    }
 
-    // when the user adds multiple publications, function stores value in state.
     const handlePubsChange = (event) => {
         const { options } = event.target;
         const inputs = [];
@@ -41,14 +27,13 @@ function BrandAssessment() {
                 inputs.push(options[i].value);
             }
         }
-        setState({
-            ...state,
-            pubs: inputs
+        dispatch({ 
+            type: 'EDIT_ONCHANGE', 
+            payload: { property: pubs, value: inputs }
         });
     };
 
-    // when the user adds multiple markets, function stores value in state.
-    const handleMarketChange = (event) => {
+    const handleMarketsChange = (event) => {
         const { options } = event.target;
         const inputs = [];
         for (let i = 0, l = options.length; i < l; i += 1) {
@@ -56,56 +41,18 @@ function BrandAssessment() {
                 inputs.push(options[i].value);
             }
         }
-        setState({
-            ...state,
-            markets: inputs
+        dispatch({ 
+            type: 'EDIT_ONCHANGE', 
+            payload: { property: markets, value: inputs }
         });
     };
 
-    const handleChange = (event) => {
-        let value = event.target.value
-        setState({
-            ...state,
-            [event.target.name]: value
-        })
-    }
-
-    // sends state on dispatch pushes user to the thank you page
     const handleSubmit = () => {
-        // console.log('state from the brand assessment: ', state);
-        dispatch({ type: 'B_ASSESS', payload: state });
-        history.push('/user');
+
     }
 
-    return (<>
-        <Box sx={{
-            backgroundColor: "#232323",
-            align: "center",
-            justifyContent: "left",
-            textAlign: "left",
-            height: "60vh",
-            pl: "10vw",
-            pr: "45vw",
-            py: "10vh"
-        }} >
-
-            <Typography
-                variant="h1"
-                color="primary.light">
-                Your Brand Assessment
-            </Typography>
-
-            <Typography
-                variant="subtitle2"
-                color="background.default"
-                fontSize={32}
-                paragraph={true}>
-                Tell us about your business, so we can find the
-                right folks to tell everyone else about it.
-            </Typography>
-        </Box>
-
-        <Box sx={{
+  return (
+  <Box sx={{
             align: "center",
             justifyContent: "left",
             textAlign: "left",
@@ -126,7 +73,7 @@ function BrandAssessment() {
                         color="warning"
                         variant="filled"
                         name="brand_name"
-                        value={state.brand_name}
+                        value={user.brand_name}
                         onChange={handleChange}
                         InputLabelProps={{
                             shrink: true,
@@ -147,8 +94,8 @@ function BrandAssessment() {
                         color="warning"
                         label="select-multiple-markets"
                         variant="filled"
-                        value={state.markets}
-                        onChange={handleMarketChange}
+                        value={user.markets}
+                        onChange={handleMarketsChange}
                         helperText="Hold ctrl or command to select multiple"
                         inputProps={{
                             id: 'select-multiple-markets',
@@ -170,7 +117,7 @@ function BrandAssessment() {
 
                     <Select
                         labelId="pub-medium"
-                        value={state.pub_medium}
+                        value={user.pub_medium}
                         name="pub_medium"
                         displayEmpty
                         variant="filled"
@@ -198,7 +145,7 @@ function BrandAssessment() {
                         native
                         variant="filled"
                         color="warning"
-                        value={state.pubs}
+                        value={user.pubs}
                         onChange={handlePubsChange}
                         inputProps={{
                             id: 'select-multiple-pubs',
@@ -218,7 +165,7 @@ function BrandAssessment() {
                         How many press placements per quarter would you consider to be a success?
                     </InputLabel>
                     <Slider
-                        value={state.stories_per_month}
+                        value={user.stories_per_month}
                         onChange={handleChange}
                         name="stories_per_month"
                         valueLabelDisplay="auto"
@@ -239,7 +186,7 @@ function BrandAssessment() {
                         color="warning"
                         variant="filled"
                         name="stories_per_month"
-                        value={state.affiliate_link}
+                        value={user.affiliate_link}
                         onChange={handleChange}
                         InputLabelProps={{
                             shrink: true,
@@ -254,7 +201,7 @@ function BrandAssessment() {
 
                     <Select
                         labelId="pub-medium"
-                        value={state.time_of_day_pref}
+                        value={user.time_of_day_pref}
                         name="time_of_day_pref"
                         label="Medium"
                         displayEmpty
@@ -284,7 +231,7 @@ function BrandAssessment() {
                             color="warning"
                             variant="filled"
                             name="profile_image_link"
-                            value={state.profile_image_link}
+                            value={user.profile_image_link}
                             onChange={handleChange}
                             InputLabelProps={{
                                 shrink: true,
@@ -302,7 +249,7 @@ function BrandAssessment() {
                             color="warning"
                             variant="filled"
                             name="calendar_link"
-                            value={state.calendar_link}
+                            value={user.calendar_link}
                             onChange={handleChange}
                             InputLabelProps={{
                                 shrink: true,
@@ -320,7 +267,7 @@ function BrandAssessment() {
                             color="warning"
                             variant="filled"
                             name="fileshare_link"
-                            value={state.fileshare_link}
+                            value={user.fileshare_link}
                             onChange={handleChange}
                             InputLabelProps={{
                                 shrink: true,
@@ -336,15 +283,12 @@ function BrandAssessment() {
                         color="warning"
                         variant="filled"
                         name="brand_assets_link"
-                        value={state.brand_assets_link}
+                        value={user.brand_assets_link}
                         onChange={handleChange}
                         InputLabelProps={{
                             shrink: true,
                         }}
                     />
-                </Box>
-
-                <Box sx={{ my: "2vmax", justifyContent: "left", textAlign: "left", }}>
 
                     <InputLabel htmlFor='payment_link'>
                         Venmo Username
@@ -354,7 +298,7 @@ function BrandAssessment() {
                         color="warning"
                         variant="filled"
                         name="payment_link"
-                        value={state.payment_link}
+                        value={user.payment_link}
                         onChange={handleChange}
                         InputLabelProps={{
                             shrink: true,
@@ -376,8 +320,7 @@ function BrandAssessment() {
             </form>
 
         </Box>
-    </>);
+  );
 }
 
-
-export default BrandAssessment;
+export default UserEdit;

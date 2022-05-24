@@ -9,6 +9,7 @@ import markets from './markets.reducer';
 import adminMatches from './adminMatches.reducer';
 import adminBrands from './adminBrands.reducer';
 import adminJournos from './adminJournos.reducer';
+import edit from './editUser.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -27,6 +28,7 @@ const rootReducer = combineReducers({
   pubs, // list of publications from database
   markets, // list of markets from database
   adminMatches,
+  edit,
 });
 
 export default rootReducer;

@@ -35,6 +35,7 @@ import Login from '../Login/Login';
 import CreateAccount from '../CreateAccount/CreateAccount';
 import JournalistsList from '../JournalistsList/JournalistsList';
 import ComingSoon from '../ComingSoonPage/ComingSoonPage';
+import UserEdit from "../UserEditPage/UserEditPage";
 
 import './App.css';
 
