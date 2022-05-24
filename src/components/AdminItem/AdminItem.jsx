@@ -252,7 +252,7 @@ function AdminItem() {
                 </ListItem>
                 <ListItem>
                   <ListItemText
-                    primary={`Approved : ${adminItem.approved.toString()}`}
+                    primary={`Approved : ${adminItem.approved?.toString()}`}
                   />
                 </ListItem>
                 <ListItem>
