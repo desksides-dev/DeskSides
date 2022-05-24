@@ -11,6 +11,11 @@ function Nav() {
   const history = useHistory();
   const dispatch = useDispatch();
 
+  const handleLogout = () => {
+    dispatch({ type: 'LOGOUT' })
+    history.push('/home');
+  }
+
   return (
     <Stack
       direction="row"
@@ -91,7 +96,7 @@ function Nav() {
                 {user.first_name}
               </Typography>
             </Button>
-            <Button sx={{ color: '#546D1D' }} onClick={() => dispatch({ type: 'LOGOUT' })}>
+            <Button sx={{ color: '#546D1D' }} onClick={handleLogout}>
               <Logout />
               <Typography sx={{ ml: 1 }}>
                 LOGOUT
