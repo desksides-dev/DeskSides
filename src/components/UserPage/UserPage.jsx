@@ -22,8 +22,8 @@ function UserPage() {
   }));
 
   const handleClick = () => {
-    dispatch({type: 'SET_EDIT_USER', payload: user})
-    history.push('/')
+    dispatch({type: 'SET_EDIT_USER', payload: user});
+    history.push('/user/edit');
   }
 
   //if user is admin, redirects to admin view
