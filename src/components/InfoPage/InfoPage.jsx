@@ -53,7 +53,7 @@ function InfoPage() {
           variant="h2"
           fontSize={32}
           color="#232323">
-          Desksides is a digital connection hub that helps brands get noticed</Typography>
+          Desksides is a digital connection hub that helps brands get noticed.</Typography>
 
       </Box>
 
@@ -104,7 +104,7 @@ function InfoPage() {
             color="#232323">
             Our platform matches qualified
             journalists directly to small businesses
-            at the click of a button</Typography>
+            at the click of a button.</Typography>
           <br />
         </Box>
         <div align="center">
