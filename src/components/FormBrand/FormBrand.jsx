@@ -233,14 +233,14 @@ function BrandAssessment() {
                 </Box>
 
                 <Box sx={{ my: "5vmax", justifyContent: "left", textAlign: "left", }}>
-                    <InputLabel shrink={false} htmlFor='stories-per-month'>
+                    <InputLabel shrink={false} htmlFor='affiliate-link'>
                         Are you currently on an affiliate platform? If so, what is your merchant link?
                     </InputLabel>
                     <TextField
                         labelId="stories-per-month"
                         color="warning"
                         variant="filled"
-                        name="stories_per_month"
+                        name="affiliate_link"
                         value={state.affiliate_link}
                         onChange={handleChange}
                         InputLabelProps={{
