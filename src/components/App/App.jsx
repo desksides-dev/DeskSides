@@ -38,6 +38,7 @@ import JournalistsList from '../JournalistsList/JournalistsList';
 import ComingSoon from '../ComingSoonPage/ComingSoonPage';
 
 import './App.css';
+import PresentationPage from "../PresentationPage/PresentationPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -249,6 +250,10 @@ function App() {
 
             <Route exact path="/comingsoon">
               <ComingSoon />
+            </Route>
+
+            <Route exact path="/presentation">
+              <PresentationPage />
             </Route>
 
             {/* If none of the other routes matched, we will show a 404. */}
