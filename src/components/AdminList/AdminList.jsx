@@ -13,12 +13,13 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import TableSortLabel from "@mui/material/TableSortLabel";
-import { Info } from "@mui/icons-material";
+import { Info, Done } from "@mui/icons-material";
 
 function AdminList() {
   const history = useHistory();
   const dispatch = useDispatch();
   const store = useSelector((store) => store);
+  // remove admin(s) from list
   const adminUsers = store.adminUsers;
 
   useEffect(() => {
@@ -78,38 +79,39 @@ function AdminList() {
   return (
     <>
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650, bgcolor:'#F6F3E3'}} aria-label="simple table">
-          <TableHead sx={{bgcolor:'#F6F3E3'}}>
+        <Table sx={{ minWidth: 650, bgcolor: '#F6F3E3' }} aria-label="simple table">
+          <TableHead sx={{ bgcolor: '#F6F3E3' }}>
             <TableRow>
-              <TableCell key="first_name" sx={{ fontWeight: "bolder" }}>
+              <TableCell key="first_name" sx={{ fontWeight: "bolder", fontSize: '1em', textTransform: 'uppercase' }}>
                 <TableSortLabel
                   active={valueToOrderBy === "first_name"}
                   direction={valueToOrderBy === "first_name" ? orderDirection : "asc"}
                   onClick={createSortHandler("first_name")}
+                  sx={{ ml: 3 }}
                 >Name</TableSortLabel>
               </TableCell>
-              <TableCell key="city" sx={{ fontWeight: "bolder" }}>
+              <TableCell key="city" sx={{ fontWeight: "bolder", fontSize: '1em', textTransform: 'uppercase' }}>
                 <TableSortLabel
                   active={valueToOrderBy === "city"}
                   direction={valueToOrderBy === "city" ? orderDirection : "asc"}
                   onClick={createSortHandler("city")}
                 >City</TableSortLabel>
               </TableCell>
-              <TableCell key="state" sx={{ fontWeight: "bolder" }}>
+              <TableCell key="state" sx={{ fontWeight: "bolder", fontSize: '1em', textTransform: 'uppercase' }}>
                 <TableSortLabel
                   active={valueToOrderBy === "state"}
                   direction={valueToOrderBy === "state" ? orderDirection : "asc"}
                   onClick={createSortHandler("state")}
                 >State</TableSortLabel>
               </TableCell>
-              <TableCell key="user_type" sx={{ fontWeight: "bolder" }}>
+              <TableCell key="user_type" sx={{ fontWeight: "bolder", fontSize: '1em', textTransform: 'uppercase' }}>
                 <TableSortLabel
                   active={valueToOrderBy === "user_type"}
                   direction={valueToOrderBy === "user_type" ? orderDirection : "asc"}
                   onClick={createSortHandler("user_type")}
                 >User Type</TableSortLabel>
               </TableCell>
-              <TableCell key="approved" sx={{ fontWeight: "bolder" }}>
+              <TableCell key="approved" sx={{ fontWeight: "bolder", fontSize: '1em', textTransform: 'uppercase', padding: 0 }}>
                 <TableSortLabel
                   active={valueToOrderBy === "approved"}
                   direction={valueToOrderBy === "approved" ? orderDirection : "asc"}
@@ -122,27 +124,46 @@ function AdminList() {
           {
             adminUsers.length > 0 &&
             sortedRowInformation(adminUsers, getComparator(orderDirection, valueToOrderBy)).map((user, index) => (
+              user.user_type === 'admin' ? <></> :
               <TableRow
                 key={user.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-                <TableCell component="th" scope="row">
-                  {user.first_name} {user.last_name}
+                <TableCell component="th" scope="row" >
+                  <Typography sx={{ ml: 3 }}>
+                    {user.first_name} {user.last_name}
+                  </Typography>
                 </TableCell>
                 <TableCell>{user.city}</TableCell>
                 <TableCell>{user.state}</TableCell>
-                <TableCell>{user.user_type}</TableCell>
-                <TableCell>{user.approved?.toString()}</TableCell>
+                <TableCell sx={{ textTransform: 'capitalize' }}>
+                  {user.user_type === 'brand' ?
+                    <Typography sx={{ color: '#DC4634'}}>
+                      {user.user_type}
+                    </Typography>
+                    :
+                    <Typography sx={{ color: '#352558', }}>
+                      {user.user_type}
+                    </Typography>
+                  }
+                </TableCell>
+                <TableCell>{user.approved ?
+                  <Done />
+                  :
+                  <Typography sx={{}}>
+                    No
+                  </Typography>}
+                </TableCell>
                 <TableCell>
                   <Button
                     disableElevation
-                    variant="outlined"
+                    variant="text"
                     color="info"
                     size="small"
-                    sx={{ fontFamily: "Lato, sansSerif", borderRadius: 1, border: '1.4px solid' }}
+                    sx={{ fontFamily: "Lato, sansSerif" }}
                     onClick={() => handleDetails(user)}
                   >
-                    <Typography sx={{fontWeight:"bold"}}>
+                    <Typography sx={{ fontSize: '1em', fontWeight: 'bold' }}>
                       Details
                     </Typography>
                   </Button>
