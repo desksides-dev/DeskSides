@@ -13,6 +13,7 @@ import Button from "@mui/material/Button";
 import Select from "@mui/material/Select";
 import FormHelperText from "@mui/material/FormHelperText";
 import { Typography } from "@mui/material";
+import { ArrowBack, HowToReg, PersonRemove, RemoveCircleOutline, AddCircleOutline } from "@mui/icons-material";
 
 function AdminItem() {
   const history = useHistory();
@@ -100,20 +101,22 @@ function AdminItem() {
   return (
     <div>
       <Stack direction="row" spacing={0}>
-        <Box width="10vw">
+        <Box width="10vw" sx={{ mt: "3vh" }}>
           {/* button to return to admin list */}
           <Button
+            size="small"
             disableElevation
             color="info"
-            variant="contained"
-            sx={{ fontFamily: "Lato, sansSerif", ml: "1em", mt: "1em" }}
+            variant="outlined"
+            sx={{ fontFamily: "Lato, sansSerif", ml: "2vw", borderRadius: 1, border: '1.4px solid' }}
             onClick={() => handleBack()}
           >
-            Back
+            <ArrowBack />
+            <Typography sx={{ ml: ".5em", fontWeight: "bold" }}>Back</Typography>
           </Button>
         </Box>
         {/* User Information Box, renders content based on user_type */}
-        <Box width="40vw">
+        <Box width="40vw" sx={{ mt: "1vh", ml: "1vw" }}>
           <List
             sx={{
               width: "100%",
@@ -132,10 +135,10 @@ function AdminItem() {
                     sx={{
                       bgcolor: "#FFAA45",
                       color: "#DC4634",
-                      width: 90,
-                      height: 90,
-                      fontSize: 38,
-                      border: 1,
+                      width: 80,
+                      height: 80,
+                      fontSize: 34,
+                      border: 1.1,
                       borderColor: "#DC4634",
                       padding: 3,
                       textTransform: "uppercase",
@@ -232,10 +235,10 @@ function AdminItem() {
                     sx={{
                       bgcolor: "#DACCFF",
                       color: "#352558",
-                      width: 90,
-                      height: 90,
-                      fontSize: 38,
-                      border: 1,
+                      width: 80,
+                      height: 80,
+                      fontSize: 34,
+                      border: 1.1,
                       borderColor: "#352558",
                       padding: 3,
                       textTransform: "uppercase",
@@ -252,7 +255,7 @@ function AdminItem() {
                 </ListItem>
                 <ListItem>
                   <ListItemText
-                    primary={`Approved : ${adminItem.approved.toString()}`}
+                    primary={`Approved : ${adminItem.approved?.toString()}`}
                   />
                 </ListItem>
                 <ListItem>
@@ -318,46 +321,52 @@ function AdminItem() {
         </Box>
 
         {/* Admin Input Box */}
-        <Box width="40vw">
+        <Box width="40vw" sx={{ pl: "3vw" }}>
           {/* displays button to toggle approval status. renders based on current status */}
           <Box>
             {adminItem.approved === false ? (
               <Box sx={{ mt: "1em" }}>
-                <Typography variant="h5" sx={{ fontFamily: "Lato, sansSerif" }}>
+                <Typography variant="h5" sx={{ fontFamily: "Lato, sansSerif", mb:'.5em' }}>
                   Approve User?
                 </Typography>
                 <Button
                   disableElevation
-                  variant="contained"
-                  color="secondary"
-                  sx={{ fontFamily: "Lato, sansSerif" }}
+                  variant="outlined"
+                  color="info"
+                  sx={{ fontFamily: "Lato, sansSerif", borderRadius: 1, border: '1.4px solid' }}
                   onClick={() => {
                     window.open(`mailto: ${adminItem.username}`),
                       handleApproval(adminItem);
                   }}
                 >
-                  Approve
+                  <HowToReg />
+                  <Typography sx={{ ml: ".5em", fontWeight: "bold" }}>
+                    Approve
+                  </Typography>
                 </Button>
                 <FormHelperText sx={{}}>
                   Reminder: email user to notify upon approval
                 </FormHelperText>
               </Box>
             ) : (
-              <Box sx={{}}>
-                <Typography variant="h5" sx={{ fontFamily: "Lato, sansSerif" }}>
+              <Box sx={{ mt: '2em' }}>
+                <Typography variant="h5" sx={{ fontFamily: "Lato, sansSerif", mb: "1.5vh" }}>
                   Remove Approval?
                 </Typography>
                 <Button
                   disableElevation
-                  variant="contained"
-                  color="primary"
-                  sx={{ fontFamily: "Lato, sansSerif" }}
+                  variant="outlined"
+                  color="info"
+                  sx={{ fontFamily: "Lato, sansSerif", borderRadius: 1, border: '1.4px solid' }}
                   onClick={() => {
                     window.open(`mailto: ${adminItem.username}`),
                       handleApproval(adminItem);
                   }}
                 >
-                  Remove
+                  <PersonRemove />
+                  <Typography sx={{ fontWeight: "bold", ml: ".8em" }}>
+                    Remove
+                  </Typography>
                 </Button>
                 <FormHelperText sx={{}}>
                   Reminder: email user to notify upon removal
@@ -367,7 +376,7 @@ function AdminItem() {
           </Box>
 
           {/* potential matches list */}
-          <Box sx={{ mt: "1em" }}>
+          <Box sx={{ mt: "4vh" }}>
             {adminItem.user_type === "brand" ? (
               <>
                 <Typography variant="h5" sx={{ fontFamily: "Lato, sansSerif" }}>
@@ -376,15 +385,15 @@ function AdminItem() {
                 <Select
                   multiple
                   native
-                  variant="filled"
-                  color="warning"
+                  variant="outlined"
+                  color="info"
                   value={state.matches}
                   // @ts-ignore Typings are not considering `native`
                   onChange={handleMatchChange}
                   inputProps={{
                     id: "select-multiple-matches",
                   }}
-                  sx={{ width: "20vw" }}
+                  sx={{ width: "20vw", bgcolor: '#FFFFFF' }}
                 >
                   {adminJournos?.map((user) => (
                     <option key={user.id} value={user.id}>
@@ -397,31 +406,33 @@ function AdminItem() {
                 </FormHelperText>
                 <Button
                   disableElevation
-                  variant="contained"
-                  color="secondary"
-                  sx={{ fontFamily: "Lato, sansSerif" }}
+                  variant="outlined"
+                  color="info"
+                  sx={{ fontFamily: "Lato, sansSerif", fontWeight: 'bold', borderRadius: 1, border: '1.4px solid' }}
                   onClick={() => handleSubmit()}
                 >
-                  Submit Match(es)
+                  <Typography sx={{ fontWeight: 'bold' }}>
+                    Submit Match(es)
+                  </Typography>
                 </Button>
               </>
             ) : (
               <>
-                <Typography variant="h5" sx={{ fontFamily: "Lato, sansSerif" }}>
+                <Typography variant="h5" sx={{ fontFamily: "Lato, sansSerif", mb:'.5em' }}>
                   Select New Match(es)
                 </Typography>
                 <Select
                   multiple
                   native
-                  variant="filled"
-                  color="warning"
+                  variant="outlined"
+                  color="info"
                   value={state.matches}
                   // @ts-ignore Typings are not considering `native`
                   onChange={handleMatchChange}
                   inputProps={{
                     id: "select-multiple-matches",
                   }}
-                  sx={{ width: "20vw" }}
+                  sx={{ width: "20vw", backgroundColor: "#FFFFFF", }}
                 >
                   {adminBrands?.map((user) => (
                     <option key={user.id} value={user.id}>
@@ -434,34 +445,37 @@ function AdminItem() {
                 </FormHelperText>
                 <Button
                   disableElevation
-                  variant="contained"
-                  color="secondary"
-                  sx={{ fontFamily: "Lato, sansSerif" }}
+                  variant="outlined"
+                  color="info"
+                  sx={{ fontFamily: "Lato, sansSerif", mt:'.5em', borderRadius: 1, border: '1.4px solid' }}
                   onClick={() => handleSubmit()}
                 >
-                  Submit Match(es)
+                  <AddCircleOutline/>
+                  <Typography sx={{fontWeight:'bold', ml: '.8em'}}>
+                    Submit Match(es)
+                  </Typography>
                 </Button>
               </>
             )}
           </Box>
 
           {/* display current matches / delete from list */}
-          <Box sx={{ mt: "1em" }}>
-            <Typography variant="h5" sx={{ fontFamily: "Lato, sansSerif" }}>
+          <Box sx={{ mt: "4vh" }}>
+            <Typography variant="h5" sx={{ fontFamily: "Lato, sansSerif", mb:'.5em' }}>
               Delete Existing Match(es)
             </Typography>
             <Select
               multiple
               native
-              variant="filled"
-              color="warning"
+              variant="outlined"
+              color="info"
               value={state.toDelete}
               // @ts-ignore Typings are not considering `native`
               onChange={handleDeleteChange}
               inputProps={{
                 id: "select-multiple-matches",
               }}
-              sx={{ width: "20vw" }}
+              sx={{ width: "20vw", backgroundColor: "#FFFFFF" }}
             >
               {adminMatches.length > 0 &&
                 adminMatches?.map((match) => (
@@ -475,12 +489,15 @@ function AdminItem() {
             </FormHelperText>
             <Button
               disableElevation
-              variant="contained"
-              color="primary"
-              sx={{ fontFamily: "Lato, sansSerif" }}
+              variant="outlined"
+              color="info"
+              sx={{ fontFamily: "Lato, sansSerif", borderRadius: 1, border: '1.4px solid', fontWeight:'bold', mt:'.5em' }}
               onClick={() => handleDelete()}
             >
-              Delete Match(es)
+              <RemoveCircleOutline />
+              <Typography sx={{fontWeight:'bold', ml: '.8em'}}>
+                Delete Match(es)
+              </Typography>
             </Button>
           </Box>
         </Box>
