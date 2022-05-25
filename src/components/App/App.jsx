@@ -38,6 +38,7 @@ import ComingSoon from '../ComingSoonPage/ComingSoonPage';
 import UserEdit from "../UserEditPage/UserEditPage";
 
 import './App.css';
+import PresentationPage from "../PresentationPage/PresentationPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -251,6 +252,9 @@ function App() {
               <ComingSoon />
             </Route>
 
+            <Route exact path="/presentation">
+              <PresentationPage />
+            </Route>
 
             <ProtectedRoute exact path ="/user/edit">
               <UserEdit />
