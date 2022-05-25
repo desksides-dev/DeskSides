@@ -13,6 +13,7 @@ function Nav() {
 
   const handleLogout = () => {
     dispatch({ type: 'LOGOUT' })
+    history.push('/home');
     window.location.reload();
     history.push('/home');
   }
