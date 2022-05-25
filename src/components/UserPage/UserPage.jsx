@@ -42,7 +42,7 @@ function UserPage() {
         align: "center",
         justifyContent: "left",
         textAlign: "left",
-        height: "40vh",
+        height: "auto",
         pl: "10vw",
         pr: "43vw",
         py: "5vh"
