@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { Box, Button, MenuItem, Slider, Stack, Typography, InputLabel, FormHelperText, TextField, Select, FormControl } from '@mui/material'
-
-
+import { Box, Button, MenuItem, Slider, Typography, InputLabel, FormHelperText, TextField, Select} from '@mui/material'
 
 function BrandAssessment() {
     const markets = useSelector((store) => store.markets);
@@ -233,14 +231,14 @@ function BrandAssessment() {
                 </Box>
 
                 <Box sx={{ my: "5vmax", justifyContent: "left", textAlign: "left", }}>
-                    <InputLabel shrink={false} htmlFor='stories-per-month'>
+                    <InputLabel shrink={false} htmlFor='affiliate-link'>
                         Are you currently on an affiliate platform? If so, what is your merchant link?
                     </InputLabel>
                     <TextField
                         labelId="stories-per-month"
                         color="warning"
                         variant="filled"
-                        name="stories_per_month"
+                        name="affiliate_link"
                         value={state.affiliate_link}
                         onChange={handleChange}
                         InputLabelProps={{

@@ -23,39 +23,29 @@ function* getMarkets() {
 
 // worker Saga: will be fired on "J_ASSESS" actions. Posts & Puts to database.
 function* postJournalist(action) {
-    const state = action.payload
-    console.log('from postJournalist: ', state)
-
     try {
-        for (const market of state.markets) {
-            yield axios.post(`/api/form/markets/${market}`)
-        }
-
-        for (const pub of state.pubs) {
-            yield axios.post(`/api/form/publications/${pub}`)
-        }
-
-        yield axios.put('/api/form/journalist', state)
+        yield axios.post('/api/form/junctions', action.payload)
+        yield axios.put('/api/form/journalists', action.payload)
     } catch (error) {
         console.log('error in *postJournalist: ', error)
     }
 }
 
-// worker Saga: will be fired on "B_ASSESS" actions. Post & Puts to database.
+// worker Saga: will be fired on "B_ASSESS" actions. Posts & Puts to database.
 function* postBrand(action) {
-    const state = action.payload
-    console.log('from *postBrand: ', state)
+    try {
+        yield axios.post('/api/form/junctions', action.payload)
+        yield axios.put('/api/form/brands', action.payload)
+    } catch (error) {
+        console.log('error in *postBrand: ', error)
+    }
+}
+
+function* putBrand(action) {
+    // console.log('from *putBrand: ', state)
 
     try {
-        for (const market of state.markets) {
-            yield axios.post(`/api/form/markets/${market}`)
-        }
-
-        for (const pub of state.pubs) {
-            yield axios.post(`/api/form/publications/${pub}`)
-        }
-
-        yield axios.put('/api/form/brands', state)
+        yield axios.put('/api/form/brands', action.payload)
     } catch (error) {
         console.log('error in *postBrand: ', error)
     }
@@ -67,6 +57,7 @@ function* formSaga() {
     yield takeLatest('GET_MARKETS', getMarkets);
     yield takeLatest('J_ASSESS', postJournalist);
     yield takeLatest('B_ASSESS', postBrand);
+    yield takeLatest('B_EDIT_ASSESS', putBrand);
 }
 
 export default formSaga;

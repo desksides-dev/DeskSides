@@ -24,7 +24,6 @@ import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
 import AboutPage from "../AboutPage/AboutPage";
 import UserPage from "../UserPage/UserPage";
 import InfoPage from "../InfoPage/InfoPage";
-import LandingPage from "../LandingPage/LandingPage";
 // import RegisterPage from "../RegisterPage/RegisterPage";
 import AdminList from "../AdminList/AdminList";
 import AdminItem from "../AdminItem/AdminItem";
@@ -36,6 +35,7 @@ import Login from '../Login/Login';
 import CreateAccount from '../CreateAccount/CreateAccount';
 import JournalistsList from '../JournalistsList/JournalistsList';
 import ComingSoon from '../ComingSoonPage/ComingSoonPage';
+import UserEdit from "../UserEditPage/UserEditPage";
 
 import './App.css';
 import PresentationPage from "../PresentationPage/PresentationPage";
@@ -219,7 +219,7 @@ function App() {
                 <Redirect to="/user" />
               ) : (
                 // Otherwise, show the Landing page
-                <LandingPage />
+                <InfoPage />
               )}
             </Route>
 
@@ -256,6 +256,10 @@ function App() {
               <PresentationPage />
             </Route>
 
+            <ProtectedRoute exact path ="/user/edit">
+              <UserEdit />
+            </ProtectedRoute>
+            
             {/* If none of the other routes matched, we will show a 404. */}
             <Route>
               <h1>404</h1>
