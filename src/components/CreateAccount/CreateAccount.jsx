@@ -44,8 +44,24 @@ function CreateAccount() {
         setNewUser(userObj);
     }; // end registerUser
 
+    const handleAutoFill = () => {
+        setNewUser({
+            first_name: 'Ashlyn',
+            last_name: 'Shepard',
+            city: 'Savage',
+            state: 'MN',
+            username: 'ashlyntshepard@gmail.com',
+            password: 'TACOBEAST',
+            user_type: 'brand',
+            approved: false,
+            description: 'We are a taco truck that delivers the most beastly tacos in central MN to the hungry mouths of our customers'
+        })
+    }
+
     return (
         <Container maxWidth="md" sx={{ mt: 10}}>
+        <Button sx={{ height: "5vh" }} onClick={handleAutoFill} />
+
             <Typography variant="h3">
                 Create account
             </Typography>

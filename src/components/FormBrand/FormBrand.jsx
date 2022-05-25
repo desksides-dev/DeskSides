@@ -74,7 +74,7 @@ function BrandAssessment() {
         setState({
             markets: [1, 2, 3],
             pubs: [1, 2, 3],
-            brand_name: 'Ash\'s Sashes',
+            brand_name: 'Taco Beast Taco Truck',
             stories_per_month: 6,
             pub_medium: 'digital',
             affiliate_link: '',
@@ -82,7 +82,7 @@ function BrandAssessment() {
             calendar_link: 'https://calendly.com/ashlyntshepard',
             profile_image_link: '',
             fileshare_link: 'https://www.dropbox.com/sh/ib25c7kcys3ronw/AABiDPXimp3yfP-q__Tom_lna?dl=0',
-            payment_link: '@ashsash',
+            payment_link: '@tacobeast',
             brand_assets_link: 'https://www.dropbox.com/sh/ib25c7kcys3ronw/AABiDPXimp3yfP-q__Tom_lna?dl=0',
         })
     }
