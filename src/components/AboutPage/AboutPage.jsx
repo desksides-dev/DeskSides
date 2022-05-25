@@ -7,6 +7,10 @@ function AboutPage() {
 
   const history = useHistory();
 
+  const handleHiddenButton = () => {
+    history.push('/presentation')
+  }
+
   return (<>
 
     <Box sx={{
@@ -33,6 +37,7 @@ function AboutPage() {
           sx={{ width: "5em", mt: 2 }}
           alt="down arrow"
           src="/images/down-arrow.svg"
+          onClick={handleHiddenButton}
         />
       </div>
       <br />
