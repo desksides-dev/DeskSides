@@ -43,7 +43,6 @@ function* postBrand(action) {
 
 function* putBrand(action) {
     // console.log('from *putBrand: ', state)
-
     try {
         yield axios.put('/api/form/brands', action.payload)
     } catch (error) {

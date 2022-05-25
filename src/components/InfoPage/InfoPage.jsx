@@ -12,7 +12,9 @@ function InfoPage() {
         alignItems: "center",
         height: "60vh",
         textDecoration: "underline",
-        border: "1px #546D1D solid",
+        borderRight: "1px #546D1D solid",
+        borderLeft: "1px #546D1D solid",
+        borderBottom: "1px #546D1D solid",
         borderTop: "0px"
       }}>
         <br />

@@ -74,7 +74,7 @@ function BrandAssessment() {
         setState({
             markets: [1, 2, 3],
             pubs: [1, 2, 3],
-            brand_name: 'Taco Beast Taco Truck',
+            brand_name: 'Taco Beast Truck',
             stories_per_month: 6,
             pub_medium: 'digital',
             affiliate_link: '',
@@ -91,7 +91,7 @@ function BrandAssessment() {
     const handleSubmit = () => {
         // console.log('state from the brand assessment: ', state);
         dispatch({ type: 'B_ASSESS', payload: state });
-        history.push('/user');
+        history.push('/thankyou');
     }
 
     return (<>
