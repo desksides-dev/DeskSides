@@ -107,8 +107,8 @@ function AdminItem() {
             size="small"
             disableElevation
             color="info"
-            variant="outlined"
-            sx={{ fontFamily: "Lato, sansSerif", ml: "2vw", borderRadius: 1, border: '1.4px solid' }}
+            variant="text"
+            sx={{ fontFamily: "Lato, sansSerif", ml: "2vw"}}
             onClick={() => handleBack()}
           >
             <ArrowBack />
@@ -147,27 +147,39 @@ function AdminItem() {
                     {adminItem.first_name[0]}
                     {adminItem.last_name[0]}
                   </Avatar>
+                  <Typography sx={{textTransform:'capitalize', fontSize:'1.4em', ml:'1.2em'}}>
+                  {adminItem.first_name} {adminItem.last_name}
+                  </Typography>
                 </ListItem>
                 <ListItem>
-                  <ListItemText
-                    primary={`${adminItem.first_name} ${adminItem.last_name}`}
-                  />
+                  <Typography sx={{fontWeight:'bold', mr:'.6em'}}>
+                    Approved:
+                  </Typography>
+                  {adminItem.approved ? <Typography>Yes</Typography> : <Typography>No</Typography>}
                 </ListItem>
                 <ListItem>
-                  <ListItemText
-                    primary={`Approved : ${adminItem.approved.toString()}`}
-                  />
+                  <Typography sx={{fontWeight:'bold', mr:'.6em'}}>
+                    User type:
+                  </Typography>
+                  <Typography sx={{textTransform:'capitalize'}}>
+                    {adminItem.user_type}
+                  </Typography>
                 </ListItem>
                 <ListItem>
-                  <ListItemText
-                    primary={`User Type : ${adminItem.user_type}`}
-                  />
+                  <Typography sx={{fontWeight:'bold', mr:'.6em'}}>
+                    Email:
+                  </Typography>
+                  <Typography sx={{textTransform:'capitalize'}}>
+                    {adminItem.username}
+                  </Typography>
                 </ListItem>
                 <ListItem>
-                  <ListItemText primary={`Email : ${adminItem.username}`} />
-                </ListItem>
-                <ListItem>
-                  <ListItemText primary={`City : ${adminItem.city}`} />
+                  <Typography sx={{fontWeight:'bold', mr:'.6em'}}>
+                    City:
+                  </Typography>
+                  <Typography sx={{textTransform:'capitalize'}}>
+                    {adminItem.city}
+                  </Typography>
                 </ListItem>
                 <ListItem>
                   <ListItemText primary={`State : ${adminItem.state}`} />
@@ -326,7 +338,7 @@ function AdminItem() {
           <Box>
             {adminItem.approved === false ? (
               <Box sx={{ mt: "1em" }}>
-                <Typography variant="h5" sx={{ fontFamily: "Lato, sansSerif", mb:'.5em' }}>
+                <Typography variant="h5" sx={{ fontFamily: "Lato, sansSerif", mb: '.5em' }}>
                   Approve User?
                 </Typography>
                 <Button
@@ -418,7 +430,7 @@ function AdminItem() {
               </>
             ) : (
               <>
-                <Typography variant="h5" sx={{ fontFamily: "Lato, sansSerif", mb:'.5em' }}>
+                <Typography variant="h5" sx={{ fontFamily: "Lato, sansSerif", mb: '.5em' }}>
                   Select New Match(es)
                 </Typography>
                 <Select
@@ -447,11 +459,11 @@ function AdminItem() {
                   disableElevation
                   variant="outlined"
                   color="info"
-                  sx={{ fontFamily: "Lato, sansSerif", mt:'.5em', borderRadius: 1, border: '1.4px solid' }}
+                  sx={{ fontFamily: "Lato, sansSerif", mt: '.5em', borderRadius: 1, border: '1.4px solid' }}
                   onClick={() => handleSubmit()}
                 >
-                  <AddCircleOutline/>
-                  <Typography sx={{fontWeight:'bold', ml: '.8em'}}>
+                  <AddCircleOutline />
+                  <Typography sx={{ fontWeight: 'bold', ml: '.8em' }}>
                     Submit Match(es)
                   </Typography>
                 </Button>
@@ -461,7 +473,7 @@ function AdminItem() {
 
           {/* display current matches / delete from list */}
           <Box sx={{ mt: "4vh" }}>
-            <Typography variant="h5" sx={{ fontFamily: "Lato, sansSerif", mb:'.5em' }}>
+            <Typography variant="h5" sx={{ fontFamily: "Lato, sansSerif", mb: '.5em' }}>
               Delete Existing Match(es)
             </Typography>
             <Select
@@ -491,11 +503,11 @@ function AdminItem() {
               disableElevation
               variant="outlined"
               color="info"
-              sx={{ fontFamily: "Lato, sansSerif", borderRadius: 1, border: '1.4px solid', fontWeight:'bold', mt:'.5em' }}
+              sx={{ fontFamily: "Lato, sansSerif", borderRadius: 1, border: '1.4px solid', fontWeight: 'bold', mt: '.5em' }}
               onClick={() => handleDelete()}
             >
               <RemoveCircleOutline />
-              <Typography sx={{fontWeight:'bold', ml: '.8em'}}>
+              <Typography sx={{ fontWeight: 'bold', ml: '.8em' }}>
                 Delete Match(es)
               </Typography>
             </Button>
