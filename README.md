@@ -1,5 +1,3 @@
-![License](https://img.shields.io/github/license/adairjenkins ,  atshepard ,  thezachcarter/https://github.com/thezachcarter/DeskSides.svg?style=for-the-badge) ![Repo Size](https://img.shields.io/github/languages/code-size/adairjenkins ,  atshepard ,  thezachcarter/https://github.com/thezachcarter/DeskSides.svg?style=for-the-badge) ![TOP_LANGUAGE](https://img.shields.io/github/languages/top/adairjenkins ,  atshepard ,  thezachcarter/https://github.com/thezachcarter/DeskSides.svg?style=for-the-badge) ![FORKS](https://img.shields.io/github/forks/adairjenkins ,  atshepard ,  thezachcarter/https://github.com/thezachcarter/DeskSides.svg?style=for-the-badge&social) ![Stars](https://img.shields.io/github/stars/adairjenkins ,  atshepard ,  thezachcarter/https://github.com/thezachcarter/DeskSides.svg?style=for-the-badge)
-    
 # Desksides
 
 ## Table of Contents
@@ -29,7 +27,11 @@ To see the fully functional site, please visit: DEPLOYED VERSION OF APP
 
 ## Screenshots
 
-<img src="" />
+<img height="40%" width="40%" src="./public/images/screenshots/Screen Shot 2022-05-26 at 8.46.31 AM.png" />
+
+<img height="40%" width="40%" src="./public/images/screenshots/Screen Shot 2022-05-26 at 8.34.48 AM.png" />
+
+<img height="40%" width="40%" src="./public/images/screenshots/Screen Shot 2022-05-26 at 8.45.33 AM.png" />
 
 ## Built With
 
@@ -78,4 +80,14 @@ Who helped you make this project a reality? Friends? Family? Contributors? Instr
 
 ## Contacts
 
-<a href="https://www.linkedin.com/in/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a>  <a href="mailto:"><img src=https://raw.githubusercontent.com/johnturner4004/readme-generator/master/src/components/assets/images/email_me_button_icon_151852.svg /></a>
+Ashlyn
+<br>
+<a href="https://www.linkedin.com/in/atshepard/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a>  
+
+Maggie
+<br>
+<a href="https://www.linkedin.com/in/margaret-jenkins-86391a1a2/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a>
+
+Zach
+<br>
+<a href="https://www.linkedin.com/in/thezachcarter/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a>
