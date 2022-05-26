@@ -72,6 +72,21 @@ function JournalistAssessment() {
         })
     }
 
+    const handleAutoFill = () => {
+        setState({
+            markets: [1, 2, 3],
+            pubs: [1, 2, 3],
+            stories_per_month: 6,
+            years_of_experience: 5,
+            time_of_day_pref: 'Morning',
+            pub_medium: 'digital',
+            calendar_link: '',
+            profile_image_link: '',
+            fileshare_link: '',
+            payment_link: '',
+        })
+    }
+
     // sends state on dispatch pushes user to the thank you page
     const handleSubmit = () => {
         // console.log('state from the journalist assessment: ', state);
