@@ -297,73 +297,119 @@ function AdminItem() {
                     {adminItem.first_name[0]}
                     {adminItem.last_name[0]}
                   </Avatar>
+                  <Typography sx={{ textTransform: 'capitalize', fontSize: '1.4em', ml: '1.2em' }}>
+                    {adminItem.first_name} {adminItem.last_name}
+                  </Typography>
                 </ListItem>
                 <ListItem>
-                  <ListItemText
-                    primary={`${adminItem.first_name} ${adminItem.last_name}`}
-                  />
+                  <Typography sx={{ fontWeight: 'bold', mr: '.6em' }}>
+                    Approved:
+                  </Typography>
+                  {adminItem.approved ? <Typography>Yes</Typography> : <Typography>No</Typography>}
                 </ListItem>
                 <ListItem>
-                  <ListItemText
-                    primary={`Approved : ${adminItem.approved?.toString()}`}
-                  />
+                  <Typography sx={{ fontWeight: 'bold', mr: '.6em' }}>
+                    User type:
+                  </Typography>
+                  <Typography sx={{ textTransform: 'capitalize' }}>
+                    {adminItem.user_type}
+                  </Typography>
                 </ListItem>
                 <ListItem>
-                  <ListItemText
-                    primary={`User Type : ${adminItem.user_type}`}
-                  />
+                  <Typography sx={{ fontWeight: 'bold', mr: '.6em' }}>
+                    Email:
+                  </Typography>
+                  <Typography sx={{ textTransform: 'capitalize' }}>
+                    {adminItem.username}
+                  </Typography>
                 </ListItem>
                 <ListItem>
-                  <ListItemText primary={`Email : ${adminItem.username}`} />
+                  <Typography sx={{ fontWeight: 'bold', mr: '.6em' }}>
+                    City:
+                  </Typography>
+                  <Typography sx={{ textTransform: 'capitalize' }}>
+                    {adminItem.city}
+                  </Typography>
                 </ListItem>
                 <ListItem>
-                  <ListItemText primary={`City : ${adminItem.city}`} />
+                  <Typography sx={{ fontWeight: 'bold', mr: '.6em' }}>
+                    State:
+                  </Typography>
+                  <Typography sx={{ textTransform: 'capitalize' }}>
+                    {adminItem.state}
+                  </Typography>
                 </ListItem>
                 <ListItem>
-                  <ListItemText primary={`State : ${adminItem.state}`} />
+                  <Typography sx={{ fontWeight: 'bold', mr: '.6em' }}>
+                    Description:
+                  <Typography display="inline" sx={{ textTransform: 'capitalize', ml:'.6em' }}>
+                    {adminItem.description}
+                  </Typography>
+                  </Typography>
                 </ListItem>
                 <ListItem>
-                  <ListItemText
-                    primary={`Description : ${adminItem.description}`}
-                  />
+                  <Typography sx={{ fontWeight: 'bold', mr: '.6em' }}>
+                    Publication medium:
+                  </Typography>
+                  <Typography sx={{ textTransform: 'capitalize' }}>
+                    {adminItem.pub_medium}
+                  </Typography>
                 </ListItem>
                 <ListItem>
-                  <ListItemText primary={`Medium : ${adminItem.pub_medium}`} />
+                  <Typography sx={{ fontWeight: 'bold', mr: '.6em' }}>
+                    Scheduling preference:
+                  </Typography>
+                  <Typography sx={{ textTransform: 'capitalize' }}>
+                    {adminItem.time_of_day_pref}
+                  </Typography>
                 </ListItem>
                 <ListItem>
-                  <ListItemText
-                    primary={`Preferred Time Of Day : ${adminItem.time_of_day_pref}`}
-                  />
+                  <Typography sx={{ fontWeight: 'bold', mr: '.6em' }}>
+                    Years experience:
+                  </Typography>
+                  <Typography sx={{ textTransform: 'capitalize' }}>
+                    {adminItem.years_of_exp}
+                  </Typography>
                 </ListItem>
                 <ListItem>
-                  <ListItemText
-                    primary={`Years Of Experience : ${adminItem.years_of_exp}`}
-                  />
+                  <Typography sx={{ fontWeight: 'bold', mr: '.6em' }}>
+                    Stories per month:
+                  </Typography>
+                  <Typography sx={{ textTransform: 'capitalize' }}>
+                    {adminItem.stories_per_month}
+                  </Typography>
                 </ListItem>
                 <ListItem>
-                  <ListItemText
-                    primary={`Stories Per Month : ${adminItem.stories_per_month}`}
-                  />
+                  <Typography sx={{ fontWeight: 'bold', mr: '.6em' }}>
+                    Profile image:
+                  </Typography>
+                  <Typography sx={{ textTransform: 'capitalize' }}>
+                    {adminItem.profile_image_link}
+                  </Typography>
                 </ListItem>
                 <ListItem>
-                  <ListItemText
-                    primary={`Profile Image Link: ${adminItem.profile_image_link}`}
-                  />
+                  <Typography sx={{ fontWeight: 'bold', mr: '.6em' }}>
+                    Calendar:
+                  </Typography>
+                  <Typography sx={{ textTransform: 'capitalize' }}>
+                    {adminItem.calendar_link}
+                  </Typography>
                 </ListItem>
                 <ListItem>
-                  <ListItemText
-                    primary={`Calendar Link : ${adminItem.calendar_link}`}
-                  />
+                  <Typography sx={{ fontWeight: 'bold', mr: '.6em' }}>
+                    Fileshare:
+                  </Typography>
+                  <Typography sx={{ textTransform: 'capitalize' }}>
+                    {adminItem.fileshare_link}
+                  </Typography>
                 </ListItem>
                 <ListItem>
-                  <ListItemText
-                    primary={`Fileshare Link : ${adminItem.fileshare_link}`}
-                  />
-                </ListItem>
-                <ListItem>
-                  <ListItemText
-                    primary={`Affiliate Link : ${adminItem.affiliate_link}`}
-                  />
+                  <Typography sx={{ fontWeight: 'bold', mr: '.6em' }}>
+                    Affiliate link:
+                  </Typography>
+                  <Typography sx={{ textTransform: 'capitalize' }}>
+                    {adminItem.affiliate_link}
+                  </Typography>
                 </ListItem>
               </>
             )}
@@ -371,7 +417,7 @@ function AdminItem() {
         </Box>
 
         {/* Admin Input Box */}
-        <Box width="40vw" sx={{ pl: "3vw" }}>
+        <Box width="40vw" sx={{ pl: "3vw", mb: '7vh' }}>
           {/* displays button to toggle approval status. renders based on current status */}
           <Box>
             {adminItem.approved === false ? (
@@ -461,7 +507,8 @@ function AdminItem() {
                   sx={{ fontFamily: "Lato, sansSerif", fontWeight: 'bold', borderRadius: 1, border: '1.4px solid' }}
                   onClick={() => handleSubmit()}
                 >
-                  <Typography sx={{ fontWeight: 'bold' }}>
+                  <AddCircleOutline />
+                  <Typography sx={{ fontWeight: 'bold', ml: ".8em" }}>
                     Submit Match(es)
                   </Typography>
                 </Button>
