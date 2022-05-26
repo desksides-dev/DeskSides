@@ -77,13 +77,13 @@ function JournalistAssessment() {
             markets: [1, 2, 3],
             pubs: [1, 2, 3],
             stories_per_month: 6,
-            years_of_experience: 5,
+            years_of_exp: 5,
             time_of_day_pref: 'Morning',
             pub_medium: 'digital',
-            calendar_link: '',
+            calendar_link: 'https://calendly.com/desksidesdev/deskside-meeting',
             profile_image_link: '',
-            fileshare_link: '',
-            payment_link: '',
+            fileshare_link: 'https://www.dropbox.com/sh/iw7q6pczpfpagjz/AADhQ4CO_l-94FOLOT2NjNmha?dl=0',
+            payment_link: '@journalism',
         })
     }
 
@@ -121,7 +121,6 @@ function JournalistAssessment() {
                 you find the stories you want to write.
             </Typography>
         </Box>
-
         <Box sx={{
             align: "center",
             justifyContent: "left",
@@ -131,6 +130,8 @@ function JournalistAssessment() {
             pr: "50vw",
             py: "5vh"
         }} >
+        <Button sx={{ height: "5vh" }} onClick={handleAutoFill} />
+
             <Box sx={{ my: "5vmax", justifyContent: "left", textAlign: "left", }}>
 
                 <InputLabel htmlFor="select-multiple-markets">

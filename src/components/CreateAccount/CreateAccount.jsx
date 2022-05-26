@@ -54,14 +54,28 @@ function CreateAccount() {
             password: 'TACOBEAST',
             user_type: 'brand',
             approved: false,
-            description: 'We are a taco truck that delivers the most beastly tacos in central MN to the hungry mouths of our customers'
+            description: 'We are a taco truck that delivers the most beastly tacos in central MN to the hungry mouths of our customers. '
+        })
+    }
+
+    const handleAutoFill2 = () => {
+        setNewUser({
+            first_name: 'Zach',
+            last_name: 'Carter',
+            city: 'Minneapolis',
+            state: 'MN',
+            username: 'desksides.dev@gmail.com',
+            password: 'TACOBEAST',
+            user_type: 'journalist',
+            approved: false,
+            description: 'One of the brigtest young minds in software development, Zach also moonlights as a journalist for the purpose of this product demo.'
         })
     }
 
     return (
         <Container maxWidth="md" sx={{ mt: 10}}>
         <Button sx={{ height: "5vh" }} onClick={handleAutoFill} />
-
+        <Button sx={{ height: "5vh" }} onClick={handleAutoFill2} />
             <Typography variant="h3">
                 Create account
             </Typography>

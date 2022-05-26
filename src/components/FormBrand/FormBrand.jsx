@@ -79,11 +79,11 @@ function BrandAssessment() {
             pub_medium: 'digital',
             affiliate_link: '',
             time_of_day_pref: 'Morning',
-            calendar_link: 'https://calendly.com/ashlyntshepard',
+            calendar_link: 'https://calendly.com/desksidesdev/deskside-meeting',
             profile_image_link: '',
-            fileshare_link: 'https://www.dropbox.com/sh/ib25c7kcys3ronw/AABiDPXimp3yfP-q__Tom_lna?dl=0',
-            payment_link: '@tacobeast',
-            brand_assets_link: 'https://www.dropbox.com/sh/ib25c7kcys3ronw/AABiDPXimp3yfP-q__Tom_lna?dl=0',
+            fileshare_link: 'https://www.dropbox.com/sh/iw7q6pczpfpagjz/AADhQ4CO_l-94FOLOT2NjNmha?dl=0',
+            payment_link: '@brandName',
+            brand_assets_link: 'https://www.dropbox.com/sh/iw7q6pczpfpagjz/AADhQ4CO_l-94FOLOT2NjNmha?dl=0',
         })
     }
 
