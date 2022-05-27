@@ -125,7 +125,7 @@ router.put('/journalists', rejectUnauthenticated, (req, res) => {
 
   const queryValues =
     [req.user.id, req.body.pub_medium, stories, years,
-    req.body.calender_link, req.body.profile_image_link, req.body.fileshare_link,
+    req.body.calendar_link, req.body.profile_image_link, req.body.fileshare_link,
     req.body.payment_link]
 
   pool

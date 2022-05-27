@@ -60,15 +60,15 @@ function CreateAccount() {
 
     const handleAutoFill2 = () => {
         setNewUser({
-            first_name: 'Zach',
-            last_name: 'Carter',
+            first_name: 'Renee',
+            last_name: 'Jones',
             city: 'Minneapolis',
             state: 'MN',
             username: 'desksides.dev@gmail.com',
             password: 'TACOBEAST',
             user_type: 'journalist',
             approved: false,
-            description: 'One of the brigtest young minds in software development, Zach also moonlights as a journalist for the purpose of this product demo.'
+            description: 'Pulitzer Prize & Emmy Award winning journalist, Renee specializes in investigative reporting in the Minneapolis community.'
         })
     }
 
