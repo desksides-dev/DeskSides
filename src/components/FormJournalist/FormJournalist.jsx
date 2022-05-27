@@ -141,6 +141,7 @@ function JournalistAssessment() {
                     Select all that apply
                 </InputLabel>
                 <Select
+                    sx={{height: "15vh"}}
                     multiple
                     native
                     color="secondary"

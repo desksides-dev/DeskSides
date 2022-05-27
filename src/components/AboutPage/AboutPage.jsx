@@ -68,7 +68,7 @@ function AboutPage() {
         color="#F6F3E3">
         Our platform brings this experience to the virtual sphere, giving brands and writers the freedom to connect directly.
         With equitable pricing models, DeskSides gives smaller brands a chance to have their stories told,
-        and helps journalists tell them will being fairly compensated.
+        and helps journalists tell them while being fairly compensated.
       </Typography>
 
     </Box>
