@@ -7,7 +7,6 @@ const router = express.Router();
 
 //gets publications from the publications table for drop down on assessments:
 router.get('/pubs', (req, res) => {
-  // console.log('in get for pubs');
   const queryText = `SELECT * from "publications";`;
 
   pool
@@ -22,7 +21,6 @@ router.get('/pubs', (req, res) => {
 
 //gets markets from the markets table for drop down on assessments:
 router.get('/markets', (req, res) => {
-  // console.log('in get for markets');
   const queryText = `SELECT * from "markets";`;
 
   pool

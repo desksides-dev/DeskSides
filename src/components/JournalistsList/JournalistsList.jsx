@@ -14,7 +14,6 @@ function JournalistsList() {
 
     const user = useSelector(store => store.user);
     const journalists = useSelector(store => store.brandJournalists);
-    console.log('journalists:', journalists);
 
     return (
         <Box>

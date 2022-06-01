@@ -2,7 +2,6 @@ import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
 function* getBrandJournalists() {
-    console.log('getBrandJournalists saga');
     try {
         const response = yield axios.get('/api/brand-journalists');
         yield put ({type: 'SET_BRAND_JOURNALISTS', payload: response.data});
