@@ -23,7 +23,7 @@ Brands and journalists can register accounts with Desksides by providing informa
 
 Once matches have been made, the Desksides platform facilitates communication, file sharing and scheduling between the brands and journalist, providing a more efficient method of conducting deskside meetings. 
 
-To see the fully functional site, please visit: DEPLOYED VERSION OF APP
+To see the fully functional site, please visit: https://shrouded-anchorage-03524.herokuapp.com/
 
 ## Screenshots
 
