@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { Box, Button, MenuItem, Slider, Typography, InputLabel, FormHelperText, TextField, Select} from '@mui/material'
+import { Box, Button, MenuItem, Slider, Typography, InputLabel, FormHelperText, TextField, Select } from '@mui/material'
 
 function BrandAssessment() {
     const markets = useSelector((store) => store.markets);
@@ -70,10 +70,27 @@ function BrandAssessment() {
         })
     }
 
+    const handleAutoFill = () => {
+        setState({
+            markets: [1, 2, 3],
+            pubs: [1, 2, 3],
+            brand_name: 'Taco Beast Truck',
+            stories_per_month: 6,
+            pub_medium: 'digital',
+            affiliate_link: '',
+            time_of_day_pref: 'Morning',
+            calendar_link: 'https://calendly.com/desksidesdev/deskside-meeting',
+            profile_image_link: '',
+            fileshare_link: 'https://www.dropbox.com/sh/iw7q6pczpfpagjz/AADhQ4CO_l-94FOLOT2NjNmha?dl=0',
+            payment_link: '@brandName',
+            brand_assets_link: 'https://www.dropbox.com/sh/iw7q6pczpfpagjz/AADhQ4CO_l-94FOLOT2NjNmha?dl=0',
+        })
+    }
+
     // sends state on dispatch pushes user to the thank you page
     const handleSubmit = () => {
         dispatch({ type: 'B_ASSESS', payload: state });
-        history.push('/user');
+        history.push('/thankyou');
     }
 
     return (<>
@@ -111,11 +128,11 @@ function BrandAssessment() {
             height: "auto",
             pl: "10vw",
             pr: "50vw",
-            py: "5vh"
+            py: "2vh"
         }} >
             <form>
-
-                <Box sx={{ my: "5vmax", justifyContent: "left", textAlign: "left", }}>
+            {/* <Button sx={{ height: "5vh" }} onClick={handleAutoFill} /> */}
+                <Box sx={{ my: "2vmax", justifyContent: "left", textAlign: "left", }}>
                     <InputLabel htmlFor='brand_name'>
                         Brand Name
                     </InputLabel>
@@ -326,52 +343,55 @@ function BrandAssessment() {
                             }}
                         />
                     </Box>
+                    <Box sx={{ my: "2vmax", justifyContent: "left", textAlign: "left", }}>
 
-                    <InputLabel htmlFor='brand_assets_link'>
-                        Link to your Brand Assets
-                    </InputLabel>
-                    <TextField
-                        id="brand_assets_link"
-                        color="warning"
-                        variant="filled"
-                        name="brand_assets_link"
-                        value={state.brand_assets_link}
-                        onChange={handleChange}
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                    />
+                        <InputLabel htmlFor='brand_assets_link'>
+                            Link to your Brand Assets
+                        </InputLabel>
+                        <TextField
+                            id="brand_assets_link"
+                            color="warning"
+                            variant="filled"
+                            name="brand_assets_link"
+                            value={state.brand_assets_link}
+                            onChange={handleChange}
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                        />
+                    </Box>
+                    <Box sx={{ my: "2vmax", justifyContent: "left", textAlign: "left", }}>
+
+                        <InputLabel htmlFor='payment_link'>
+                            Venmo Username
+                        </InputLabel>
+                        <TextField
+                            id="payment_link"
+                            color="warning"
+                            variant="filled"
+                            name="payment_link"
+                            value={state.payment_link}
+                            onChange={handleChange}
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                        />
+                    </Box>
                 </Box>
 
                 <Box sx={{ my: "2vmax", justifyContent: "left", textAlign: "left", }}>
 
-                    <InputLabel htmlFor='payment_link'>
-                        Venmo Username
-                    </InputLabel>
-                    <TextField
-                        id="payment_link"
+                    <Button
                         color="warning"
-                        variant="filled"
-                        name="payment_link"
-                        value={state.payment_link}
-                        onChange={handleChange}
-                        InputLabelProps={{
-                            shrink: true,
+                        variant="contained"
+                        onClick={handleSubmit}
+                        sx={{
+                            borderRadius: "2em",
+                            typography: "h6",
+                            textTransform: "lowercase"
                         }}
-                    />
+                    > submit </Button>
                 </Box>
-
-
-                <Button
-                    color="warning"
-                    variant="contained"
-                    onClick={handleSubmit}
-                    sx={{
-                        borderRadius: "2em",
-                        typography: "h6",
-                        textTransform: "lowercase"
-                    }}
-                > submit </Button>
             </form>
 
         </Box>

@@ -72,6 +72,21 @@ function JournalistAssessment() {
         })
     }
 
+    const handleAutoFill = () => {
+        setState({
+            markets: [1, 2, 3],
+            pubs: [1, 2, 3],
+            stories_per_month: 6,
+            years_of_exp: 5,
+            time_of_day_pref: 'Morning',
+            pub_medium: 'digital',
+            calendar_link: 'https://calendly.com/desksidesdev/deskside-meeting',
+            profile_image_link: '',
+            fileshare_link: 'https://www.dropbox.com/sh/cm57kmkiftqqe9e/AABN7lah6jrZn5bD2n0FSbwCa?dl=0',
+            payment_link: '@journalism',
+        })
+    }
+
     // sends state on dispatch pushes user to the thank you page
     const handleSubmit = () => {
         dispatch({ type: 'J_ASSESS', payload: state });
@@ -105,7 +120,6 @@ function JournalistAssessment() {
                 you find the stories you want to write.
             </Typography>
         </Box>
-
         <Box sx={{
             align: "center",
             justifyContent: "left",
@@ -115,6 +129,8 @@ function JournalistAssessment() {
             pr: "50vw",
             py: "5vh"
         }} >
+        {/* <Button sx={{ height: "5vh" }} onClick={handleAutoFill} /> */}
+
             <Box sx={{ my: "5vmax", justifyContent: "left", textAlign: "left", }}>
 
                 <InputLabel htmlFor="select-multiple-markets">
@@ -124,6 +140,7 @@ function JournalistAssessment() {
                     Select all that apply
                 </InputLabel>
                 <Select
+                    sx={{height: "15vh"}}
                     multiple
                     native
                     color="secondary"

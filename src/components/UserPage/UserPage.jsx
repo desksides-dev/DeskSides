@@ -42,7 +42,7 @@ function UserPage() {
         align: "center",
         justifyContent: "left",
         textAlign: "left",
-        height: "40vh",
+        height: "auto",
         pl: "10vw",
         pr: "43vw",
         py: "5vh"
@@ -107,7 +107,7 @@ function UserPage() {
           <IconButton
             size="small"
             sx={{ p: "2vmax" }}
-            onClick={() => { window.open(`${user.brand_assets_link}`) }}>
+            onClick={() => { window.open(`${user.fileshare_link}`) }}>
             <Box
               component="img"
               sx={{ width: "7em", height: "7em", m: "1vmax" }}

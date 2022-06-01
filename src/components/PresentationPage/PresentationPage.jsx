@@ -26,11 +26,11 @@ function PresentationPage(props) {
             component="img"
             height="140"
             image="/images/presentation/ashlyn.jpeg"
-            alt="Ashlyn Sheppard"
+            alt="Ashlyn Shepard"
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-              Ashlyn Sheppard
+              Ashlyn Shepard
             </Typography>
             <Typography variant="body2" color="text.secondary">
               https://www.linkedin.com/in/atshepard/

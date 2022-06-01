@@ -98,6 +98,7 @@ function Nav() {
                 {user.first_name}
               </Typography>
             </Button>
+            
             <Button sx={{ color: '#546D1D' }} onClick={handleLogout}>
               <Logout />
               <Typography sx={{ ml: 1 }}>

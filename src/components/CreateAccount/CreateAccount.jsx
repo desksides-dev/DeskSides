@@ -43,8 +43,38 @@ function CreateAccount() {
         setNewUser(userObj);
     }; // end registerUser
 
+    const handleAutoFill = () => {
+        setNewUser({
+            first_name: 'Ashlyn',
+            last_name: 'Shepard',
+            city: 'Savage',
+            state: 'MN',
+            username: 'ashlyntshepard@gmail.com',
+            password: 'TACOBEAST',
+            user_type: 'brand',
+            approved: false,
+            description: 'We are a taco truck that delivers the most beastly tacos in central MN to the hungry mouths of our customers. '
+        })
+    }
+
+    const handleAutoFill2 = () => {
+        setNewUser({
+            first_name: 'Renee',
+            last_name: 'Jones',
+            city: 'Minneapolis',
+            state: 'MN',
+            username: 'journalism@gmail.com',
+            password: 'TACOBEAST',
+            user_type: 'journalist',
+            approved: false,
+            description: 'Pulitzer Prize & Emmy Award winning journalist, Renee specializes in investigative reporting in the Minneapolis community.'
+        })
+    }
+
     return (
         <Container maxWidth="md" sx={{ mt: 10}}>
+        {/* <Button sx={{ height: "5vh" }} onClick={handleAutoFill} />
+        <Button sx={{ height: "5vh" }} onClick={handleAutoFill2} /> */}
             <Typography variant="h3">
                 Create account
             </Typography>

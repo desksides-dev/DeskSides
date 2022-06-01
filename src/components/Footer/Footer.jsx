@@ -11,19 +11,30 @@ function Footer() {
   return (
     <Stack
       direction="row"
-      justifyContent="space-between"
       alignItems="center"
-      sx={{ borderTop: "1px #546D1D solid", borderBottom:"1px #546D1D solid", backgroundColor: "white", pl:5, pr:5, minWidth:1200, bottom:0, left:0, right:0}}
+      justifyContent="center"
+      sx={{
+        borderTop: "1px #546D1D solid",
+        borderBottom: "1px #546D1D solid",
+        backgroundColor: "white",
+      }}
       fontFamily="Lato, sans-serif"
     >
-      <Box>
+      <Box
+        sx={{
+          mx: "1vw"
+        }}>
         <Link
           fontFamily="inherit"
-          sx={{ textDecoration: "none", color: "#546D1D", mr:5 }}
+          sx={{ textDecoration: "none", color: "#546D1D" }}
         >
           COPYRIGHT DESKSIDES © 2022
         </Link>
-
+      </Box>
+      <Box
+        sx={{
+          mx: "1vw"
+        }}>
         {/* this link may need to be removed and spacing modified. it is currently a placeholder  */}
         <Link
           fontFamily="inherit"
@@ -33,19 +44,29 @@ function Footer() {
           TERMS & CONDITIONS
         </Link>
       </Box>
-      <Link href="/">
-        <Box
-          component="img"
-          sx={{
-            height: "5em",
-            width: "11em",
-          }}
-          alt="DeskSides Logo"
-          src="/images/desksides-logo.svg"
-        />
-      </Link>
 
-      <Box>
+      <Box
+        sx={{
+          mx: "10vw"
+        }}
+      >
+        <Link href="/">
+          <Box
+            component="img"
+            sx={{
+              height: "5em",
+              width: "11em",
+            }}
+            alt="DeskSides Logo"
+            src="/images/desksides-logo.svg"
+          />
+        </Link>
+      </Box>
+
+      <Box
+        sx={{
+          mx: "1vw"
+        }}>
         {/* this link needs official facebook address */}
         <Link
           fontFamily="inherit"
@@ -54,17 +75,25 @@ function Footer() {
         >
           FACEBOOK
         </Link>
-
+      </Box>
+      <Box
+        sx={{
+          mx: "1vw"
+        }}>
         <Link
-          sx={{ textDecoration: "none", color: "#546D1D", ml:5 }}
+          sx={{ textDecoration: "none", color: "#546D1D", ml: 5 }}
           fontFamily="inherit"
           href="https://www.instagram.com/desksides/"
           target="_blank"
         >
           INSTAGRAM
         </Link>
-
-        {/* need to update hover/click color of this button */}
+      </Box>
+      {/* need to update hover/click color of this button */}
+      <Box
+        sx={{
+          mx: "1vw"
+        }}>
         <Button
           disableElevation
           fontFamily="inherit"
@@ -74,7 +103,7 @@ function Footer() {
             borderRadius: "2em",
             fontFamily: "Lato, sans-serif",
             fontWeight: "bold",
-            ml:5
+            ml: 5
           }}
           href="mailto:blish@desksides.com"
         >

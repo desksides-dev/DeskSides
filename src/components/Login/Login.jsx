@@ -27,10 +27,22 @@ function Login() {
     }
   }; // end login
 
+  const handleAutoFill = () => {
+    setUsername('desksidesdev@gmail.com');
+    setPassword('ADMIN');
+  }
+
+  const handleAutoFill2EB = () => {
+    setUsername('ashlyntshepard@gmail.com');
+    setPassword('TACOBEAST');
+  }
+
   return (
     <Container maxWidth="xs" sx={{mb:10,}}>
+      <Button sx={{ height: "5vh" }} onClick={handleAutoFill} />
+      <Button sx={{ height: "5vh" }} onClick={handleAutoFill2EB} />
       <form onSubmit={login}>
-        <Typography variant="h3" sx={{ mt: 15 }}>Sign in</Typography>
+        <Typography variant="h3" sx={{ mt: 10 }}>Sign in</Typography>
         {errors.loginMessage && (
           <h3 className="alert" role="alert">
             {errors.loginMessage}
