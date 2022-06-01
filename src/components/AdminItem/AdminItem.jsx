@@ -53,7 +53,6 @@ function AdminItem() {
       approvalStatus = true;
       adminItem.approved = true;
     }
-    console.log("Approval Status =", approvalStatus, "adminItem =", adminItem);
     dispatch({ type: "UPDATE_APPROVAL_STATUS", payload: id, approvalStatus });
     dispatch({ type: "SET_ADMIN_ITEM", payload: adminItem });
   };
