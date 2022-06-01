@@ -76,7 +76,7 @@ Journalists
 
 ## Acknowledgements
 
-Who helped you make this project a reality? Friends? Family? Contributors? Instructors?
+Thank you to Prime Digital Academy, the Butler Cohort and our Instructor Dane Smith.
 
 ## Contacts
 
