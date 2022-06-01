@@ -64,7 +64,7 @@ function CreateAccount() {
             last_name: 'Jones',
             city: 'Minneapolis',
             state: 'MN',
-            username: 'desksides.dev@gmail.com',
+            username: 'journalism@gmail.com',
             password: 'TACOBEAST',
             user_type: 'journalist',
             approved: false,

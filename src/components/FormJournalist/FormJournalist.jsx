@@ -82,7 +82,7 @@ function JournalistAssessment() {
             pub_medium: 'digital',
             calendar_link: 'https://calendly.com/desksidesdev/deskside-meeting',
             profile_image_link: '',
-            fileshare_link: 'https://www.dropbox.com/sh/iw7q6pczpfpagjz/AADhQ4CO_l-94FOLOT2NjNmha?dl=0',
+            fileshare_link: 'https://www.dropbox.com/sh/cm57kmkiftqqe9e/AABN7lah6jrZn5bD2n0FSbwCa?dl=0',
             payment_link: '@journalism',
         })
     }
