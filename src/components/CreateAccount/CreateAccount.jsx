@@ -74,8 +74,8 @@ function CreateAccount() {
 
     return (
         <Container maxWidth="md" sx={{ mt: 10}}>
-        <Button sx={{ height: "5vh" }} onClick={handleAutoFill} />
-        <Button sx={{ height: "5vh" }} onClick={handleAutoFill2} />
+        {/* <Button sx={{ height: "5vh" }} onClick={handleAutoFill} />
+        <Button sx={{ height: "5vh" }} onClick={handleAutoFill2} /> */}
             <Typography variant="h3">
                 Create account
             </Typography>

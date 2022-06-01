@@ -132,7 +132,7 @@ function BrandAssessment() {
             py: "2vh"
         }} >
             <form>
-            <Button sx={{ height: "5vh" }} onClick={handleAutoFill} />
+            {/* <Button sx={{ height: "5vh" }} onClick={handleAutoFill} /> */}
                 <Box sx={{ my: "2vmax", justifyContent: "left", textAlign: "left", }}>
                     <InputLabel htmlFor='brand_name'>
                         Brand Name

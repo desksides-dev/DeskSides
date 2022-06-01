@@ -130,7 +130,7 @@ function JournalistAssessment() {
             pr: "50vw",
             py: "5vh"
         }} >
-        <Button sx={{ height: "5vh" }} onClick={handleAutoFill} />
+        {/* <Button sx={{ height: "5vh" }} onClick={handleAutoFill} /> */}
 
             <Box sx={{ my: "5vmax", justifyContent: "left", textAlign: "left", }}>
 
