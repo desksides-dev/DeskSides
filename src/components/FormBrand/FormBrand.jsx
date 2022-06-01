@@ -89,7 +89,6 @@ function BrandAssessment() {
 
     // sends state on dispatch pushes user to the thank you page
     const handleSubmit = () => {
-        // console.log('state from the brand assessment: ', state);
         dispatch({ type: 'B_ASSESS', payload: state });
         history.push('/thankyou');
     }

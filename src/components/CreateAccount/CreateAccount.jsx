@@ -26,7 +26,6 @@ function CreateAccount() {
 
     const registerUser = (event) => {
         event.preventDefault();
-        console.log('newUser:', newUser);
 
         dispatch({
             type: 'REGISTER',

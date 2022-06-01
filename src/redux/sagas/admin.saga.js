@@ -4,7 +4,6 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* getAdminUsers() {
     try {
         const adminUsers = yield axios.get(`/api/admin`);
-        console.log('get all users:', adminUsers.data);
         yield put({ type: 'SET_ADMIN_USERS', payload: adminUsers.data });
 
     } catch (err) {
@@ -25,7 +24,6 @@ function* updateApprovalStatus(action) {
 function* postMatches(action) {
     const matches = action.state.matches;
     const id = action.payload.id
-    console.log('%%%% in postMatches saga. matches =', matches);
 
     if (action.payload.user_type === 'journalist') {
         try {
@@ -54,9 +52,7 @@ function* postMatches(action) {
 //DELETE matches from database
 function* deleteMatches(action) {
     const matches = action.state.toDelete;
-    const id = action.payload.id
-
-    console.log('^^^^^^^^^^^^^^delete Matches. matches =', matches, 'id =', id);
+    const id = action.payload.id;
 
     try {
         for (const matchId of matches) {
@@ -77,7 +73,6 @@ function* getAdminMatches(action) {
     } else if (action.payload.user_type === 'brand') { userMatchType = 'journalist' }
     try {
         const adminMatches = yield axios.get(`/api/admin/matches/${id}/${userMatchType}`)
-        console.log('@@@@@@ get all matches, id:', action.payload.id, 'userMatchType:', userMatchType, 'adminMatches.data:', adminMatches.data);
         yield put({ type: 'SET_ADMIN_MATCHES', payload: adminMatches.data });
     } catch (err) {
         console.log('getAdminMatches error', err);
@@ -87,7 +82,6 @@ function* getAdminMatches(action) {
 function* getAdminBrands() {
     try {
         const adminBrands = yield axios.get(`/api/admin/brands`);
-        console.log('get all brands:', adminBrands.data);
         yield put({ type: 'SET_ADMIN_BRANDS', payload: adminBrands.data });
     } catch (err) {
         console.log('getAdminBrands error', err);
@@ -97,7 +91,6 @@ function* getAdminBrands() {
 function* getAdminJournos() {
     try {
         const adminJournos = yield axios.get(`/api/admin/journos`);
-        console.log('get all journos:', adminJournos.data);
         yield put({ type: 'SET_ADMIN_JOURNOS', payload: adminJournos.data });
     } catch (err) {
         console.log('getAdminJournos error', err);
